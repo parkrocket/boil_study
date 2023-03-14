@@ -1,3 +1,7 @@
+# 스터디 시작입니다 :)
+
+다들 중도탈락 하지 마시고 끝까지 달려봐요! 서로서로 잘 알려주기!
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
