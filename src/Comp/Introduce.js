@@ -72,7 +72,6 @@ export const Introduce = () => {
                 lineHeight="tight"
                 noOfLines={1}
               ></Box>
-              {/* 여기까지 */}
 
               <Box display="flex" mt="2" alignItems="center">
                 <Box
