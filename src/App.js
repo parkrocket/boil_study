@@ -1,19 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Main } from './Comp/Main';
+import { Introduce } from './Comp/Introduce';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ChakraBaseProvider } from '@chakra-ui/react';
 
 function App() {
     return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-                    리액트 스터디 스타트입니다. 다들 중도 탈락하지 마시고 화이팅해요!
-                </a>
-            </header>
-        </div>
+        <ChakraBaseProvider>
+            <Router>
+                <Routes>
+                    <Route path="/" element={<Main />} />
+                    <Route path="/introduce" element={<Introduce />} />
+                </Routes>
+            </Router>
+        </ChakraBaseProvider>
     );
 }
 
