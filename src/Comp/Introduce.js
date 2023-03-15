@@ -3,6 +3,7 @@ import { Box, Center, Badge, Image } from '@chakra-ui/react';
 
 import Gora from '../img/gora.jpg';
 
+
 export const Introduce = () => {
     const property = {
         imageUrl: 'https://bit.ly/2Z4KKcF',
@@ -15,17 +16,30 @@ export const Introduce = () => {
         rating: 4,
     };
 
+    const property2 = {
+        imageUrl: '',
+        imageAlt: '',
+        name: '배효원',
+        age: 31,
+        sex: '남자',
+        title: '열심히 하겠습니다!',
+        reviewCount: 34,
+        rating: 4,
+    };
+
     return (
-        <Center>
+        <>
+        {[property, property2].map((el) => (
+            <Center>
             <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
-                <Image src={Gora} alt={property.imageAlt} />
+                <Image src={Gora} alt={el.imageAlt} />
                 <Box p="6">
                     <Box display="flex" alignItems="baseline">
                         <Badge borderRadius="full" px="2" colorScheme="teal" fontWeight="semibold">
-                            {property.name}
+                            {el.name}
                         </Badge>
                         <Box color="gray.500" fontWeight="semibold" letterSpacing="wide" fontSize="xs" textTransform="uppercase" ml="2">
-                            {property.age} 살 &bull; {property.sex}
+                            {el.age} 살 &bull; {el.sex}
                         </Box>
                     </Box>
 
@@ -33,11 +47,13 @@ export const Introduce = () => {
 
                     <Box display="flex" mt="2" alignItems="center">
                         <Box as="span" ml="2" color="gray.600" fontSize="sm" fontWeight="semibold">
-                            {property.title}
+                            {el.title}
                         </Box>
                     </Box>
                 </Box>
             </Box>
         </Center>
+        ))}
+        </>
     );
 };
