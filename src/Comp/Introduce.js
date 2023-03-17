@@ -52,7 +52,7 @@ export const Introduce = () => {
         <>
             <Center>
                 {[property, property2, property3, property4].map((el) => (
-                    <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
+                    <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden" h={550} mr={5} mt={5}>
                         <Image src={Gora} alt={el.imageAlt} />
                         <Box p="6">
                             <Box display="flex" alignItems="baseline">
