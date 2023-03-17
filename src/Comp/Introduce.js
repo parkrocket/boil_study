@@ -60,6 +60,17 @@ export const Introduce = () => {
     rating: 4,
   };
 
+  const property6 = {
+    imageUrl: "",
+    imageAlt: "gora",
+    name: "조유빈",
+    age: 40,
+    sex: "여자",
+    title: "다들 화이팅입니당",
+    reviewCount: 34,
+    rating: 4,
+  };
+
   return (
     <>
       <Center>
