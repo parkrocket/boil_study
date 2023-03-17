@@ -37,10 +37,21 @@ export const Introduce = () => {
         rating: 4,
     };
 
+    const property4 = {
+        imageUrl: '',
+        imageAlt: 'gora',
+        name: '김승규',
+        age: 29,
+        sex: '남자',
+        title: '다들 홧팅해서 모두 win-win 할 수 있었습니다 좋겠습니다!',
+        reviewCount: 34,
+        rating: 4,
+    };
+
     return (
         <>
             <Center>
-                {[property, property2, property3].map((el) => (
+                {[property, property2, property3, property4].map((el) => (
                     <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
                         <Image src={Gora} alt={el.imageAlt} />
                         <Box p="6">
