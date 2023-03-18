@@ -18,7 +18,7 @@ export const Introduce = () => {
 
   const property2 = {
     imageUrl: "",
-    imageAlt: "",
+    imageAlt: Gora,
     name: "배효원",
     age: 31,
     sex: "남자",
@@ -71,10 +71,21 @@ export const Introduce = () => {
     rating: 4,
   };
 
+  const property_ino = {
+    imageUrl: "",
+    imageAlt: "매직샵",
+    name: "조인호",
+    age: 44,
+    sex: "남자",
+    title: "리액트는 리액트일뿐.",
+    reviewCount: 34,
+    rating: 4,
+  };
+
   return (
     <>
       <Center>
-        {[property, property2, property3, property4, property5].map((el) => (
+        {[property, property2, property3, property4, property5, property_ino].map((el) => (
           <Box
             maxW="sm"
             borderWidth="1px"
