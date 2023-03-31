@@ -1,0 +1,61 @@
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border: 1px solid #0836f0;
+}
+
+.login_wrap {
+    max-width: 400px;
+    margin: 130px auto auto;
+}
+.login_wrap .login_title {
+    margin-bottom: 20px;
+    text-align: center;
+}
+.login_wrap .login_title h2 {
+    font-size: 3em;
+}
+.login_wrap .login_title span {
+    display: block;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #222;
+}
+.login_wrap .log_section {
+    margin-bottom: 10px;
+}
+.login_wrap .log_section em {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+.login_wrap .log_section.log_lost {
+    font-size: 0.85em;
+    text-align: end;
+}
+.login_wrap .login_btn {
+    border: 0 !important;
+    transition: all .2s;
+    transform: rotate(0.1deg);
+}
+.login_wrap .login_btn:hover,
+.login_wrap .login_btn:active {
+    background: #5d4c91;
+    color:#fff;
+}
+.login_wrap .chk_wrap {
+    margin: 20px 0;
+}
+.login_wrap .chk_wrap .chkbox {
+    margin-bottom: 5px;
+    font-size: 0.88em;
+}
+.login_wrap .chk_wrap .chkbox label {
+    padding: 0 5px;
+}
+.login_wrap .chk_wrap .chkbox em {
+    color: red;
+}
+.login_wrap .chk_wrap .chkbox  .pop {
+    float: right;
+    color: #999;
+}
+

@@ -1,0 +1,36 @@
+@media (max-width: 1300px) {
+    #header .header-inner {
+        width: 100% !important;
+        padding: 10px 20px !important;
+    }
+}
+@media (max-width: 600px) {
+    html { font-size: 15px; }
+    #header .header-inner {
+        display: block;
+    }
+    #header .header-inner .gnb {
+        margin-top: 10px;
+    }
+    #header .header-inner .gnb li {
+        padding-left: 0;
+        padding-right: 30px;
+    }
+    #header .header-inner .head-login { 
+        position: absolute;
+        top: 18px;
+        right: 10px;
+    }
+    #header .header-inner .head-login li a {
+        max-width: 80px;
+    }
+    .login_wrap {
+        width: 100%;
+        padding: 0 20px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+    .login_wrap .login_title h2 {
+        font-size: 2.5em;
+    }
+}

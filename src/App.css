@@ -1,3 +1,11 @@
+.fGothic{font-family: 'NEXONFootballGothicLA1', 'NEXONFootballGothicLA1';}
+@font-face {
+  font-family: 'NEXONFootballGothicLA1';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXONFootballGothicLA1.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .App {
   text-align: center;
 }
@@ -28,6 +36,73 @@
   color: #61dafb;
 }
 
+/* header */
+#header {
+  border-bottom: 1px solid #ddd;
+}
+#header .header-inner { 
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1280px;
+  width: 100%;
+  padding: 10px 0;
+  margin: 0 auto;
+}
+#header .header-inner h1 {
+  font-size: 2em;
+}
+#header .header-inner h1 em {
+  color: #5d4c91;
+}
+.logo em {
+  color: #5d4c91;
+}
+#header .header-inner .gnb {
+  display: flex;
+  font-size: 1em;
+}
+#header .header-inner .gnb li {
+  padding: 0 20px;
+}
+#header .header-inner .head-login {
+  display: flex;
+}
+#header .header-inner .head-login li a {
+  display: inline-block;
+  width: 85px;
+  padding: 5px 10px;
+  font-size: 0.85rem;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+}
+#header .header-inner .head-login li:nth-child(1) {
+  margin-right: 10px;
+}
+#header .header-inner .head-login li:nth-child(1) a:hover {
+  background: #eee;
+}
+#header .header-inner .head-login li:nth-child(2) a {
+  background:#5d4c91;
+}
+#header .header-inner .head-login li:nth-child(2) a:hover {
+  background: #392d5e;
+}
+#header .header-inner .head-login li:nth-child(2) a {
+  color: #fff;
+}
+
+/* 공통요소 */
+.wrap {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.fontf {
+  font-family: 'NEXONFootballGothicLA1', 'NEXONFootballGothicLA1';
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -36,3 +111,172 @@
     transform: rotate(360deg);
   }
 }
+
+/*-------------- common -------------*/
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap");
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* 초기화 */
+html {
+  overflow-y: scroll;
+  font-size: 18px;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Pretendard-Regular" !important;
+  font-size: 16px;
+  color: #222;
+}
+html,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+fieldset,
+img {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 1em;
+  font-family: "Noto Sans KR", sans-serif;
+  color: #222;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+ul,
+dl,
+dt,
+dd {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+legend {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+  line-height: 0;
+  text-indent: -9999em;
+  overflow: hidden;
+}
+label,
+input,
+button,
+select,
+img {
+  vertical-align: middle;
+  font-size: 1em;
+}
+input,
+button {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 1em;
+}
+input[type="submit"] {
+  cursor: pointer;
+}
+button {
+  cursor: pointer;
+}
+
+textarea,
+select {
+  font-family: "Pretendard";
+  font-size: 1em;
+}
+select {
+  margin: 0;
+}
+p {
+  margin: 0;
+  padding: 0;
+  word-break: break-all;
+}
+hr {
+  display: none;
+}
+pre {
+  overflow-x: scroll;
+  font-size: 1.1em;
+}
+a {
+  color: #222;
+  text-decoration: none;
+}
+em {
+  font-style: initial;
+}
+
+*,
+:after,
+:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  outline: none;
+  border: none;
+}
+input[type="text"],
+input[type="submit"],
+input[type="password"] {
+  width: 100%;
+  height: 40px;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+input[type="text"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+  -webkit-box-shadow: 0 0 5px #9ed4ff;
+  -moz-box-shadow: 0 0 5px #9ed4ff;
+  box-shadow: 0 0 5px #9ed4ff;
+
+  outline: none;
+  border: none;
+}
+
+
+
