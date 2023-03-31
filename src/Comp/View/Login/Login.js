@@ -20,7 +20,7 @@ function Login() {
     const onSubmitHandler = (event) => {
         const data = { id: Id, password: Password };
 
-        console.log(data);
+        //console.log(data);
 
         axios({
             method: 'post',

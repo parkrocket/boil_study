@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 type Props = {
-  value: '테스트 용입니다';
+  value: string;
 };
 
 const Test: FC<Props> = ({ value }) => {

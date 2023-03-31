@@ -12,7 +12,7 @@ function Register() {
                     <div className="login_title">
                         <h2 className="logo fontf">kakao</h2>
                         <span>kakao 회원가입</span>
-                    </div> 
+                    </div>
                     <div className="log_section">
                         <em>아이디</em>
                         <input type="text"></input>
@@ -36,12 +36,16 @@ function Register() {
                     <div className="chk_wrap">
                         <div className="chkbox">
                             <input type="radio" id="chk_1" name="" />
-                            <label  htmlFor="chk_1"><em>(필수)</em> 이용 약관 동의</label>
-                            <span className="pop">약관보기 햣 </span>
+                            <label htmlFor="chk_1">
+                                <em>(필수)</em> 이용 약관 동의
+                            </label>
+                            <span className="pop">약관보기 </span>
                         </div>
                         <div className="chkbox">
                             <input type="radio" id="chk_2" name="" />
-                            <label htmlFor="chk_2"><em>(필수)</em> 개인정보처리방침 동의</label>
+                            <label htmlFor="chk_2">
+                                <em>(필수)</em> 개인정보처리방침 동의
+                            </label>
                             <span className="pop">약관보기 </span>
                         </div>
                     </div>
@@ -51,7 +55,7 @@ function Register() {
                 </div>
             </div>
         </div>
-        );
+    );
 }
 
 export default Register;
