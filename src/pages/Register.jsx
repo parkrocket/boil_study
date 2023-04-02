@@ -1,7 +1,7 @@
 import React from 'react';
-import Head from '../Head';
-import '../../../Css/login.css';
-import '../../../Css/media.css';
+import Head from '../components/Head';
+import '../Css/login.css';
+import '../Css/media.css';
 
 function Register() {
     return (
