@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Head from '../Head';
-import '../../../Css/login.css';
-import '../../../Css/media.css';
+import Head from '../components/Head';
+import '../Css/login.css';
+import '../Css/media.css';
 
 
 function Login() {
@@ -22,6 +22,7 @@ function Login() {
 
         //console.log(data);
 
+        // TODO: services/ 또는 apis 폴더로 빼기 (논의후))
         axios({
             method: 'post',
             url: 'http://54.180.35.70/api/users',

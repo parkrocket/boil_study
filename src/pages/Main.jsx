@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css';
-import Head from './View/Head';
+
+import Head from '../components/Head';
 
 export const Main = () => {
     return (
