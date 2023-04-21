@@ -5,6 +5,7 @@ import { Introduce } from './Introduce';
 import Login from './Login';
 import Register from './Register';
 import Test from './Test';
+import DbLook from './DbLook';
 
 export const Routes = () => {
     return (
@@ -13,6 +14,7 @@ export const Routes = () => {
         <Route path="/introduce" element={<Introduce />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/dblook" element={<DbLook />} />
         <Route path="/test" element={<Test value={'테스트 컴포넌트 :)😁'} />} />
       </ReactRouterRoutes>
     );
