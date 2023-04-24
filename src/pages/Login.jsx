@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
+
+import { useDispatch } from "react-redux";
+import { loginUser } from "../_actions/user_actions";
+
 import Head from "../components/Head";
 import "../Css/login.css";
 import "../Css/media.css";
@@ -9,8 +13,10 @@ import "../Css/media.css";
 function Login() {
     const [Id, setId] = useState("");
     const [Password, setPassword] = useState("");
-    const [Cookie, setCookie, removeCookie] = useCookies(["x_auth"]);
+    const [Cookie, setCookie] = useCookies(["x_auth"]);
+
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const onIdHandler = (event) => {
         setId(event.currentTarget.value);
@@ -21,14 +27,28 @@ function Login() {
     };
 
     const onSubmitHandler = (event) => {
+        event.preventDefault();
         const data = { id: Id, password: Password };
 
+        dispatch(loginUser(data)).then((response) => {
+            if (response.payload.loginSuccess) {
+                setCookie("x_auth", response.payload.token);
+                window.localStorage.setItem("userId", response.payload.userId);
+                navigate("/");
+            } else {
+                alert("아이디가 없거나 비밀번호가 틀렸습니다.");
+            }
+        });
+
+        //console.log(data2);
         //console.log(data);
 
         // TODO: services/ 또는 apis 폴더로 빼기 (논의후))
+
+        /*
         axios({
             method: "post",
-            url: "http://54.180.35.70/api/users",
+            url: "http://54.180.35.70/api/login",
             data: data,
         }).then((response) => {
             if (response.data.success === "failed") {
@@ -46,8 +66,7 @@ function Login() {
                 console.log(response);
             }
         });
-
-        event.preventDefault();
+        */
     };
     return (
         <div>

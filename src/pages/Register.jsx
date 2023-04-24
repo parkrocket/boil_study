@@ -3,6 +3,9 @@ import Head from "../components/Head";
 import axios from "axios";
 import "../Css/login.css";
 import "../Css/media.css";
+import { useDispatch } from "react-redux";
+import { registerUser } from "../_actions/user_actions";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
     const [Id, setId] = useState("");
@@ -10,6 +13,9 @@ function Register() {
     const [Email, setEmail] = useState("");
     const [Name, setName] = useState("");
     const [NickName, setNickName] = useState("");
+
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const onIdHandler = (event) => {
         setId(event.currentTarget.value);
@@ -37,12 +43,23 @@ function Register() {
         //console.log(data);
 
         // TODO: services/ 또는 apis 폴더로 빼기 (논의후))
+
+        dispatch(registerUser(data)).then((response) => {
+            //if(payload.)
+            if (response.payload.regstersuccess === true) {
+                navigate("/");
+            } else {
+                alert(response.payload.msg);
+            }
+        });
+
+        /*
         axios({
             method: "post",
             url: "http://54.180.35.70/api/register",
             data: data,
         }).then((response) => console.log(response));
-
+        */
         event.preventDefault();
     };
 
