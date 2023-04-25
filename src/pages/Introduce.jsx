@@ -4,7 +4,13 @@ import { Box, Center, Badge, Image } from "@chakra-ui/react";
 import Gora from "../img/gora.jpg";
 import Head from "../components/Head";
 
-export const Introduce = () => {
+export const Introduce = (props) => {
+    if (props.user.isAuth !== props.option) {
+        if (props.option !== null) {
+            return;
+        }
+    }
+
     const property = {
         imageUrl: "https://bit.ly/2Z4KKcF",
         imageAlt: "Rear view of modern home with pool",

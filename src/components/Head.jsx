@@ -10,7 +10,7 @@ function Head() {
             <div id="header">
                 <div className="header-inner">
                     <h1 className="logo fontf">
-                        <Link to="">kakao</Link>
+                        <Link to="/">kakao</Link>
                     </h1>
                     <ul className="gnb">
                         <li>

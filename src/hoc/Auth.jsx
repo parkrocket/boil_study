@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useCookies } from "react-cookie";
 import { auth } from "../_actions/user_actions";
 
@@ -10,6 +10,7 @@ function Auth(ChildrenComponent, option, adminRoute = null) {
         const navigate = useNavigate();
         const dispatch = useDispatch();
         const [cookies] = useCookies(["x_auth"]);
+        const user = useSelector((state) => state);
 
         useEffect(() => {
             dispatch(auth(cookies)).then((response) => {
@@ -40,7 +41,19 @@ function Auth(ChildrenComponent, option, adminRoute = null) {
         // true -> 로그인 한 인원만
         // false -> 로그인 안한 인원만
 
-        return <ChildrenComponent></ChildrenComponent>;
+        /*
+        if (user.user.isAuth !== user.option) {
+            if (user.option !== null) {
+                return;
+            }
+        }
+        */
+        return (
+            <ChildrenComponent
+                user={user.user.auth}
+                option={option}
+                adminRoute={adminRoute}></ChildrenComponent>
+        );
     }
     return (
         <div>

@@ -5,7 +5,7 @@ import { LOGIN_USER, REGISTER_USER, AUTH_USER, LOGOUT_USER } from "./types";
 
 export function loginUser(dataTosubmit) {
     const request = axios
-        .post(`http://54.180.35.70/api/users/login`, dataTosubmit)
+        .post(`http://3.37.9.205/api/users/login`, dataTosubmit)
         .then((response) => response.data);
 
     return {
@@ -16,7 +16,7 @@ export function loginUser(dataTosubmit) {
 
 export function registerUser(dataTosubmit) {
     const request = axios
-        .post(`http://54.180.35.70/api/users/register`, dataTosubmit)
+        .post(`http://3.37.9.205/api/users/register`, dataTosubmit)
         .then((response) => response.data);
 
     return {
@@ -27,7 +27,7 @@ export function registerUser(dataTosubmit) {
 
 export function auth(dataTosubmit) {
     const request = axios
-        .post(`http://54.180.35.70/api/users/auth`, dataTosubmit)
+        .post(`http://3.37.9.205/api/users/auth`, dataTosubmit)
         .then((response) => response.data);
 
     return {
@@ -38,7 +38,7 @@ export function auth(dataTosubmit) {
 
 export function logout(dataTosubmit) {
     const request = axios
-        .post(`http://54.180.35.70/api/users/logout`, dataTosubmit)
+        .post(`http://3.37.9.205/api/users/logout`, dataTosubmit)
         .then((response) => response.data);
 
     return {

@@ -10,7 +10,7 @@ import Head from "../components/Head";
 import "../Css/login.css";
 import "../Css/media.css";
 
-function Login() {
+function Login(props) {
     const [Id, setId] = useState("");
     const [Password, setPassword] = useState("");
     const [Cookie, setCookie] = useCookies(["x_auth"]);
