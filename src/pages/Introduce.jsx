@@ -4,12 +4,14 @@ import { Box, Center, Badge, Image } from "@chakra-ui/react";
 import Gora from "../img/gora.jpg";
 import Head from "../components/Head";
 
-export const Introduce = (props) => {
+function Introduce(props) {
+    /*
     if (props.user.isAuth !== props.option) {
         if (props.option !== null) {
             return;
         }
     }
+    */
 
     const property = {
         imageUrl: "https://bit.ly/2Z4KKcF",
@@ -152,4 +154,6 @@ export const Introduce = (props) => {
             </Center>
         </>
     );
-};
+}
+
+export default Introduce;

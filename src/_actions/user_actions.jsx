@@ -1,11 +1,12 @@
 import React from "react";
 import axios from "axios";
+import { SERVER_URL } from "../pages/Config";
 
 import { LOGIN_USER, REGISTER_USER, AUTH_USER, LOGOUT_USER } from "./types";
 
 export function loginUser(dataTosubmit) {
     const request = axios
-        .post(`http://3.37.9.205/api/users/login`, dataTosubmit)
+        .post(`${SERVER_URL}/api/users/login`, dataTosubmit)
         .then((response) => response.data);
 
     return {
@@ -16,7 +17,7 @@ export function loginUser(dataTosubmit) {
 
 export function registerUser(dataTosubmit) {
     const request = axios
-        .post(`http://3.37.9.205/api/users/register`, dataTosubmit)
+        .post(`${SERVER_URL}/api/users/register`, dataTosubmit)
         .then((response) => response.data);
 
     return {
@@ -27,7 +28,7 @@ export function registerUser(dataTosubmit) {
 
 export function auth(dataTosubmit) {
     const request = axios
-        .post(`http://3.37.9.205/api/users/auth`, dataTosubmit)
+        .post(`${SERVER_URL}/api/users/auth`, dataTosubmit)
         .then((response) => response.data);
 
     return {
@@ -38,7 +39,7 @@ export function auth(dataTosubmit) {
 
 export function logout(dataTosubmit) {
     const request = axios
-        .post(`http://3.37.9.205/api/users/logout`, dataTosubmit)
+        .post(`${SERVER_URL}/api/users/logout`, dataTosubmit)
         .then((response) => response.data);
 
     return {

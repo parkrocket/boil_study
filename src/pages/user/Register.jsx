@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import Head from "../components/Head";
-import "../Css/login.css";
-import "../Css/media.css";
+import Head from "../../components/Head";
 import { useDispatch } from "react-redux";
-import { registerUser } from "../_actions/user_actions";
+import { registerUser } from "../../_actions/user_actions";
 import { useNavigate } from "react-router-dom";
 
 import axios from "axios";

@@ -1,10 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import '../App.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import "../App.css";
+import Head from "../components/Head";
 
-import Head from '../components/Head';
-
-export const Main = () => {
+function Main() {
     return (
         <div>
             <Head></Head>
@@ -14,4 +13,6 @@ export const Main = () => {
             <div>푸터</div>
         </div>
     );
-};
+}
+
+export default Main;

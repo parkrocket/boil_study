@@ -4,11 +4,11 @@ import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
-import { loginUser } from "../_actions/user_actions";
+import { loginUser } from "../../_actions/user_actions";
 
-import Head from "../components/Head";
-import "../Css/login.css";
-import "../Css/media.css";
+import Head from "../../components/Head";
+import "../../Css/login.css";
+import "../../Css/media.css";
 
 function Login(props) {
     const [Id, setId] = useState("");
