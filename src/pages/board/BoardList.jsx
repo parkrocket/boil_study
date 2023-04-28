@@ -26,7 +26,9 @@ function BoardList() {
 
         return (
             <li key={index}>
-                {list.board_id} {list.subject} {list.content} {list.user_nickname} {listDateTime}
+                <Link to={`/board/${list.board_id}`}>
+                    {list.board_id} {list.subject} {list.user_nickname} {listDateTime}
+                </Link>
             </li>
         );
     });

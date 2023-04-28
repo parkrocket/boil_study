@@ -2,7 +2,7 @@ import React, { useState, useRef, useMemo } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { SERVER_URL } from "../Config";
 
 import Head from "../../components/Head";
@@ -18,7 +18,6 @@ function Login(props) {
     const user = useSelector((state) => state);
 
     const navigate = useNavigate();
-    const dispatch = useDispatch();
 
     const quillRef = useRef();
 
@@ -70,8 +69,6 @@ function Login(props) {
 
             try {
                 const result = await axios.post(`${SERVER_URL}/api/board/imageUpload`, formData);
-
-                console.log(result);
 
                 const IMG_URL = result.data.url;
 
