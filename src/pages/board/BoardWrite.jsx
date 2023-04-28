@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { SERVER_URL } from "../Config";
 
 import Head from "../../components/Head";
-import boardWriteStyle from "../../Css/boardWrite.module.css";
+import boardWriteStyle from "../../Css/boardwrite.module.css";
 
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
@@ -136,7 +136,11 @@ function Login(props) {
                                 onChange={onContentHandler}></ReactQuill>
                         </div>
                         <div>
-                            <input type="submit" defaultValue="글쓰기" className={`login_btn ${boardWriteStyle.boardWrite_btn}`}/>
+                            <input
+                                type="submit"
+                                defaultValue="글쓰기"
+                                className={`login_btn ${boardWriteStyle.boardWrite_btn}`}
+                            />
                         </div>
                     </form>
                 </div>
