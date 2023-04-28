@@ -117,7 +117,7 @@ function Login(props) {
             <div className="wrap">
                 <div className="login_wrap">
                     <div className="login_title">
-                        <h2 className="logo fontf">게시판글쓰기</h2>
+                        <h2 className="logo fontf">게시판글쓰기😎</h2>
                     </div>
                     <form onSubmit={onSubmitHandler}>
                         <div className="log_section">
