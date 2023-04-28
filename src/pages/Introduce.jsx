@@ -24,61 +24,6 @@ function Introduce(props) {
         rating: 4,
     };
 
-    const property2 = {
-        imageUrl: "",
-        imageAlt: Gora,
-        name: "배효원",
-        age: 31,
-        sex: "남자",
-        title: "열심히 하겠습니다!",
-        reviewCount: 34,
-        rating: 4,
-    };
-
-    const property3 = {
-        imageUrl: "",
-        imageAlt: "",
-        name: "강소라",
-        age: 29,
-        sex: "여자",
-        title: "포기하지 않겠습니다..!",
-        reviewCount: 34,
-        rating: 4,
-    };
-
-    const property4 = {
-        imageUrl: "",
-        imageAlt: "gora",
-        name: "김승규",
-        age: 29,
-        sex: "남자",
-        title: "다들 홧팅해서 모두 win-win 할 수 있었습니다 좋겠습니다!",
-        reviewCount: 34,
-        rating: 4,
-    };
-
-    const property5 = {
-        imageUrl: "",
-        imageAlt: "gora",
-        name: "정희윤",
-        age: 29,
-        sex: "여자",
-        title: "다들 화이팅입니당",
-        reviewCount: 34,
-        rating: 4,
-    };
-
-    const property6 = {
-        imageUrl: "",
-        imageAlt: "gora",
-        name: "조유빈",
-        age: 40,
-        sex: "여자",
-        title: "다들 화이팅입니당",
-        reviewCount: 34,
-        rating: 4,
-    };
-
     const property_ino = {
         imageUrl: "",
         imageAlt: "매직샵",
@@ -94,20 +39,13 @@ function Introduce(props) {
         <>
             <Head></Head>
             <Center>
-                {[
-                    property,
-                    property2,
-                    property3,
-                    property4,
-                    property5,
-                    property6,
-                    property_ino,
-                ].map((el) => (
+                {[property, property_ino].map((el, index) => (
                     <Box
                         maxW="sm"
                         borderWidth="1px"
                         borderRadius="lg"
                         overflow="hidden"
+                        key={index}
                         h={550}
                         mr={5}
                         mt={5}>
