@@ -96,7 +96,7 @@ function Login(props) {
                                 defaultValue=""
                                 onChange={onPasswordHandler}></input>
                         </div>
-                        <div className={`${loginStyle.log_section} ${loginStyle. log_lost}`}>
+                        <div className={`${loginStyle.log_section} ${loginStyle.log_lost}`}>
                             <a href="#!">아이디/비밀번호 찾기 </a>
                         </div>
                         <div>
