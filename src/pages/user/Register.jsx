@@ -3,6 +3,7 @@ import Head from "../../components/Head";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../../_actions/user_actions";
 import { useNavigate } from "react-router-dom";
+import loginStyle from "../../Css/login.module.css";
 
 import axios from "axios";
 
@@ -155,41 +156,41 @@ function Register() {
     return (
         <div>
             <Head></Head>
-            <div className="wrap">
-                <div className="login_wrap">
+            <div className={loginStyle.wrap}>
+                <div className={loginStyle.login_wrap}>
                     <form onSubmit={onSubmitHandler}>
                         <input type="hidden" name="idcheck" defaultValue={IdCheck}></input>
-                        <div className="login_title">
-                            <h2 className="logo fontf">kakao</h2>
+                        <div className={loginStyle.login_title}>
+                            <h2 className={`${loginStyle.logo} ${loginStyle.fontf}`}>kakao</h2>
                             <span>kakao 회원가입</span>
                         </div>
-                        <div className="log_section">
+                        <div className={loginStyle.log_section}>
                             <em>아이디</em>
                             <input type="text" onChange={onIdHandler}></input>
                             <p id="check_text_wrap"></p>
                         </div>
-                        <div className="log_section">
+                        <div className={loginStyle.log_section}>
                             <em>비밀번호</em>
                             <input type="password" onChange={onPasswordHandler}></input>
                         </div>
-                        <div className="log_section">
+                        <div className={loginStyle.log_section}>
                             <em>비밀번호 확인</em>
                             <input type="password" onChange={onPasswordReHandler}></input>
                         </div>
-                        <div className="log_section">
+                        <div className={loginStyle.log_section}>
                             <em>이메일</em>
                             <input type="text" onChange={onEmailHandler}></input>
                         </div>
-                        <div className="log_section">
+                        <div className={loginStyle.log_section}>
                             <em>이름</em>
                             <input type="text" onChange={onNameHandler}></input>
                         </div>
-                        <div className="log_section">
+                        <div className={loginStyle.log_section}>
                             <em>닉네임</em>
                             <input type="text" onChange={onNickNameHandler}></input>
                         </div>
-                        <div className="chk_wrap">
-                            <div className="chkbox">
+                        <div className={loginStyle.chk_wrap}>
+                            <div className={loginStyle.chkbox}>
                                 <input
                                     type="checkbox"
                                     id="chk_1"
@@ -199,9 +200,9 @@ function Register() {
                                 <label htmlFor="chk_1">
                                     <em>(필수)</em> 이용 약관 동의
                                 </label>
-                                <span className="pop">약관보기 </span>
+                                <span className={loginStyle.pop}>약관보기 </span>
                             </div>
-                            <div className="chkbox">
+                            <div className={loginStyle.chkbox}>
                                 <input
                                     type="checkbox"
                                     id="chk_2"
@@ -211,14 +212,14 @@ function Register() {
                                 <label htmlFor="chk_2">
                                     <em>(필수)</em> 개인정보처리방침 동의
                                 </label>
-                                <span className="pop">약관보기 </span>
+                                <span className={loginStyle.pop}>약관보기 </span>
                             </div>
                         </div>
                         <div>
                             <input
                                 type="submit"
                                 defaultValue="회원가입"
-                                className="login_btn"></input>
+                                className={loginStyle.login_btn}></input>
                         </div>
                     </form>
                 </div>
