@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { SERVER_URL } from "../Config";
 
 import Head from "../../components/Head";
-import BoardStyle from "../../Css/boardwrite.module.css";
+import boardWriteStyle from "../../Css/boardWrite.module.css";
 
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
@@ -115,12 +115,12 @@ function Login(props) {
         <div>
             <Head></Head>
             <div className="wrap">
-                <div className="login_wrap">
-                    <div className="login_title">
-                        <h2 className="logo fontf">게시판글쓰기😎</h2>
+                <div className={`login_wrap ${boardWriteStyle.boardWrite_Wrap}`}>
+                    <div className={`login_title ${boardWriteStyle.boardWrite_title}`}>
+                        <h2 className="logo fontf">게시판글쓰기</h2>
                     </div>
                     <form onSubmit={onSubmitHandler}>
-                        <div className="log_section">
+                        <div className={`log_section ${boardWriteStyle.boardWrite_section}`}>
                             <em>제목</em>
                             <input
                                 type="text"
@@ -129,7 +129,7 @@ function Login(props) {
                                 defaultValue=""
                                 onChange={onSubjectHandler}></input>
                         </div>
-                        <div className="log_section">
+                        <div className={`log_section ${boardWriteStyle.boardWrite_section}`}>
                             <em>내용</em>
                             <ReactQuill
                                 ref={quillRef}
@@ -139,7 +139,7 @@ function Login(props) {
                                 onChange={onContentHandler}></ReactQuill>
                         </div>
                         <div>
-                            <input type="submit" defaultValue="글쓰기" className="login_btn" />
+                            <input type="submit" defaultValue="글쓰기" className={`login_btn ${boardWriteStyle.boardWrite_btn}`}/>
                         </div>
                     </form>
                 </div>
