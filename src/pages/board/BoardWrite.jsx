@@ -100,39 +100,39 @@ function Login(props) {
         <div>
             <Head></Head>
             <div className="wrap">
-                <div className={`login_wrap ${boardWriteStyle.boardWrite_Wrap}`}>
+                <div className={`login_wrap ${boardWriteStyle.boardWrite_wrap}`}>
                     <div className={`login_title ${boardWriteStyle.boardWrite_title}`}>
                         <h2 className="logo fontf">게시판글쓰기</h2>
                     </div>
-                    <form onSubmit={onSubmitHandler}>
-                        <div className={`log_section ${boardWriteStyle.boardWrite_section}`}>
-                            <em>제목</em>
-                            <input
-                                type="text"
-                                name="subject"
-                                id="subject"
-                                defaultValue=""
-                                onChange={onSubjectHandler}></input>
-                        </div>
-                        <div className={`log_section ${boardWriteStyle.boardWrite_section}`}>
-                            <em>내용</em>
-
-                            <ReactQuill
-                                ref={quillRef}
-                                theme="snow"
-                                modules={modules}
-                                value={Content}
-                                style={{ height: "200px" }}
-                                onChange={onContentHandler}></ReactQuill>
-                        </div>
-                        <div className={`log_section ${boardWriteStyle.btn_wrap}`}>
-                            <input
-                                type="submit"
-                                defaultValue="글쓰기"
-                                className={`login_btn ${boardWriteStyle.boardWrite_btn}`}
-                            />
-                        </div>
-                    </form>
+                    <div className={`${boardWriteStyle.boardWrite_form}`}>
+                        <form onSubmit={onSubmitHandler}>
+                            <div className={`log_section ${boardWriteStyle.boardWrite_section}`}>
+                                <em>제목</em>
+                                <input
+                                    type="text"
+                                    name="subject"
+                                    id="subject"
+                                    defaultValue=""
+                                    onChange={onSubjectHandler}></input>
+                            </div>
+                            <div className={`log_section ${boardWriteStyle.boardWrite_section}`}>
+                                <em>내용</em>
+                                <ReactQuill
+                                    ref={quillRef}
+                                    theme="snow"
+                                    modules={modules}
+                                    value={Content}
+                                    onChange={onContentHandler}></ReactQuill>
+                            </div>
+                            <div>
+                                <input
+                                    type="submit"
+                                    defaultValue="글쓰기"
+                                    className={`login_btn ${boardWriteStyle.boardWrite_btn}`}
+                                />
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
