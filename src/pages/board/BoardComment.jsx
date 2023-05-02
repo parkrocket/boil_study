@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { SERVER_URL } from "../Config";
 import SingleComment from "./SingleComment";
+import boardCommentStyle from '../../Css/boardComment.module.scss';
 
 function BoardComment(props) {
     console.log(props);
@@ -42,9 +43,9 @@ function BoardComment(props) {
     };
 
     return (
-        <div>
+        <div className={`${boardCommentStyle.container}`}>
             <br></br>
-            <p> 댓글</p>
+            <p className={`${boardCommentStyle.tit}`}>댓글<span className={`${boardCommentStyle.chat_ico}`} class="material-symbols-outlined" >chat</span></p>
             <hr />
             {props.commentList &&
                 props.commentList.map((comment, index) => {
@@ -53,19 +54,25 @@ function BoardComment(props) {
                     } else {
                         return "";
                     }
-                })}
+                })
+            }
 
-            <form style={{ display: "flex" }} onSubmit={onSubmit}>
-                <textarea
-                    style={{ width: "100%", borderRadius: "5px" }}
-                    onChange={textHandler}
-                    value={Text}
-                    placeholder="코멘트를 작성해주세요"></textarea>
-                <br></br>
-                <button style={{ width: "20%", height: "52px" }} onClick={onSubmit}>
-                    작성완료
-                </button>
-            </form>
+            <div className={`${boardCommentStyle.form_box}`}>
+                <form style={{ display: "flex" }} onSubmit={onSubmit}>
+                    <textarea
+                        // style={{ width: "100%", borderRadius: "5px" }}
+                        onChange={textHandler}
+                        value={Text}
+                        placeholder="코멘트를 작성해주세요"></textarea>
+                    <br></br>
+                    <button 
+                        // style={{ width: "20%", height: "52px" }}
+                        onClick={onSubmit} 
+                        className={`${boardCommentStyle.submit_btn}`}>
+                        <span class="material-symbols-outlined">edit</span>
+                    </button>
+                </form>
+            </div>
         </div>
     );
 }
