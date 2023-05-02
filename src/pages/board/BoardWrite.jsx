@@ -122,6 +122,7 @@ function Login(props) {
                                     theme="snow"
                                     modules={modules}
                                     value={Content}
+                                    style={{ height: "300px" }}
                                     onChange={onContentHandler}></ReactQuill>
                             </div>
                             <div>
