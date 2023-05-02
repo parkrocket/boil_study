@@ -4,13 +4,13 @@ import { useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import Head from "../../components/Head";
 import { SERVER_URL } from "../Config";
+import Comment from "./BoardComment";
 
 function BoardView() {
     const boardId = useParams().boardId;
     const [BoardView, setBoardView] = useState({});
 
     const navigate = useNavigate();
-    console.log(BoardView);
 
     useEffect(() => {
         const data = { boardId: boardId };
@@ -29,6 +29,9 @@ function BoardView() {
             <Head></Head>
             <h2>{BoardView.subject}</h2>
             <div dangerouslySetInnerHTML={{ __html: BoardView.content }}></div>
+            <div>
+                <Comment></Comment>
+            </div>
             <div>
                 <Link to="/board">목록으로</Link>
             </div>

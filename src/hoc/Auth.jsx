@@ -16,7 +16,6 @@ function Auth(ChildrenComponent, option, adminRoute = null) {
 
         useEffect(() => {
             dispatch(auth(cookies)).then((response) => {
-                //console.log("asdf");
                 if (response.payload.isAuth) {
                     //로그인 했음
                     if (adminRoute && !response.payload.isAdmin) {
@@ -46,7 +45,6 @@ function Auth(ChildrenComponent, option, adminRoute = null) {
         // null -> 모두다 가능
         // true -> 로그인 한 인원만
         // false -> 로그인 안한 인원만
-        console.log(view);
         if (view === false) {
             return (
                 <div>
