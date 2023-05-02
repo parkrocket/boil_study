@@ -14,14 +14,16 @@
 
         .cont_tit {
             font-size: 1.2rem;
+            font-weight: 600;
             padding: 1rem;
         }
     
         .cont {
+            font-size: 1rem;
             min-height: 300px;
             padding: 1rem 2rem;
             border-top: 1px solid #ddd;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 2px solid #ddd;
         }
     }
 

@@ -50,9 +50,9 @@ function BoardView() {
                         dangerouslySetInnerHTML={{ __html: BoardView.content }}
                         className={`${boardViewStyle.cont}`}></div>
                 </div>
-            </div>
-            <div>
-                <Comment commentList={CommentList} newComment={refreshComment}></Comment>
+                <div>
+                    <Comment commentList={CommentList} newComment={refreshComment}></Comment>
+                </div>
             </div>
             <div className={`${boardViewStyle.btn_box}`}>
                 <Link to="/board" className={`${boardViewStyle.prev_btn}`}>
