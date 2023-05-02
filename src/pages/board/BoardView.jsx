@@ -10,6 +10,7 @@ import boardViewStyle from "../../Css/boardView.module.scss";
 function BoardView() {
     const boardId = useParams().boardId;
     const [BoardView, setBoardView] = useState({});
+    const [CommentList, setCommentList] = useState([]);
 
     const navigate = useNavigate();
 
@@ -23,7 +24,20 @@ function BoardView() {
 
             setBoardView(response.data.view);
         });
+
+        axios.post(`${SERVER_URL}/api/comment/list`, data).then((response) => {
+            if (response.data.commentListSuccess === false) {
+                alert("글 불러오기가 실패했습니다.");
+                navigate("/board");
+            }
+
+            setCommentList(response.data.list);
+        });
     }, [boardId, navigate]);
+
+    const refreshComment = (newComment) => {
+        setCommentList(newComment);
+    };
 
     return (
         <div>
@@ -38,7 +52,7 @@ function BoardView() {
                 </div>
             </div>
             <div>
-                <Comment></Comment>
+                <Comment commentList={CommentList} newComment={refreshComment}></Comment>
             </div>
             <div className={`${boardViewStyle.btn_box}`}>
                 <Link to="/board" className={`${boardViewStyle.prev_btn}`}>

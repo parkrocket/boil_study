@@ -3,8 +3,10 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { SERVER_URL } from "../Config";
+import SingleComment from "./SingleComment";
 
 function BoardComment(props) {
+    console.log(props);
     const user = useSelector((state) => state.user);
     const BoardId = useParams();
 
@@ -32,7 +34,7 @@ function BoardComment(props) {
             console.log(response.data.commentWriteSuccess);
             if (response.data.commentWriteSuccess) {
                 setText("");
-                console.log(response.data);
+                props.newComment(response.data.list);
             } else {
                 alert("코멘트 작성 실패");
             }
@@ -44,6 +46,14 @@ function BoardComment(props) {
             <br></br>
             <p> 댓글</p>
             <hr />
+            {props.commentList &&
+                props.commentList.map((comment, index) => {
+                    if (comment.board_id) {
+                        return <SingleComment key={index} comment={comment}></SingleComment>;
+                    } else {
+                        return "";
+                    }
+                })}
 
             <form style={{ display: "flex" }} onSubmit={onSubmit}>
                 <textarea
@@ -53,7 +63,7 @@ function BoardComment(props) {
                     placeholder="코멘트를 작성해주세요"></textarea>
                 <br></br>
                 <button style={{ width: "20%", height: "52px" }} onClick={onSubmit}>
-                    Submit
+                    작성완료
                 </button>
             </form>
         </div>
