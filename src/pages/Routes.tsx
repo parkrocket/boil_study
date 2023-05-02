@@ -11,6 +11,8 @@ import NotFound from '../pages/NotFound';
 import BoardList from './board/BoardList';
 import BoardWrite from './board/BoardWrite';
 import BoardView from './board/BoardView';
+import Mypage from './user/Mypage';
+import Admin from './admin/Admin';
 
 export const Routes = () => {
     return (
@@ -20,7 +22,9 @@ export const Routes = () => {
         <Route path="/introduce" element={Auth(Introduce,true)} />
         <Route path="/login" element={Auth(Login,false)} />
         <Route path="/register" element={Auth(Register,false)} />
+        <Route path="/mypage" element={Auth(Mypage,true)} />
         <Route path="/board" element={Auth(BoardList,true)} />
+        <Route path="/admin" element={Auth(Admin,true, true)} />
         <Route path="/board/:boardId" element={Auth(BoardView,true)} />
         <Route path="/board/write" element={Auth(BoardWrite,true)} />
 

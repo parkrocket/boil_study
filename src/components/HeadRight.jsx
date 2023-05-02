@@ -42,6 +42,12 @@ function HeadRight() {
         return (
             <ul className="head-login">
                 <li>
+                    <Link to="/admin">관리자</Link>
+                </li>
+                <li>
+                    <Link to="/mypage">마이페이지</Link>
+                </li>
+                <li>
                     <a href="#!" onClick={logOutHandler}>
                         로그아웃
                     </a>

@@ -6,17 +6,17 @@ import { useCookies } from "react-cookie";
 import { auth } from "../_actions/user_actions";
 import Empty from "../pages/Empty";
 
-function Auth(ChildrenComponent, option, adminRoute = null) {
+function Auth(ChildrenComponent, option, adminRoute = false) {
     function AuthenticationCheck() {
         const navigate = useNavigate();
         const dispatch = useDispatch();
         const [cookies] = useCookies(["x_auth"]);
-        const user = useSelector((state) => state);
         const [view, setView] = useState(false);
 
         useEffect(() => {
             dispatch(auth(cookies)).then((response) => {
                 if (response.payload.isAuth) {
+                    //console.log(response.payload.isAdmin);
                     //로그인 했음
                     if (adminRoute && !response.payload.isAdmin) {
                         //관리자 페이지를 관리자 권한이 없는 사람이 들어가려고 할때
