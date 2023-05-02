@@ -1,0 +1,48 @@
+.container {
+    max-width: 1240px;
+    width: 94%;
+    margin: 3rem auto;
+
+    .tit {
+        text-align: center;
+        font-size: 1.6rem;
+        margin-bottom: 2rem;
+    }
+
+    .wrapper {
+        border-top: 2px solid #333;
+
+        .cont_tit {
+            font-size: 1.2rem;
+            padding: 1rem;
+        }
+    
+        .cont {
+            min-height: 300px;
+            padding: 1rem 2rem;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+        }
+    }
+
+}
+
+.btn_box {
+
+    .prev_btn {
+        display: block;
+        max-width: 10rem;
+        border: 1px solid #444;
+        background: #444;
+        color: #fff;
+        text-align: center;
+        padding: 0.5rem 1rem;
+        margin: 0 auto;
+        transition: .3s;
+
+        &:hover {
+            background: #fff;
+            color: #444;
+        }
+    }
+}

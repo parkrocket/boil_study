@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Head from "../../components/Head";
-import boardwriteStyle from "../../Css/boardlist.module.css";
+import boardListStyle from "../../Css/boardlist.module.scss";
 import axios from "axios";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -27,7 +27,10 @@ function BoardList() {
         return (
             <li key={index}>
                 <Link to={`/board/${list.board_id}`}>
-                    {list.board_id} {list.subject} {list.user_nickname} {listDateTime}
+                    <p className={`${boardListStyle.number}`}>{list.board_id}</p>
+                    <p className={`${boardListStyle.nickname}`}>{list.user_nickname}</p>
+                    <p className={`${boardListStyle.subject}`}><span>{list.subject}</span></p>
+                    <p className={`${boardListStyle.time}`}>{listDateTime}</p>
                 </Link>
             </li>
         );
@@ -36,13 +39,18 @@ function BoardList() {
     return (
         <div>
             <Head></Head>
+            <div className={`${boardListStyle.container}`}>
 
-            <div className={boardwriteStyle.board_wrap}>
-                <ul>{boardList}</ul>
-            </div>
-            <div className={boardwriteStyle.board_wrap}>
-                <Link to="/board/write">글작성하기</Link>
-            </div>
+                <h2 className={`${boardListStyle.tit} fontf`}>자유게시판</h2>
+                <div className={boardListStyle.board_wrap}>
+                    <Link to="/board/write" className={`${boardListStyle.write_btn}`}>글작성하기</Link>
+                </div>
+                <div className={boardListStyle.board_wrap}>
+                    <ul>{boardList}</ul>
+                </div>
+            
+                </div>
+
         </div>
     );
 }
