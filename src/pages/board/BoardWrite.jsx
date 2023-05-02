@@ -38,18 +38,6 @@ function Login(props) {
         axios.post(`${SERVER_URL}/api/board/write`, data).then((response) => {
             navigate("/board");
         });
-
-        /*
-        dispatch(loginUser(data)).then((response) => {
-            if (response.payload.loginSuccess) {
-                setCookie("x_auth", response.payload.token);
-                window.localStorage.setItem("userId", response.payload.userId);
-                navigate("/");
-            } else {
-                alert("아이디가 없거나 비밀번호가 틀렸습니다.");
-            }
-        });
-        */
     };
 
     // 이미지 처리를 하는 핸들러
@@ -128,14 +116,16 @@ function Login(props) {
                         </div>
                         <div className={`log_section ${boardWriteStyle.boardWrite_section}`}>
                             <em>내용</em>
+
                             <ReactQuill
                                 ref={quillRef}
                                 theme="snow"
                                 modules={modules}
                                 value={Content}
+                                style={{ height: "200px" }}
                                 onChange={onContentHandler}></ReactQuill>
                         </div>
-                        <div>
+                        <div className={`log_section ${boardWriteStyle.btn_wrap}`}>
                             <input
                                 type="submit"
                                 defaultValue="글쓰기"
