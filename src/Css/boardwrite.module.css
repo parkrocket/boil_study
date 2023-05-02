@@ -1,4 +1,56 @@
 #content {border:1px solid #ddd; width:100%; height:300px; border-radius: 4px; }
 
 .boardWrite_wrap {
+    max-width: 124rem;
+    width: 94%;
+    margin: 3rem auto 0;
 }
+
+
+.boardWrite_wrap .boardWrite_title {
+    text-align: center;
+    font-size: 1.4rem;
+}
+.boardWrite_wrap .boardWrite_form {
+    margin-top: 2rem;
+}
+.boardWrite_wrap .boardWrite_section {
+    display: grid;
+    grid-template-columns: 1fr 10fr;
+    margin-bottom: 1.5rem;
+}
+.boardWrite_wrap .boardWrite_section em {
+    text-align: center;
+    display: block;
+    line-height: 2rem;
+}
+.boardWrite_wrap .boardWrite_section input {
+    border: 1px solid #ccc;
+    border-radius: 0;
+}
+.boardWrite_wrap .boardWrite_btn {
+    display: block;
+    max-width: 10rem;
+    margin: 5rem 0 0 auto;
+    background: #444;
+    color: #fff;
+    transition: .3s;
+}
+.boardWrite_wrap .boardWrite_btn:hover {
+    background: #fff;
+    color: #333;
+}
+
+@media screen and (max-width : 750px) {
+    .boardWrite_wrap .boardWrite_section {
+        display: block;
+    }
+    .boardWrite_wrap .boardWrite_section em {
+    text-align: left;
+    }
+    .boardWrite_wrap .boardWrite_btn {
+        margin-top: 2rem;
+    }
+
+}
+
