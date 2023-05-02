@@ -5,6 +5,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import Head from "../../components/Head";
 import { SERVER_URL } from "../Config";
 import Comment from "./BoardComment";
+import boardViewStyle from "../../Css/boardView.module.scss";
 
 function BoardView() {
     const boardId = useParams().boardId;
@@ -27,13 +28,22 @@ function BoardView() {
     return (
         <div>
             <Head></Head>
-            <h2>{BoardView.subject}</h2>
-            <div dangerouslySetInnerHTML={{ __html: BoardView.content }}></div>
+            <div className={`${boardViewStyle.container}`}>
+                <h2 className={`${boardViewStyle.tit} fontf`}>자유게시판</h2>
+                <div className={`${boardViewStyle.wrapper}`}>
+                    <h2 className={`${boardViewStyle.cont_tit}`}>{BoardView.subject}</h2>
+                    <div
+                        dangerouslySetInnerHTML={{ __html: BoardView.content }}
+                        className={`${boardViewStyle.cont}`}></div>
+                </div>
+            </div>
             <div>
                 <Comment></Comment>
             </div>
-            <div>
-                <Link to="/board">목록으로</Link>
+            <div className={`${boardViewStyle.btn_box}`}>
+                <Link to="/board" className={`${boardViewStyle.prev_btn}`}>
+                    목록으로
+                </Link>
             </div>
         </div>
     );

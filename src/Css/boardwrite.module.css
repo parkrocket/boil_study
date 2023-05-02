@@ -12,6 +12,8 @@
     font-size: 1.4rem;
 }
 .boardWrite_wrap .boardWrite_form {
+    width: 90%;
+    margin: 0 auto;
     margin-top: 2rem;
 }
 .boardWrite_wrap .boardWrite_section {
@@ -33,7 +35,9 @@
     max-width: 10rem;
     margin: 5rem 0 0 auto;
     background: #444;
+    border: 1px solid #444;
     color: #fff;
+    border-radius: 0;
     transition: .3s;
 }
 .boardWrite_wrap .boardWrite_btn:hover {
@@ -49,8 +53,25 @@
     text-align: left;
     }
     .boardWrite_wrap .boardWrite_btn {
-        margin-top: 2rem;
+        margin-top: 5rem;
     }
 
 }
+
+@media screen and (max-width : 400px) {
+    .boardWrite_wrap .boardWrite_btn {
+        margin-top: 7rem;
+    }
+}
+@media screen and (max-width : 320px) {
+    .boardWrite_wrap .boardWrite_btn {
+        margin-top: 9rem;
+    }
+}
+@media screen and (max-width : 230px) {
+    .boardWrite_wrap .boardWrite_btn {
+        margin-top: 11rem;
+    }
+}
+
 
