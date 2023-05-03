@@ -4,10 +4,10 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { SERVER_URL } from "../Config";
 import SingleComment from "./SingleComment";
-import boardCommentStyle from '../../Css/boardComment.module.scss';
+import ReplyComment from "./ReplyComment";
+import boardCommentStyle from "../../Css/boardComment.module.scss";
 
 function BoardComment(props) {
-    console.log(props);
     const user = useSelector((state) => state.user);
     const BoardId = useParams();
 
@@ -45,17 +45,31 @@ function BoardComment(props) {
     return (
         <div className={`${boardCommentStyle.container}`}>
             <br></br>
-            <p className={`${boardCommentStyle.tit}`}>댓글<span className={`${boardCommentStyle.chat_ico}`} class="material-symbols-outlined" >chat</span></p>
+            <p className={`${boardCommentStyle.tit}`}>
+                댓글
+                <span className={`${boardCommentStyle.chat_ico} material-symbols-outlined`}>
+                    chat
+                </span>
+            </p>
             <hr />
             {props.commentList &&
                 props.commentList.map((comment, index) => {
-                    if (comment.board_id) {
-                        return <SingleComment key={index} comment={comment}></SingleComment>;
+                    if (!comment.response) {
+                        return (
+                            <React.Fragment key={index}>
+                                <SingleComment
+                                    comment={comment}
+                                    refreshComment={props.refreshComment}></SingleComment>
+                                <ReplyComment
+                                    parentCommentId={comment.comment_id}
+                                    commentList={props.commentList}
+                                    refreshComment={props.refreshComment}></ReplyComment>
+                            </React.Fragment>
+                        );
                     } else {
                         return "";
                     }
-                })
-            }
+                })}
 
             <div className={`${boardCommentStyle.form_box}`}>
                 <form style={{ display: "flex" }} onSubmit={onSubmit}>
@@ -65,11 +79,11 @@ function BoardComment(props) {
                         value={Text}
                         placeholder="코멘트를 작성해주세요"></textarea>
                     <br></br>
-                    <button 
+                    <button
                         // style={{ width: "20%", height: "52px" }}
-                        onClick={onSubmit} 
+                        onClick={onSubmit}
                         className={`${boardCommentStyle.submit_btn}`}>
-                        <span class="material-symbols-outlined">edit</span>
+                        <span className="material-symbols-outlined">edit</span>
                     </button>
                 </form>
             </div>

@@ -51,7 +51,7 @@ function BoardView() {
                         className={`${boardViewStyle.cont}`}></div>
                 </div>
                 <div>
-                    <Comment commentList={CommentList} newComment={refreshComment}></Comment>
+                    <Comment commentList={CommentList} refreshComment={refreshComment}></Comment>
                 </div>
             </div>
             <div className={`${boardViewStyle.btn_box}`}>

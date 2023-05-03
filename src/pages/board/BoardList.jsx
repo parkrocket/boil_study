@@ -18,8 +18,6 @@ function BoardList() {
     }, []);
 
     const boardList = List.map((list, index) => {
-        console.log(list);
-
         const listDateTime = list.datetime
             ? moment(list.datetime).format("YYYY-MM-DD HH:mm:ss")
             : "";
@@ -29,7 +27,9 @@ function BoardList() {
                 <Link to={`/board/${list.board_id}`}>
                     <p className={`${boardListStyle.number}`}>{list.board_id}</p>
                     <p className={`${boardListStyle.nickname}`}>{list.user_nickname}</p>
-                    <p className={`${boardListStyle.subject}`}><span>{list.subject}</span></p>
+                    <p className={`${boardListStyle.subject}`}>
+                        <span>{list.subject}</span>
+                    </p>
                     <p className={`${boardListStyle.time}`}>{listDateTime}</p>
                 </Link>
             </li>
@@ -40,17 +40,16 @@ function BoardList() {
         <div>
             <Head></Head>
             <div className={`${boardListStyle.container}`}>
-
                 <h2 className={`${boardListStyle.tit} fontf`}>자유게시판</h2>
                 <div className={boardListStyle.board_wrap}>
-                    <Link to="/board/write" className={`${boardListStyle.write_btn}`}>글작성하기</Link>
+                    <Link to="/board/write" className={`${boardListStyle.write_btn}`}>
+                        글작성하기
+                    </Link>
                 </div>
                 <div className={boardListStyle.board_wrap}>
                     <ul>{boardList}</ul>
                 </div>
-            
-                </div>
-
+            </div>
         </div>
     );
 }
