@@ -68,20 +68,22 @@
 }
 #header .header-inner .head-login {
   display: flex;
+  gap: 10px;
 }
 #header .header-inner .head-login li a {
-  display: inline-block;
-  width: 85px;
-  padding: 5px 10px;
+  display: block;
+  /* width: 85px; */
+  padding: 10px 15px;
   font-size: 0.85rem;
   text-align: center;
   border: 1px solid #ddd;
   border-radius: 30px;
+  transition: .3s;
 }
 #header .header-inner .head-login li:nth-child(1) {
-  margin-right: 10px;
+  /* margin-right: 10px; */
 }
-#header .header-inner .head-login li:nth-child(1) a:hover {
+#header .header-inner .head-login li:not(:nth-child(2)) a:hover {
   background: #eee;
 }
 #header .header-inner .head-login li:nth-child(2) a {

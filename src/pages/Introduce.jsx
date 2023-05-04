@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Center, Badge, Image } from "@chakra-ui/react";
 
 import Gora from "../img/gora.jpg";
+import Chiko from "../img/chiko.jpg";
 import Head from "../components/Head";
 
 function Introduce(props) {
@@ -12,9 +13,10 @@ function Introduce(props) {
         }
     }
     */
+    const img = {Gora, Chiko};
 
     const property = {
-        imageUrl: "https://bit.ly/2Z4KKcF",
+        imageUrl: img.Gora,
         imageAlt: "Rear view of modern home with pool",
         name: "박성현",
         age: 36,
@@ -25,7 +27,7 @@ function Introduce(props) {
     };
 
     const property_ino = {
-        imageUrl: "",
+        imageUrl: img.Gora,
         imageAlt: "매직샵",
         name: "조인호",
         age: 44,
@@ -35,11 +37,22 @@ function Introduce(props) {
         rating: 4,
     };
 
+    const property_dy = {
+        imageUrl: img.Chiko,
+        imageAlt: "매직샵",
+        name: "최다연",
+        age: 28,
+        sex: "여자",
+        title: "우앙",
+        reviewCount: 34,
+        rating: 4,
+    };
+
     return (
         <>
             <Head></Head>
             <Center>
-                {[property, property_ino].map((el, index) => (
+                {[property, property_ino, property_dy].map((el, index) => (
                     <Box
                         maxW="sm"
                         borderWidth="1px"
@@ -47,9 +60,10 @@ function Introduce(props) {
                         overflow="hidden"
                         key={index}
                         h={550}
+                        w={400}
                         mr={5}
                         mt={5}>
-                        <Image src={Gora} alt={el.imageAlt} />
+                        <Image src={el.imageUrl} alt={el.imageAlt} />
                         <Box p="6">
                             <Box display="flex" alignItems="baseline">
                                 <Badge

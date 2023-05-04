@@ -1,4 +1,5 @@
 .container {
+
     .tit {
         font-weight: 800;
         font-size: 1.1rem;
@@ -39,6 +40,46 @@
              }
         }
     }
+
+    .reply_box {
+        border: 2px solid #ddd;
+        margin: 1rem 0 1rem 4rem;
+        position: relative;
+
+        form {
+            width: 100%;
+            align-items: flex-end;
+            
+            textarea {
+                width: 100%;
+                padding: 1rem 3rem 1rem 1rem;
+                min-height: 90px;
+
+                &::-webkit-scrollbar {
+                    width: 8px;
+                }
+                &::-webkit-scrollbar-thumb {
+                    height: 30%;
+                    background-color: #ccc;
+                    border-radius: 10px; 
+                    background-clip: padding-box; 
+                    border: 2px solid transparent;
+                }
+                &::-webkit-scrollbar-track {
+                    background-color: #eee; 
+                }
+            }
+
+            .submit_btn {
+                position: absolute;
+                bottom: 0;
+                right: 10px;
+                width: 2rem;
+                height: 2rem;
+            }
+        }
+    }
+
     .form_box {
         position: relative; 
         margin-top: -1px;
@@ -71,23 +112,16 @@
             position: absolute;
             width: 2.5rem;
             height: 2.5rem;
-            bottom: .2rem;
-            right: .7rem; 
-            background: #444;
-            border: 2px solid #444;
+            bottom: 0;
+            right: .3rem; 
             transition: .3s;
 
                 span {
-                    color: #fff;
+                    color: #444;
+                    font-size: 1.5rem;
                 }
 
-                &:hover {
-                    background: #fff;
-
-                    span {
-                        color: #444;
-                    }
-                }
+                
         }
     }
 }

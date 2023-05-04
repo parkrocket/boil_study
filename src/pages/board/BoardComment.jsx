@@ -47,9 +47,7 @@ function BoardComment(props) {
             <br></br>
             <p className={`${boardCommentStyle.tit}`}>
                 댓글
-                <span className={`${boardCommentStyle.chat_ico} material-symbols-outlined`}>
-                    chat
-                </span>
+                <span className={`${boardCommentStyle.chat_ico} material-symbols-outlined`}>chat</span>
             </p>
             <hr />
             {props.commentList &&

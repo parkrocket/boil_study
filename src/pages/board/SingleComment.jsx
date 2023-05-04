@@ -93,26 +93,30 @@ function SingleComment(props) {
                 <li className={`${boardCommentStyle.time}`}>{listDateTime}</li>
                 <li className={`${boardCommentStyle.action}`}>
                     <div>
-                        <span onClick={replyClick}>댓글</span>
-                        <span onClick={confirmOpen}>삭제</span>
+                        <button onClick={replyClick} className={`${boardCommentStyle.comment_btn}`}>댓글</button>
+                        <button onClick={confirmOpen} className={`${boardCommentStyle.delete_btn}`}>삭제</button>
                     </div>
                 </li>
             </ul>
             {replyOpen && (
-                <form style={{ display: "flex" }} onSubmit={onSubmit}>
-                    <textarea
-                        // style={{ width: "100%", borderRadius: "5px" }}
-                        onChange={textHandler}
-                        value={replyText}
-                        placeholder="코멘트를 작성해주세요"></textarea>
-                    <br></br>
-                    <button
-                        // style={{ width: "20%", height: "52px" }}
-                        onClick={onSubmit}
-                        className={`${boardCommentStyle.submit_btn}`}>
-                        <span className="material-symbols-outlined">edit</span>
-                    </button>
-                </form>
+                <div className={`${boardCommentStyle.reply_box}`}>
+                    <form style={{ display: "flex" }} onSubmit={onSubmit}>
+                        <textarea
+                            // style={{ width: "100%", borderRadius: "5px" }}
+                            onChange={textHandler}
+                            value={replyText}
+                            placeholder="코멘트를 작성해주세요"
+                            className={`${boardCommentStyle.reply}`}
+                            ></textarea>
+                        <br></br>
+                        <button
+                            // style={{ width: "20%", height: "52px" }}
+                            onClick={onSubmit}
+                            className={`${boardCommentStyle.submit_btn}`}>
+                            <span className="material-symbols-outlined">edit</span>
+                        </button>
+                    </form>
+                </div>
             )}
             <Confirm
                 isOpen={isOpen}
