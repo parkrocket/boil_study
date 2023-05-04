@@ -3,6 +3,7 @@ import { Box, Center, Badge, Image } from "@chakra-ui/react";
 
 import Gora from "../img/gora.jpg";
 import Chiko from "../img/chiko.jpg";
+import Dos from "../img/dos.png";
 import Head from "../components/Head";
 
 function Introduce(props) {
@@ -13,10 +14,10 @@ function Introduce(props) {
         }
     }
     */
-    const img = {Gora, Chiko};
+    const img = { Gora, Chiko, Dos };
 
     const property = {
-        imageUrl: img.Gora,
+        imageUrl: img.Dos,
         imageAlt: "Rear view of modern home with pool",
         name: "박성현",
         age: 36,

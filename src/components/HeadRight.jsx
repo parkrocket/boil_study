@@ -5,6 +5,7 @@ import { useCookies } from "react-cookie";
 import axios from "axios";
 import { logout } from "../_actions/user_actions";
 import { useNavigate } from "react-router-dom";
+import { Avatar } from "@chakra-ui/react";
 
 function HeadRight() {
     const user = useSelector((state) => state.user);
@@ -13,7 +14,6 @@ function HeadRight() {
     const [cookies, setCookie, removeCookie] = useCookies(["x_auth"]);
 
     const logOutHandler = (event) => {
-        console.log(user);
         dispatch(logout(user)).then((response) => {
             console.log(response);
             if (response.payload.success === true) {
@@ -45,6 +45,8 @@ function HeadRight() {
                     <Link to="/admin">관리자</Link>
                 </li>
                 <li>
+                    <Avatar></Avatar>
+                    {user.auth.nickName}
                     <Link to="/mypage">마이페이지</Link>
                 </li>
                 <li>
