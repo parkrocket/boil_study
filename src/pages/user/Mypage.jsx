@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Head from "../../components/Head";
 import { useDispatch } from "react-redux";
 import { updateUser } from "../../_actions/user_actions";
@@ -17,8 +17,12 @@ function Mypage() {
     const [Name, setName] = useState("");
     const [NickName, setNickName] = useState("");
 
+    const [profileImg, setProfileImg] = useState("");
+
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    const imgRef = useRef();
 
     const user = useSelector((state) => state);
 
@@ -117,6 +121,24 @@ function Mypage() {
         }).then((response) => console.log(response));
         */
     };
+    
+    function fileChange(e){
+        
+        const file = imgRef.current.files[0];
+        const fileReader = new FileReader();
+
+        console.log(fileReader);
+
+        const data = fileReader.readAsDataURL(file);
+
+        fileReader.onload = (e) => {
+            console.log(fileReader.result);
+            setProfileImg(fileReader.result);        
+        }
+
+
+    }
+
     return (
         <div>
             <Head></Head>
@@ -128,7 +150,10 @@ function Mypage() {
                             <span>정보수정</span>
                         </div>
                         <div className={loginStyle.log_section}>
-                            <Avatar></Avatar>
+                            <label>
+                            <Avatar src={profileImg}></Avatar>
+                            <input type="file" onChange={fileChange} ref={imgRef} style={{visibility : "hidden"}}/>
+                            </label>
                         </div>
                         <div className={loginStyle.log_section}>
                             <em>아이디</em>
