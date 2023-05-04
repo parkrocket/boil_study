@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Head from "../../components/Head";
 import { useDispatch } from "react-redux";
-import { registerUser } from "../../_actions/user_actions";
+import { updateUser } from "../../_actions/user_actions";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Avatar } from "@chakra-ui/react";
 
 import axios from "axios";
 import loginStyle from "../../Css/login.module.css";
+import { SERVER_URL } from "../Config";
 
 function Mypage() {
     const [Password, setPassword] = useState("");
@@ -20,7 +22,17 @@ function Mypage() {
 
     const user = useSelector((state) => state);
 
-    console.log(user.user.auth._id);
+    useEffect(() => {
+        console.log(user.user.auth._id);
+
+        axios
+            .post(`${SERVER_URL}/api/users/userInfo`, { id: user.user.auth._id })
+            .then((response) => {
+                setEmail(response.data.userInfo.user_email);
+                setName(response.data.userInfo.user_name);
+                setNickName(response.data.userInfo.user_nickname);
+            });
+    }, []);
 
     const onPasswordHandler = (event) => {
         setPassword(event.currentTarget.value);
@@ -53,19 +65,16 @@ function Mypage() {
             nickname: NickName,
         };
 
-        if (Password === "") {
-            alert("비밀번호를 입력해주세요.");
-            return;
-        }
+        if (Password !== "") {
+            if (PasswordRe === "") {
+                alert("비밀번호확인을 입력해주세요.");
+                return;
+            }
 
-        if (PasswordRe === "") {
-            alert("비밀번호확인을 입력해주세요.");
-            return;
-        }
-
-        if (Password !== PasswordRe) {
-            alert("비밀번호가 서로 다릅니다.");
-            return;
+            if (Password !== PasswordRe) {
+                alert("비밀번호가 서로 다릅니다.");
+                return;
+            }
         }
 
         if (Email === "") {
@@ -87,9 +96,13 @@ function Mypage() {
 
         // TODO: services/ 또는 apis 폴더로 빼기 (논의후))
 
-        dispatch(registerUser(data)).then((response) => {
+        dispatch(updateUser(data)).then((response) => {
             //if(payload.)
-            if (response.payload.registersuccess === true) {
+
+            //console.log(response);
+
+            if (response.payload.updateSuccess === true) {
+                alert("정보수정에 성공하였습니다.");
                 navigate("/");
             } else {
                 alert(response.payload.msg);
@@ -115,6 +128,9 @@ function Mypage() {
                             <span>정보수정</span>
                         </div>
                         <div className={loginStyle.log_section}>
+                            <Avatar></Avatar>
+                        </div>
+                        <div className={loginStyle.log_section}>
                             <em>아이디</em>
                             <input type="text" readOnly defaultValue={user.user.auth._id}></input>
                             <p id="check_text_wrap"></p>
@@ -129,15 +145,21 @@ function Mypage() {
                         </div>
                         <div className={loginStyle.log_section}>
                             <em>이메일</em>
-                            <input type="text" onChange={onEmailHandler}></input>
+                            <input
+                                type="text"
+                                onChange={onEmailHandler}
+                                defaultValue={Email}></input>
                         </div>
                         <div className={loginStyle.log_section}>
                             <em>이름</em>
-                            <input type="text" onChange={onNameHandler}></input>
+                            <input type="text" onChange={onNameHandler} defaultValue={Name}></input>
                         </div>
                         <div className={loginStyle.log_section}>
                             <em>닉네임</em>
-                            <input type="text" onChange={onNickNameHandler}></input>
+                            <input
+                                type="text"
+                                onChange={onNickNameHandler}
+                                defaultValue={NickName}></input>
                         </div>
                         <div>
                             <input

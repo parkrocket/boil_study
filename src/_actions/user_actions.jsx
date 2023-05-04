@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { SERVER_URL } from "../pages/Config";
 
-import { LOGIN_USER, REGISTER_USER, AUTH_USER, LOGOUT_USER } from "./types";
+import { LOGIN_USER, REGISTER_USER, AUTH_USER, LOGOUT_USER, UPDATE_USER } from "./types";
 
 export function loginUser(dataTosubmit) {
     const request = axios
@@ -22,6 +22,17 @@ export function registerUser(dataTosubmit) {
 
     return {
         type: REGISTER_USER,
+        payload: request,
+    };
+}
+
+export function updateUser(dataTosubmit) {
+    const request = axios
+        .post(`${SERVER_URL}/api/users/update`, dataTosubmit)
+        .then((response) => response.data);
+
+    return {
+        type: UPDATE_USER,
         payload: request,
     };
 }
