@@ -6,6 +6,7 @@ import axios from "axios";
 import { logout } from "../_actions/user_actions";
 import { useNavigate } from "react-router-dom";
 import { Avatar } from "@chakra-ui/react";
+import classNames from "classnames";
 
 function HeadRight() {
     const user = useSelector((state) => state.user);
@@ -60,7 +61,7 @@ function HeadRight() {
                         <Avatar className="img"></Avatar>
                         {user.auth.nickName}
                     </div>
-                    <ul className={`head-login-sub` + (isHovering ? '-active' : '')} 
+                    <ul className={`head-login-sub ` + (isHovering ? 'active' : '')} 
                     onMouseLeave={handleMouseLeave} >
                         <li>
                             <Link to="/mypage">마이페이지</Link>
