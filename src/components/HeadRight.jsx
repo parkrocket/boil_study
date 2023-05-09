@@ -9,17 +9,19 @@ import { Avatar } from "@chakra-ui/react";
 
 function HeadRight() {
     const user = useSelector((state) => state.user);
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [cookies, setCookie, removeCookie] = useCookies(["x_auth"]);
     const [isHovering, setIsHovering] = useState(false);
+    const [profile, setProfile] = useState(`${user.auth.image}`);
 
     const handleMouseEnter = () => {
         setIsHovering(true);
-    }
+    };
     const handleMouseLeave = () => {
         setIsHovering(false);
-    }
+    };
 
     const logOutHandler = (event) => {
         dispatch(logout(user)).then((response) => {
@@ -40,7 +42,6 @@ function HeadRight() {
                 <li>
                     <Link to="/login">로그인</Link>
                 </li>
-                {/*<Link to="/logout">로그아웃</Link>*/}
                 <li>
                     <Link to="/register">회원가입</Link>
                 </li>
@@ -53,15 +54,13 @@ function HeadRight() {
                     <Link to="/admin">관리자</Link>
                 </li>
                 <li>
-                    <div 
-                    className="profile"
-                    onMouseEnter={handleMouseEnter}
-                    >
-                        <Avatar className="img"></Avatar>
+                    <div className="profile" onMouseEnter={handleMouseEnter}>
+                        <Avatar src={profile} className="img"></Avatar>
                         {user.auth.nickName}
                     </div>
-                    <ul className={`head-login-sub ` + (isHovering ? 'active' : '')} 
-                    onMouseLeave={handleMouseLeave} >
+                    <ul
+                        className={`head-login-sub ` + (isHovering ? "active" : "")}
+                        onMouseLeave={handleMouseLeave}>
                         <li>
                             <Link to="/mypage">마이페이지</Link>
                         </li>
@@ -73,7 +72,6 @@ function HeadRight() {
                     </ul>
                 </li>
             </ul>
-
         );
     }
 }
