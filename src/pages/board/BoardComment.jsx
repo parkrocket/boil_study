@@ -35,7 +35,7 @@ function BoardComment(props) {
             console.log(response.data.commentWriteSuccess);
             if (response.data.commentWriteSuccess) {
                 setText("");
-                props.newComment(response.data.list);
+                props.refreshComment(response.data.list);
             } else {
                 alert("코멘트 작성 실패");
             }
@@ -47,7 +47,9 @@ function BoardComment(props) {
             <br></br>
             <p className={`${boardCommentStyle.tit}`}>
                 댓글
-                <span className={`${boardCommentStyle.chat_ico} material-symbols-outlined`}>chat</span>
+                <span className={`${boardCommentStyle.chat_ico} material-symbols-outlined`}>
+                    chat
+                </span>
             </p>
             <hr />
             {props.commentList &&
