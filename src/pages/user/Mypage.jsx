@@ -16,7 +16,7 @@ function Mypage() {
     const [Email, setEmail] = useState("");
     const [Name, setName] = useState("");
     const [NickName, setNickName] = useState("");
-
+    const [Images, setImages] = useState({});
     const [profileImg, setProfileImg] = useState("");
 
     const navigate = useNavigate();
@@ -61,13 +61,27 @@ function Mypage() {
     const onSubmitHandler = (event) => {
         event.preventDefault();
 
+        const formData = new FormData();
+
+        formData.append("id", user.user.auth._id);
+        formData.append("password", Password);
+        formData.append("email", Email);
+        formData.append("name", Name);
+        formData.append("nickname", NickName);
+        formData.append("image", Images);
+
+        /*
         const data = {
             id: user.user.auth._id,
             password: Password,
             email: Email,
             name: Name,
             nickname: NickName,
+            image: Images,
         };
+        */
+
+        console.log(formData);
 
         if (Password !== "") {
             if (PasswordRe === "") {
@@ -100,10 +114,11 @@ function Mypage() {
 
         // TODO: services/ 또는 apis 폴더로 빼기 (논의후))
 
+        /*
         dispatch(updateUser(data)).then((response) => {
             //if(payload.)
 
-            //console.log(response);
+            console.log(response);
 
             if (response.payload.updateSuccess === true) {
                 alert("정보수정에 성공하였습니다.");
@@ -112,31 +127,26 @@ function Mypage() {
                 alert(response.payload.msg);
             }
         });
+        */
 
-        /*
         axios({
             method: "post",
-            url: "http://54.180.35.70/api/register",
-            data: data,
+            url: `${SERVER_URL}/api/users/update`,
+            data: formData,
         }).then((response) => console.log(response));
-        */
     };
-    
-    function fileChange(e){
-        
+
+    function fileChange(e) {
         const file = imgRef.current.files[0];
+
         const fileReader = new FileReader();
 
-        console.log(fileReader);
-
-        const data = fileReader.readAsDataURL(file);
+        fileReader.readAsDataURL(file);
 
         fileReader.onload = (e) => {
-            console.log(fileReader.result);
-            setProfileImg(fileReader.result);        
-        }
-
-
+            setProfileImg(fileReader.result);
+            setImages(file);
+        };
     }
 
     return (
@@ -151,8 +161,13 @@ function Mypage() {
                         </div>
                         <div className={loginStyle.log_section}>
                             <label>
-                            <Avatar src={profileImg}></Avatar>
-                            <input type="file" onChange={fileChange} ref={imgRef} style={{visibility : "hidden"}}/>
+                                <Avatar src={profileImg}></Avatar>
+                                <input
+                                    type="file"
+                                    onChange={fileChange}
+                                    ref={imgRef}
+                                    style={{ visibility: "hidden" }}
+                                />
                             </label>
                         </div>
                         <div className={loginStyle.log_section}>
