@@ -4,21 +4,27 @@ import SingleComment from "./SingleComment";
 import axios from "axios";
 
 function ReplyComment(props) {
+
     const renderReplyComment = () => {
         return props.commentList.map((comment, index) => (
             <React.Fragment key={index}>
                 {comment.response === props.parentCommentId && (
-                    <div style={{ width: "100%", paddingLeft: "40px" }}>
-                        <SingleComment
-                            key={index}
-                            comment={comment}
-                            refreshComment={props.refreshComment}></SingleComment>
+                
 
-                        <ReplyComment
-                            refreshComment={props.refreshComment}
-                            parentCommentId={comment.comment_id}
-                            commentList={props.commentList}></ReplyComment>
-                    </div>
+                
+                <div style={{ width: "100%", paddingLeft: '0'}}>
+                    <SingleComment
+                        key={index}
+                        comment={comment}
+                        refreshComment={props.refreshComment}
+                        depth={props.depth+1} changeDepth={props.changeDepth}></SingleComment>
+
+                    <ReplyComment
+                        refreshComment={props.refreshComment}
+                        parentCommentId={comment.comment_id}
+                        commentList={props.commentList} depth={props.depth+40}></ReplyComment>
+                </div>
+                
                 )}
             </React.Fragment>
         ));

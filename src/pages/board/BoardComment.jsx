@@ -14,6 +14,13 @@ function BoardComment(props) {
     const [Text, setText] = useState("");
     const [OpenReplyCommentNumber, setOpenReplyCommentNumber] = useState();
 
+    //const [depth,setDepth] = useState(0);
+
+
+    // console.log(props);
+
+    let depth = 0
+
     const textHandler = (e) => {
         setText(e.currentTarget.value);
     };
@@ -35,7 +42,7 @@ function BoardComment(props) {
             console.log(response.data.commentWriteSuccess);
             if (response.data.commentWriteSuccess) {
                 setText("");
-                props.newComment(response.data.list);
+                props.refreshComment(response.data.list);
             } else {
                 alert("코멘트 작성 실패");
             }
@@ -57,11 +64,11 @@ function BoardComment(props) {
                             <React.Fragment key={index}>
                                 <SingleComment
                                     comment={comment}
-                                    refreshComment={props.refreshComment}></SingleComment>
+                                    refreshComment={props.refreshComment} depth={depth}></SingleComment>
                                 <ReplyComment
                                     parentCommentId={comment.comment_id}
                                     commentList={props.commentList}
-                                    refreshComment={props.refreshComment}></ReplyComment>
+                                    refreshComment={props.refreshComment}  depth={depth}></ReplyComment>
                             </React.Fragment>
                         );
                     } else {
