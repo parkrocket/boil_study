@@ -8,7 +8,7 @@ function ReplyComment(props) {
         return props.commentList.map((comment, index) => (
             <React.Fragment key={index}>
                 {comment.response === props.parentCommentId && (
-                    <div style={{ width: "calc(100%)", paddingLeft: "0" }}>
+                    <div style={{ width: "100%", paddingLeft: "40px" }}>
                         <SingleComment
                             key={index}
                             comment={comment}

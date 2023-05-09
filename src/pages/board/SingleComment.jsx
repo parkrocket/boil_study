@@ -5,7 +5,8 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { SERVER_URL } from "../Config";
 import Confirm from "../../components/Confirm";
-import { useDisclosure } from "@chakra-ui/react";
+import { border, useDisclosure } from "@chakra-ui/react";
+import { BorderBottom } from "@mui/icons-material";
 
 function SingleComment(props) {
     const [replyOpen, setReplyOpen] = useState(false);
@@ -87,8 +88,7 @@ function SingleComment(props) {
 
     return (
         <div>
-            <ul style={{paddingLeft : '40px', width: "calc(100% - 40px)"}}
-            className={`${boardCommentStyle.list}`}>
+            <ul className={`${boardCommentStyle.list}`}>
                 <li className={`${boardCommentStyle.nickname}`}>{props.comment.user_nickname}</li>
                 <li className={`${boardCommentStyle.cont}`}>{props.comment.content}</li>
                 <li className={`${boardCommentStyle.time}`}>{listDateTime}</li>

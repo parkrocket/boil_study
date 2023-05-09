@@ -53,14 +53,12 @@ function HeadRight() {
                 <li>
                     <Link to="/admin">관리자</Link>
                 </li>
-                <li>
-                    <div className="profile" onMouseEnter={handleMouseEnter}>
+                <li onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+                    <div className="profile">
                         <Avatar src={profile} className="img"></Avatar>
                         {user.auth.nickName}
                     </div>
-                    <ul
-                        className={`head-login-sub ` + (isHovering ? "active" : "")}
-                        onMouseLeave={handleMouseLeave}>
+                    <ul className={`head-login-sub ` + (isHovering ? "active" : "")}>
                         <li>
                             <Link to="/mypage">마이페이지</Link>
                         </li>

@@ -66,6 +66,8 @@ function Mypage() {
         formData.append("nickname", NickName);
         formData.append("profile", Images);
 
+        
+
         if (Password !== "") {
             if (PasswordRe === "") {
                 alert("비밀번호확인을 입력해주세요.");
@@ -98,12 +100,15 @@ function Mypage() {
             url: `${SERVER_URL}/api/users/update`,
             data: formData,
         }).then((response) => {
+            
+            
             if (response.data.updateSuccess === true) {
                 alert("정보수정에 성공하였습니다.");
                 navigate("/");
             } else {
                 alert(response.data.msg);
             }
+            
         });
     };
 
