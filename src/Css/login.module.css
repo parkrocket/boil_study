@@ -22,6 +22,15 @@ input[type="password"]:focus {
 .login_wrap .log_section {
     margin-bottom: 10px;
 }
+.login_wrap .log_section .profileImg {
+    cursor: pointer;
+}
+.login_wrap .log_section .profileImg .img{
+    width: 130px;
+    height: 130px;
+    display: block;
+    margin: 0 auto;
+}
 .login_wrap .log_section em {
     display: block;
     margin-bottom: 5px;
@@ -68,4 +77,8 @@ input[type="password"]:focus {
     .login_wrap .login_title h2 {
         font-size: 2.5em;
     }
-}
+    .login_wrap .log_section .profileImg .img {
+        width: 100px;
+        height: 100px;
+    }
+}   

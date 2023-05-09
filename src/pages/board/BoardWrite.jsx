@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { SERVER_URL } from "../Config";
 
 import Head from "../../components/Head";
-import boardWriteStyle from "../../Css/boardwrite.module.css";
+import boardWriteStyle from "../../Css/boardWrite.module.css";
 
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
