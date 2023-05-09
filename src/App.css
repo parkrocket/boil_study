@@ -69,6 +69,10 @@
 #header .header-inner .head-login {
   display: flex;
   gap: 10px;
+  align-items: center;
+}
+#header .header-inner .head-login li {
+  position: relative;
 }
 #header .header-inner .head-login li a {
   display: block;
@@ -80,21 +84,61 @@
   border-radius: 30px;
   transition: .3s;
 }
-#header .header-inner .head-login li:nth-child(1) {
+#header .header-inner .head-login >li:nth-child(1) {
   /* margin-right: 10px; */
 }
-#header .header-inner .head-login li:not(:nth-child(2)) a:hover {
+#header .header-inner .head-login >li:not(:nth-child(2)) a:hover {
   background: #eee;
 }
 #header .header-inner .head-login li:nth-child(2) a {
-  background:#5d4c91;
+  /* background:#5d4c91; */
 }
 #header .header-inner .head-login li:nth-child(2) a:hover {
-  background: #392d5e;
+  /* background: #392d5e; */
 }
-#header .header-inner .head-login li:nth-child(2) a {
-  color: #fff;
+#header .header-inner .head-login li .profile {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
 }
+#header .header-inner .head-login li .profile .img {
+  width: 44px;
+  height: 44px;
+}
+#header .header-inner .head-login li .head-login-sub {
+  position: absolute;
+  top: calc(100% + 5px);
+  right: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+  background:#fff;
+  border-radius: 10px;
+  transition: .3s;
+  display: none;
+}
+#header .header-inner .head-login li .head-login-sub-active {
+  display: block;
+  position: absolute;
+  top: calc(100% + 5px);
+  right: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+  background:#fff;
+  border-radius: 10px;
+  transition: .3s;
+}
+#header .header-inner .head-login li .head-login-sub-active a {
+  border: none;
+  padding: 6px 0;
+  color: #222;
+  border-radius: 10px;
+}
+#header .header-inner .head-login li .head-login-sub-active a:hover {
+    background:#5d4c91;
+    color: #fff;
+
+}
+
 
 /* 공통요소 */
 .wrap {

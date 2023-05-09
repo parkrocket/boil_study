@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
@@ -12,6 +12,14 @@ function HeadRight() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [cookies, setCookie, removeCookie] = useCookies(["x_auth"]);
+    const [isHovering, setIsHovering] = useState(false);
+
+    const handleMouseEnter = () => {
+        setIsHovering(true);
+    }
+    const handleMouseLeave = () => {
+        setIsHovering(false);
+    }
 
     const logOutHandler = (event) => {
         dispatch(logout(user)).then((response) => {
@@ -45,16 +53,27 @@ function HeadRight() {
                     <Link to="/admin">관리자</Link>
                 </li>
                 <li>
-                    <Avatar></Avatar>
-                    {user.auth.nickName}
-                    <Link to="/mypage">마이페이지</Link>
-                </li>
-                <li>
-                    <a href="#!" onClick={logOutHandler}>
-                        로그아웃
-                    </a>
+                    <div 
+                    className="profile"
+                    onMouseEnter={handleMouseEnter}
+                    >
+                        <Avatar className="img"></Avatar>
+                        {user.auth.nickName}
+                    </div>
+                    <ul className={`head-login-sub` + (isHovering ? '-active' : '')} 
+                    onMouseLeave={handleMouseLeave} >
+                        <li>
+                            <Link to="/mypage">마이페이지</Link>
+                        </li>
+                        <li>
+                            <a href="#!" onClick={logOutHandler}>
+                                로그아웃
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
+
         );
     }
 }

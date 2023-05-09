@@ -68,7 +68,7 @@ function Mypage() {
         formData.append("email", Email);
         formData.append("name", Name);
         formData.append("nickname", NickName);
-        formData.append("image", Images);
+        formData.append("profile", Images);
 
         /*
         const data = {
@@ -155,13 +155,13 @@ function Mypage() {
             <div className="container_wrap">
                 <div className={loginStyle.login_wrap}>
                     <form onSubmit={onSubmitHandler}>
-                        <div className={loginStyle.login_title}>
+                        {/* <div className={loginStyle.login_title}>
                             <h2 className={`${loginStyle.logo} ${loginStyle.fontf}`}>정보수정</h2>
                             <span>정보수정</span>
-                        </div>
+                        </div> */}
                         <div className={loginStyle.log_section}>
-                            <label>
-                                <Avatar src={profileImg}></Avatar>
+                            <label className={`${loginStyle.profileImg}`}>
+                                <Avatar src={profileImg} className={`${loginStyle.img}`}></Avatar>
                                 <input
                                     type="file"
                                     onChange={fileChange}
