@@ -116,24 +116,17 @@
   transition: .3s;
   display: none;
 }
-#header .header-inner .head-login li .head-login-sub-active {
+#header .header-inner .head-login li .head-login-sub.active {
   display: block;
-  position: absolute;
-  top: calc(100% + 5px);
-  right: 0;
-  width: 100%;
-  border: 1px solid #ddd;
-  background:#fff;
-  border-radius: 10px;
-  transition: .3s;
 }
-#header .header-inner .head-login li .head-login-sub-active a {
+
+#header .header-inner .head-login li .head-login-sub.active a {
   border: none;
-  padding: 6px 0;
+  padding: 10px 0;
   color: #222;
   border-radius: 10px;
 }
-#header .header-inner .head-login li .head-login-sub-active a:hover {
+#header .header-inner .head-login li .head-login-sub.active a:hover {
     background:#5d4c91;
     color: #fff;
 
