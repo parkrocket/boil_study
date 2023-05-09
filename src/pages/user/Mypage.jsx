@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import Head from "../../components/Head";
-import { useDispatch } from "react-redux";
-import { updateUser } from "../../_actions/user_actions";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Avatar } from "@chakra-ui/react";
@@ -20,21 +18,19 @@ function Mypage() {
     const [profileImg, setProfileImg] = useState("");
 
     const navigate = useNavigate();
-    const dispatch = useDispatch();
 
     const imgRef = useRef();
 
     const user = useSelector((state) => state);
 
     useEffect(() => {
-        console.log(user.user.auth._id);
-
         axios
             .post(`${SERVER_URL}/api/users/userInfo`, { id: user.user.auth._id })
             .then((response) => {
                 setEmail(response.data.userInfo.user_email);
                 setName(response.data.userInfo.user_name);
                 setNickName(response.data.userInfo.user_nickname);
+                setProfileImg(response.data.userInfo.user_image);
             });
     }, []);
 
@@ -70,19 +66,6 @@ function Mypage() {
         formData.append("nickname", NickName);
         formData.append("profile", Images);
 
-        /*
-        const data = {
-            id: user.user.auth._id,
-            password: Password,
-            email: Email,
-            name: Name,
-            nickname: NickName,
-            image: Images,
-        };
-        */
-
-        console.log(formData);
-
         if (Password !== "") {
             if (PasswordRe === "") {
                 alert("비밀번호확인을 입력해주세요.");
@@ -110,30 +93,18 @@ function Mypage() {
             return;
         }
 
-        //console.log(data);
-
-        // TODO: services/ 또는 apis 폴더로 빼기 (논의후))
-
-        /*
-        dispatch(updateUser(data)).then((response) => {
-            //if(payload.)
-
-            console.log(response);
-
-            if (response.payload.updateSuccess === true) {
-                alert("정보수정에 성공하였습니다.");
-                navigate("/");
-            } else {
-                alert(response.payload.msg);
-            }
-        });
-        */
-
         axios({
             method: "post",
             url: `${SERVER_URL}/api/users/update`,
             data: formData,
-        }).then((response) => console.log(response));
+        }).then((response) => {
+            if (response.data.updateSuccess === true) {
+                alert("정보수정에 성공하였습니다.");
+                navigate("/");
+            } else {
+                alert(response.data.msg);
+            }
+        });
     };
 
     function fileChange(e) {
@@ -155,10 +126,6 @@ function Mypage() {
             <div className="container_wrap">
                 <div className={loginStyle.login_wrap}>
                     <form onSubmit={onSubmitHandler}>
-                        {/* <div className={loginStyle.login_title}>
-                            <h2 className={`${loginStyle.logo} ${loginStyle.fontf}`}>정보수정</h2>
-                            <span>정보수정</span>
-                        </div> */}
                         <div className={loginStyle.log_section}>
                             <label className={`${loginStyle.profileImg}`}>
                                 <Avatar src={profileImg} className={`${loginStyle.img}`}></Avatar>
