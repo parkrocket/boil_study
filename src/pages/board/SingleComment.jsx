@@ -9,6 +9,9 @@ import { border, useDisclosure } from "@chakra-ui/react";
 import { BorderBottom } from "@mui/icons-material";
 
 function SingleComment(props) {
+
+    
+
     const [replyOpen, setReplyOpen] = useState(false);
     const [replyText, setReplyText] = useState("");
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -88,7 +91,7 @@ function SingleComment(props) {
 
     return (
         <div>
-            <ul className={`${boardCommentStyle.list}`}>
+            <ul style={{paddingLeft : props.depth}} className={`${boardCommentStyle.list}`}>
                 <li className={`${boardCommentStyle.nickname}`}>{props.comment.user_nickname}</li>
                 <li className={`${boardCommentStyle.cont}`}>{props.comment.content}</li>
                 <li className={`${boardCommentStyle.time}`}>{listDateTime}</li>

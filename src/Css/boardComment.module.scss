@@ -6,7 +6,7 @@
     }
 
     .list {
-        border-bottom: 1px solid #ddd;
+         border-bottom: 1px solid #ddd;
         display: flex;
         flex-wrap: wrap;
         padding: 1rem;
@@ -15,16 +15,19 @@
             font-size: .95rem;
             font-weight: 600;
             width: 100%;
+            padding-left: 1rem;
         }
 
         .cont {
             width: 100%;
             font-size: .95rem;
+            padding-left: 1rem;
         }
 
         .time {
             color: #bbb;
             font-size: .8rem;
+            padding-left: 1rem;
         }
         
         .action {
