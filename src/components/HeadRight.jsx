@@ -6,7 +6,6 @@ import axios from "axios";
 import { logout } from "../_actions/user_actions";
 import { useNavigate } from "react-router-dom";
 import { Avatar } from "@chakra-ui/react";
-import classNames from "classnames";
 
 function HeadRight() {
     const user = useSelector((state) => state.user);

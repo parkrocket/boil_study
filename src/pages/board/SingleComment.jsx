@@ -87,7 +87,8 @@ function SingleComment(props) {
 
     return (
         <div>
-            <ul className={`${boardCommentStyle.list}`}>
+            <ul style={{paddingLeft : '40px', width: "calc(100% - 40px)"}}
+            className={`${boardCommentStyle.list}`}>
                 <li className={`${boardCommentStyle.nickname}`}>{props.comment.user_nickname}</li>
                 <li className={`${boardCommentStyle.cont}`}>{props.comment.content}</li>
                 <li className={`${boardCommentStyle.time}`}>{listDateTime}</li>
