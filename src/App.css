@@ -61,9 +61,14 @@
 #header .header-inner .gnb {
   display: flex;
   font-size: 1em;
+  transition: .3s;
 }
 #header .header-inner .gnb li {
   padding: 0 20px;
+}
+#header .header-inner .gnb li a {
+  line-height: 64px;
+  display: block;
 }
 #header .header-inner .head-login {
   display: flex;
@@ -105,6 +110,7 @@
   display: none;
   border: 1px solid #ddd;
   width: 100%;
+  background: #fff;
 }
 #header .header-inner .head-login li .head-login-sub.active {
   display: block;
