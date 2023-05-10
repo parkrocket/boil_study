@@ -40,6 +40,15 @@
 #header {
   border-bottom: 1px solid #ddd;
 }
+#header.active {
+  position: fixed;
+  top: 0;
+  left: 0;  
+  width: 100%;
+  background: #fff;
+  z-index: 999;
+}
+
 #header .header-inner { 
   position: relative;
   display: flex;
@@ -65,6 +74,7 @@
 }
 #header .header-inner .gnb li {
   padding: 0 20px;
+  transition: .3s;
 }
 #header .header-inner .gnb li a {
   line-height: 64px;
@@ -74,8 +84,11 @@
   display: flex;
   gap: 10px;
   align-items: center;
+  justify-content: flex-end;
+  min-width: 220px;
+  min-height: 64px;
 }
-#header .header-inner .head-login li {
+#header .header-inner .head-login > li {
   position: relative;
 }
 #header .header-inner .head-login li a {
@@ -97,7 +110,13 @@
   display: flex;
   align-items: center;
   column-gap: 5px;
-  padding: 10px 0;
+  padding: 10px 5px 10px 0;
+}
+#header .header-inner .head-login li .profile p {
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  max-width: 80px;
 }
 #header .header-inner .head-login li .profile .img {
   width: 44px;
@@ -115,7 +134,6 @@
 #header .header-inner .head-login li .head-login-sub.active {
   display: block;
 }
-
 #header .header-inner .head-login li .head-login-sub.active a {
   border: none;
   padding: 10px 0;
@@ -125,9 +143,56 @@
 #header .header-inner .head-login li .head-login-sub.active a:hover {
     background:#5d4c91;
     color: #fff;
-
 }
-
+#header .header-inner .head-login li .ham_btn {
+  display: block;
+  width: 40px;
+  height: 40px;
+  display: none;
+}
+#header .header-inner .head-login li .ham_btn span {
+  display: block;
+  margin: auto;
+  width: 3.5px;
+  height: 3.5px;
+  background: #222;
+  position: relative;
+  border-radius: 100%;
+  transition: .3s;
+}
+#header .header-inner .head-login li .ham_btn span::after,
+#header .header-inner .head-login li .ham_btn span::before {
+  position: absolute;
+  width: 3.5px;
+  height: 3.5px;
+  content: '';
+  background: #222;
+  left: 0;  
+  border-radius: 100%;
+  transition: .3s;
+}
+#header .header-inner .head-login li .ham_btn span::after {
+  top: -8px;
+}
+#header .header-inner .head-login li .ham_btn span::before {
+  bottom: -8px;
+}
+#header .header-inner .head-login li .ham_btn.active span {
+  background: transparent;
+}
+#header .header-inner .head-login li .ham_btn.active span::after,
+#header .header-inner .head-login li .ham_btn.active span::before {
+  width: 20px;
+  height: 2px;
+  top: 50%;
+  left: -7px;
+}
+#header .header-inner .head-login li .ham_btn.active span::after {
+  transform: rotate(45deg);
+} 
+#header .header-inner .head-login li .ham_btn.active span::before {
+  transform: rotate(-45deg);
+}
 
 /* 공통요소 */
 .wrap {

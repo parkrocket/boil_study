@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function HeadMenu() {
+function HeadMenu(props) {
+let toggleClassCheck = props.isClick ? 'active' : '';
+
     return (
-        <ul className="gnb">
+        <ul className={`gnb ${toggleClassCheck}`}>
             <li>
                 <Link to="/introduce">자기소개</Link>
             </li>

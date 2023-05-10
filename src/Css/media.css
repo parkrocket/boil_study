@@ -1,27 +1,90 @@
 @media (max-width: 1300px) {
     #header .header-inner {
         width: 100% !important;
-        padding: 10px 20px !important;
+        padding: 0 20px !important;
     }
+}
+@media screen and (max-width : 900px) {
+    #header .header-inner .head-login li .ham_btn {
+        display: block;
+    }
+    #header .header-inner .gnb {
+        position: fixed;
+        right: -200px;
+        top: 64px;
+        display: block;
+        background: #fff;
+        border: 1px solid #ddd;
+        min-width: 200px;
+        /* display: none; */
+    }
+    #header .header-inner .gnb.active {
+        display: block;
+        right: 0;
+    }
+    #header .header-inner .gnb li a {
+        line-height: 55px;
+    }
+    #header .header-inner .gnb li:hover {
+        background: #eee;
+    }
+    #header .header-inner .gnb li:not(:last-child) {
+        border-bottom: 1px solid #ddd;
+    }
+
 }
 @media (max-width: 600px) {
     html { font-size: 15px; }
     #header .header-inner {
-        display: block;
+        /* display: block; */
     }
     #header .header-inner .gnb {
-        margin-top: 10px;
+        /* margin-top: 10px; */
     }
-    #header .header-inner .gnb li {
-        padding-left: 0;
-        padding-right: 30px;
+    #header .header-inner .gnb li a{
+        line-height: 50px;
+        /* padding-left: 0;
+        padding-right: 30px; */
     }
     #header .header-inner .head-login { 
-        position: absolute;
+        /* position: absolute;
         top: 18px;
-        right: 10px;
+        right: 10px; */
     }
     #header .header-inner .head-login li a {
         max-width: 80px;
+    }
+}
+@media screen and (max-width : 500px) {
+    #header .header-inner {
+        padding: 0 10px !important;
+        min-width: 330px;
+    }
+    #header .header-inner .gnb {
+        top: 58px;
+    }
+
+    #header .header-inner .head-login {
+        min-width: auto;
+        gap: 5px;
+        min-height: 58px;
+    }
+    #header .header-inner .head-login li a {
+        max-width: 70px;
+        padding: 7px 10px;
+    }
+    #header .header-inner .head-login li .profile {
+        padding: 10px 0;
+    }
+    #header .header-inner .head-login li .profile .img {
+        width: 38px;
+        height: 38px;
+    }
+    #header .header-inner .head-login li .profile p {
+        max-width: 70px;
+    }
+    #header .header-inner .head-login li .ham_btn {
+        width: 30px;
+        height: 30px;
     }
 }
