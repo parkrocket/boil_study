@@ -41,7 +41,7 @@ function Introduce(props) {
     const property_dy = {
         imageUrl: img.Chiko,
         imageAlt: "매직샵",
-        name: "최다연",
+        name: "다연",
         age: 28,
         sex: "여자",
         title: "우앙",
