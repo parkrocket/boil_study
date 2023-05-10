@@ -4,7 +4,6 @@ import boardListStyle from "../../Css/boardlist.module.scss";
 import axios from "axios";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-
 import { SERVER_URL } from "../Config";
 import moment from "moment";
 
@@ -43,7 +42,7 @@ function BoardList() {
                 <h2 className={`${boardListStyle.tit} fontf`}>자유게시판</h2>
                 <div className={boardListStyle.board_wrap}>
                     <Link to="/board/write" className={`${boardListStyle.write_btn}`}>
-                        글작성하기
+                        글작성하기 시작
                     </Link>
                 </div>
                 <div className={boardListStyle.board_wrap}>
