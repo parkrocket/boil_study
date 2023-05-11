@@ -7,14 +7,20 @@ import { logout } from "../_actions/user_actions";
 import { useNavigate } from "react-router-dom";
 import { Avatar } from "@chakra-ui/react";
 
-function HeadRight() {
+function HeadRight(props) {
     const user = useSelector((state) => state.user);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [cookies, setCookie, removeCookie] = useCookies(["x_auth"]);
-    const [isHovering, setIsHovering] = useState(false);
     const [profile, setProfile] = useState(`${user.auth.image}`);
+    const [isHovering, setIsHovering] = useState(false);
+    
+
+    const handleClick = () => {
+        props.setIsClick(!props.isClick);
+    };
+    let toggleClassCheck = props.isClick ? 'active' : '';
 
     const handleMouseEnter = () => {
         setIsHovering(true);
@@ -22,6 +28,7 @@ function HeadRight() {
     const handleMouseLeave = () => {
         setIsHovering(false);
     };
+    let isHoveringCheck = isHovering ? 'active' : '';
 
     const logOutHandler = (event) => {
         dispatch(logout(user)).then((response) => {
@@ -45,6 +52,9 @@ function HeadRight() {
                 <li>
                     <Link to="/register">회원가입</Link>
                 </li>
+                <li>
+                    <button className={`ham_btn ${toggleClassCheck}`} onClick={handleClick}><span></span></button>
+                </li>
             </ul>
         );
     } else {
@@ -56,9 +66,9 @@ function HeadRight() {
                 <li onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                     <div className="profile">
                         <Avatar src={profile} className="img"></Avatar>
-                        {user.auth.nickName}
+                        <p>{user.auth.nickName}</p>
                     </div>
-                    <ul className={`head-login-sub ` + (isHovering ? "active" : "")}>
+                    <ul className={`head-login-sub ${isHoveringCheck}`}>
                         <li>
                             <Link to="/mypage">마이페이지</Link>
                         </li>
@@ -68,6 +78,9 @@ function HeadRight() {
                             </a>
                         </li>
                     </ul>
+                </li>
+                <li>
+                    <button className={`ham_btn ${toggleClassCheck}`} onClick={handleClick}><span></span></button>
                 </li>
             </ul>
         );
