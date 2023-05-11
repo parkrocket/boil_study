@@ -43,6 +43,7 @@
     }
     #header .header-inner .gnb li a{
         line-height: 50px;
+        font-size: 1rem;
         /* padding-left: 0;
         padding-right: 30px; */
     }
@@ -52,13 +53,13 @@
         right: 10px; */
     }
     #header .header-inner .head-login li a {
-        max-width: 80px;
+        /* max-width: 80px; */
     }
 }
 @media screen and (max-width : 500px) {
     #header .header-inner {
         padding: 0 10px !important;
-        min-width: 330px;
+        min-width: 320px;
     }
     #header .header-inner .gnb {
         top: 58px;

@@ -1,0 +1,20 @@
+.admin {
+    display: flex;
+
+    .admin_lnb {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        color: #f5f5f5;
+    }
+
+    >.right {
+        margin-left: 250px;
+        width: calc(100% - 250px);
+
+        .admin_main {
+            background: #ddd;
+        }
+    }
+}

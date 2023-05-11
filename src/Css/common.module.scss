@@ -1,0 +1,242 @@
+
+/* 여백 초기화 */
+html,body,h1,h2,h3,h4,h5,h6,p,ol,ul,li,dl,dt,dd,table,tr,td,th,form,fieldset,legend,input,select,textarea,button,label,address,img,a,header,main,section,nav,article,footer,div, span {
+    margin: 0; padding: 0;
+}
+
+/* 리스트 타입 초기화 */
+ol, ul, li, dl, dd, dt { list-style: none; }
+
+/* 이미지, 필드셋 테두리 제거 */
+/* iE 10에서 링크가 걸렸을 때 테두리 제거*/
+img, fieldset { border: 0 none; }
+
+html {
+    font-size: 62.5%;
+}
+
+/* 타이포 설정 */
+body, h1,h2,h3,h4,h5,h6,th,td,input,select,textarea,button {
+    font-family: 'NotoSans_R', 'Margun Gothic', '맑은 고딕', 'sans-serif';
+    font-size: 1.6rem;
+    color: #222;
+    line-height: 1;
+    font-weight: normal;
+    font-style: normal;
+    letter-spacing: -.5px;
+    -webkit-text-size-adjust: 100%; /* ios 방향 변경시 글꼴 크기 조정 방지 */
+}
+
+/* 폰트 스타일 강제 상속 */
+button,
+input,
+optgroup,
+select,
+option,
+textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1;
+}
+
+/* a요소 장식 제거, 글자색상 변경 */
+a,
+a:active,
+a:hover {
+    text-decoration : none;
+    color : inherit;
+    background: transparent; /* IE10에서 배경색 그레이 방지 */
+}
+
+/* float clear설정 */
+.clearfix::after {
+    content : '';
+    display: block;
+    clear : both;
+}
+
+/* 컨텐츠 화면에서 숨기기 */
+.blind {
+    position: absolute;
+    width: 1px; height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: polygon(0 0, 0 0, 0 0);
+}
+
+/* 박스 계산법 변경 */
+*, 
+*::before,
+*::after { 
+    box-sizing: border-box; 
+}
+
+/* 인라인요소 수직정렬 */
+img { 
+    vertical-align: top; 
+}
+input, button, select, option, optgroup, textarea { 
+    vertical-align:middle; 
+}
+
+/* iE에서 block 처리 */
+main {
+    display: block;
+}
+
+/* Firefox, Edge, iE 에서 스타일 매칭*/
+hr {
+    height: 0;
+    overflow: visible;
+}
+
+/* Chrome ,Edge, Safari에서 스타일 매칭*/
+b,
+strong {
+    font-weight: bolder;
+}
+
+/* 윗첨자, 아래첨자 */
+/* 상위, 하위 요소의 line hight에 영향을 주지 않기 위해*/
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sub {
+    bottom: -1em; /* 디자인에 따라 값 변경하기*/
+}
+
+sup {
+    top: -1em; /* 디자인에 따라 값 변경하기*/
+}
+
+img {
+    width: 100%; 
+    height: auto;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+button {
+    border: 0 none;
+    background: transparent;
+    cursor: pointer;
+}
+
+
+
+
+
+
+/*---------------------------------------------------------------------------------------------------*/
+// display
+.display-b { display: block; }
+.display-i { display: inline; }
+.display-i-b { display: inline-block; }
+.display-f { display: flex; }
+.display-g {display: grid;}
+
+//display align
+.justify-c { justify-content: center;}
+.justify-sb { justify-content: space-between;}
+.justify-fs { justify-content: flex-start;}
+.justify-fe { justify-content: flex-end;}
+
+.align-items-c { align-items: center;}
+.align-items-fs { align-items: flex-start;}
+.align-items-fe { align-items: flex-end;}
+
+.align-content-c { align-content: center;}
+.align-content-fs { align-content:flex-start;}
+.align-content-fe { align-content:flex-end;}
+.align-content-sb { align-content:space-between;}
+
+.flex-wrap { flex-wrap: wrap;}
+
+//text- align
+.text-align-c { text-align: center; }
+.text-align-l { text-align: left; }
+.text-align-r { text-align: right; }
+.text-align-j { text-align: justify; }
+
+//margin
+.margin-c { margin: 0 auto; }
+.margin-l { margin-left: auto; }
+.margin-r { margin-right: auto; }
+
+
+/*---------------------------------------------------------------------------------------------------*/
+$b : #000;
+$w : #fff;
+
+$g_1 : #111;
+$g_2 : #222;
+$g_3 : #333;
+$g_4 : #444;
+$g_5 : #555;
+$g_6 : #666;
+$g_7 : #777;
+$g_8 : #888;
+$g_9 : #999;
+$g_a : #aaa;
+$g_b : #bbb;
+$g_c : #ccc;
+$g_d : #ddd;
+$g_e : #eee;
+
+/*---------------------------------------------------------------------------------------------------*/
+@mixin bg_img ($pos : center, $sz : cover) {
+    background-repeat: no-repeat;
+    background-position: $pos;
+    background-size: $sz;
+}
+
+@mixin tX ($x : -50%) {
+    transform: translateX($x);
+}
+
+@mixin tY ($y: -50%) {
+    transform: translateY($y);
+}
+
+@mixin tXY ($x : -50%, $y: -50%) {
+    transform: translateX($x) translateY($y);
+}
+
+@mixin font ($sz : null, $fw : normal) {
+    font-size: $sz;
+    font-weight: $fw;
+}
+
+@mixin line_h ($lh : 1) {
+    line-height: $lh;
+}
+
+/*---------------------------------------------------------------------------------------------------*/
+/* 주요 서비스 바로가기 start */
+.skip {
+    
+    a {
+        position: absolute;
+        top: -50px; left: 0;
+        padding: 0 15px;
+        color: $w;
+        display: inline-block;
+        line-height: 50px;
+        background: $g_2;
+
+
+        &:focus,
+        &:active {
+            top: 0;
+        }
+    }
+}
+/* 주요 서비스 바로가기 end */
