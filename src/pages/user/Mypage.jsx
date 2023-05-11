@@ -3,7 +3,7 @@ import Head from "../../components/Head";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Avatar } from "@chakra-ui/react";
-
+import { useCookies } from "react-cookie";
 import axios from "axios";
 import loginStyle from "../../Css/login.module.css";
 import { SERVER_URL } from "../Config";
@@ -16,6 +16,7 @@ function Mypage() {
     const [NickName, setNickName] = useState("");
     const [Images, setImages] = useState({});
     const [profileImg, setProfileImg] = useState("");
+    const [Cookie, setCookie] = useCookies(["my_auth"]);
 
     const navigate = useNavigate();
 
@@ -24,6 +25,11 @@ function Mypage() {
     const user = useSelector((state) => state);
 
     useEffect(() => {
+        if (Cookie.my_auth === undefined) {
+            navigate("/passwordcheck");
+            return;
+        }
+
         axios
             .post(`${SERVER_URL}/api/users/userInfo`, { id: user.user.auth._id })
             .then((response) => {
@@ -66,8 +72,6 @@ function Mypage() {
         formData.append("nickname", NickName);
         formData.append("profile", Images);
 
-        
-
         if (Password !== "") {
             if (PasswordRe === "") {
                 alert("비밀번호확인을 입력해주세요.");
@@ -100,15 +104,12 @@ function Mypage() {
             url: `${SERVER_URL}/api/users/update`,
             data: formData,
         }).then((response) => {
-            
-            
             if (response.data.updateSuccess === true) {
                 alert("정보수정에 성공하였습니다.");
                 navigate("/");
             } else {
                 alert(response.data.msg);
             }
-            
         });
     };
 

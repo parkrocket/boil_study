@@ -11,7 +11,7 @@ function BoardList() {
     const [List, setList] = useState([]);
 
     useEffect(() => {
-        axios.post(`${SERVER_URL}/api/board/list`, { page: 10 }).then((response) => {
+        axios.post(`${SERVER_URL}/api/board/list`, { page: 12 }).then((response) => {
             setList(response.data.list);
         });
     }, []);
@@ -28,6 +28,7 @@ function BoardList() {
                     <p className={`${boardListStyle.nickname}`}>{list.user_nickname}</p>
                     <p className={`${boardListStyle.subject}`}>
                         <span>{list.subject}</span>
+                        {list.comment !== 0 && <span>({list.comment})</span>}
                     </p>
                     <p className={`${boardListStyle.time}`}>{listDateTime}</p>
                 </Link>
