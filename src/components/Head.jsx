@@ -1,4 +1,4 @@
-import React , {useState, useRef, useEffect} from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import HeadRight from "./HeadRight";
 import HeadMenu from "./HeadMenu";
@@ -10,21 +10,19 @@ function Head() {
     const [isScroll, setIsScroll] = useState(false);
 
     const handleScroll = () => {
-        console.log(window.scrollY);
-        if ( window.scrollY > 50 ) {
+        if (window.scrollY > 50) {
             setIsScroll(true);
         } else {
             setIsScroll(false);
         }
     };
-    let scrollCheck = isScroll ? 'active' : '';
-    useEffect( () => {
-        window.addEventListener('scroll', handleScroll);
+    let scrollCheck = isScroll ? "active" : "";
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
         return () => {
-            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener("scroll", handleScroll);
         };
     }, []);
-
 
     return (
         <div>

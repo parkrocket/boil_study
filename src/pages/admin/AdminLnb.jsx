@@ -1,12 +1,15 @@
 import React from "react";
 import adminStyle from '../../Css/admin.module.scss';
-import { Box } from '@chakra-ui/react'
 
 function AdminLnb() {
     return (
-        <Box bg='#222' w='250px' className={`${adminStyle.admin_lnb}`}>
-            AdminLnb
-        </Box>
+        <div className={`${adminStyle.admin_lnb}`}>
+            <div className={`${adminStyle.container}`}>
+                <h1>
+                    <a href="#">admin home</a>
+                </h1>
+            </div>
+        </div>
     );
 }
 

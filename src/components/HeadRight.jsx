@@ -15,12 +15,11 @@ function HeadRight(props) {
     const [cookies, setCookie, removeCookie] = useCookies(["x_auth"]);
     const [profile, setProfile] = useState(`${user.auth.image}`);
     const [isHovering, setIsHovering] = useState(false);
-    
 
     const handleClick = () => {
         props.setIsClick(!props.isClick);
     };
-    let toggleClassCheck = props.isClick ? 'active' : '';
+    let toggleClassCheck = props.isClick ? "active" : "";
 
     const handleMouseEnter = () => {
         setIsHovering(true);
@@ -28,7 +27,7 @@ function HeadRight(props) {
     const handleMouseLeave = () => {
         setIsHovering(false);
     };
-    let isHoveringCheck = isHovering ? 'active' : '';
+    let isHoveringCheck = isHovering ? "active" : "";
 
     const logOutHandler = (event) => {
         dispatch(logout(user)).then((response) => {
@@ -53,7 +52,9 @@ function HeadRight(props) {
                     <Link to="/register">회원가입</Link>
                 </li>
                 <li>
-                    <button className={`ham_btn ${toggleClassCheck}`} onClick={handleClick}><span></span></button>
+                    <button className={`ham_btn ${toggleClassCheck}`} onClick={handleClick}>
+                        <span></span>
+                    </button>
                 </li>
             </ul>
         );
@@ -80,7 +81,9 @@ function HeadRight(props) {
                     </ul>
                 </li>
                 <li>
-                    <button className={`ham_btn ${toggleClassCheck}`} onClick={handleClick}><span></span></button>
+                    <button className={`ham_btn ${toggleClassCheck}`} onClick={handleClick}>
+                        <span></span>
+                    </button>
                 </li>
             </ul>
         );

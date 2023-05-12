@@ -44,7 +44,7 @@ function NotFound() {
                             </p>
                         </div>
                         <div className={`${notfoundStyle.error__nav} ${notfoundStyle.e_nav}`}>
-                            <a href="/" className={notfoundStyle.e_nav__link}></a>
+                            <span className={notfoundStyle.e_nav__link}></span>
                         </div>
                     </div>
                 </section>

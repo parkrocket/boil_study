@@ -10,9 +10,11 @@ import Auth from '../hoc/Auth';
 import NotFound from '../pages/NotFound';
 import BoardList from './board/BoardList';
 import BoardWrite from './board/BoardWrite';
+import BoardUpdate from './board/BoardUpdate';
 import BoardView from './board/BoardView';
 import Mypage from './user/Mypage';
 import Admin from './admin/Admin';
+import PasswordCheck from './PasswordCheck';
 
 export const Routes = () => {
     return (
@@ -27,8 +29,9 @@ export const Routes = () => {
         <Route path="/admin" element={Auth(Admin,true, true)} />
         <Route path="/board/:boardId" element={Auth(BoardView,true)} />
         <Route path="/board/write" element={Auth(BoardWrite,true)} />
-
+        <Route path="/board/update/:boardId" element={Auth(BoardUpdate,true)} />
         <Route path="/dblook" element={<DbLook />} />
+        <Route path="/passwordcheck" element={Auth(PasswordCheck,true)} />
         <Route path="/test" element={<Test value={'테스트 컴포넌트 :)😁'} />} />
 
         <Route path="*" element={<NotFound></NotFound>} />

@@ -9,9 +9,6 @@ import { border, useDisclosure } from "@chakra-ui/react";
 import { BorderBottom } from "@mui/icons-material";
 
 function SingleComment(props) {
-
-    
-
     const [replyOpen, setReplyOpen] = useState(false);
     const [replyText, setReplyText] = useState("");
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -91,14 +88,31 @@ function SingleComment(props) {
 
     return (
         <div>
-            <ul style={{paddingLeft : props.depth}} className={`${boardCommentStyle.list}`}>
+            <ul style={{ paddingLeft: props.depth }} className={`${boardCommentStyle.list}`}>
                 <li className={`${boardCommentStyle.nickname}`}>{props.comment.user_nickname}</li>
-                <li className={`${boardCommentStyle.cont}`}>{props.comment.content}</li>
+                <li className={`${boardCommentStyle.cont}`}>
+                    {props.comment.content.split("\n").map((line) => {
+                        return (
+                            <>
+                                {line} <br />
+                            </>
+                        );
+                    })}
+                </li>
                 <li className={`${boardCommentStyle.time}`}>{listDateTime}</li>
                 <li className={`${boardCommentStyle.action}`}>
                     <div>
-                        <button onClick={replyClick} className={`${boardCommentStyle.comment_btn}`}>댓글</button>
-                        <button onClick={confirmOpen} className={`${boardCommentStyle.delete_btn}`}>삭제</button>
+                        <button onClick={replyClick} className={`${boardCommentStyle.comment_btn}`}>
+                            댓글
+                        </button>
+                        {(user.user.auth._id === props.comment.user_id ||
+                            user.user.auth.isAdmin === true) && (
+                            <button
+                                onClick={confirmOpen}
+                                className={`${boardCommentStyle.delete_btn}`}>
+                                삭제
+                            </button>
+                        )}
                     </div>
                 </li>
             </ul>
@@ -110,8 +124,7 @@ function SingleComment(props) {
                             onChange={textHandler}
                             value={replyText}
                             placeholder="코멘트를 작성해주세요"
-                            className={`${boardCommentStyle.reply}`}
-                            ></textarea>
+                            className={`${boardCommentStyle.reply}`}></textarea>
                         <br></br>
                         <button
                             // style={{ width: "20%", height: "52px" }}
