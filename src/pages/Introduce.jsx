@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Center, Badge, Image } from "@chakra-ui/react";
 
 import Gora from "../img/gora.jpg";
-import Chiko from "../img/chiko.jpg";
+import Lija from "../img/lija.jpg";
 import Dos from "../img/dos.png";
 import Head from "../components/Head";
 
@@ -14,7 +14,7 @@ function Introduce(props) {
         }
     }
     */
-    const img = { Gora, Chiko, Dos };
+    const img = { Gora, Lija, Dos };
 
     const property = {
         imageUrl: img.Dos,
@@ -39,7 +39,7 @@ function Introduce(props) {
     };
 
     const property_dy = {
-        imageUrl: img.Chiko,
+        imageUrl: img.Lija,
         imageAlt: "매직샵",
         name: "최다연",
         age: 28,

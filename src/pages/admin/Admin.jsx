@@ -1,11 +1,24 @@
 import React from "react";
-//import Head from "../../components/Head";
+import AdminLnb from './AdminLnb';
+import AdminHead from './AdminHead';
+import AdminMain from './AdminMain';
+import AdminFoot from './AdminFoot';
+import adminStyle from '../../Css/admin.module.scss';
+import { ChakraProvider } from "@chakra-ui/react";
 
 function Admin() {
+
     return (
-        <div>
-            <div className="container_wrap">Admin</div>
-        </div>
+        <ChakraProvider>
+            <div className={`${adminStyle.admin}`}>
+                <AdminLnb></AdminLnb>
+                <div className={`${adminStyle.right}`}>
+                    <AdminHead></AdminHead>
+                    <AdminMain></AdminMain>
+                    <AdminFoot></AdminFoot>
+                </div>
+            </div>
+        </ChakraProvider>
     );
 }
 
