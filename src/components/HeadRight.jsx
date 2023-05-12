@@ -2,7 +2,6 @@ import { React, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
-import axios from "axios";
 import { logout } from "../_actions/user_actions";
 import { useNavigate } from "react-router-dom";
 import { Avatar } from "@chakra-ui/react";
@@ -61,15 +60,17 @@ function HeadRight(props) {
     } else {
         return (
             <ul className="head-login">
-                <li>
-                    <Link to="/admin">관리자</Link>
-                </li>
                 <li onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                     <div className="profile">
                         <Avatar src={profile} className="img"></Avatar>
                         <p>{user.auth.nickName}</p>
                     </div>
                     <ul className={`head-login-sub ${isHoveringCheck}`}>
+                        {user.auth.isAdmin && (
+                            <li>
+                                <Link to="/admin">관리자</Link>
+                            </li>
+                        )}
                         <li>
                             <Link to="/mypage">마이페이지</Link>
                         </li>
