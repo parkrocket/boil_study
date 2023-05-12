@@ -194,6 +194,22 @@
   transform: rotate(-45deg);
 }
 
+
+/* header */
+#footer {
+  border-top: 1px solid #ddd;
+}
+
+#footer .footer-inner { 
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+}
+
 /* 공통요소 */
 .wrap {
   max-width: 1280px;

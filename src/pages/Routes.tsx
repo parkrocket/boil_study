@@ -14,6 +14,8 @@ import BoardUpdate from './board/BoardUpdate';
 import BoardView from './board/BoardView';
 import Mypage from './user/Mypage';
 import Admin from './admin/Admin';
+import AdminBoard from './admin/Board/AdminBoard';
+import AdminBoardWrite from './admin/Board/AdminBoardWrite';
 import PasswordCheck from './PasswordCheck';
 
 export const Routes = () => {
@@ -26,7 +28,7 @@ export const Routes = () => {
         <Route path="/register" element={Auth(Register,false)} />
         <Route path="/mypage" element={Auth(Mypage,true)} />
         <Route path="/board" element={Auth(BoardList,true)} />
-        <Route path="/admin" element={Auth(Admin,true, true)} />
+        
         <Route path="/board/:boardId" element={Auth(BoardView,true)} />
         <Route path="/board/write" element={Auth(BoardWrite,true)} />
         <Route path="/board/page/:page" element={Auth(BoardList,true)} />
@@ -34,6 +36,15 @@ export const Routes = () => {
         <Route path="/dblook" element={<DbLook />} />
         <Route path="/passwordcheck" element={Auth(PasswordCheck,true)} />
         <Route path="/test" element={<Test value={'테스트 컴포넌트 :)😁'} />} />
+
+
+
+
+        <Route path="/admin" element={Auth(Admin,true, true)} />
+        <Route path="/admin/board" element={Auth(AdminBoard,true, true)} />
+        <Route path="/admin/board/write" element={Auth(AdminBoardWrite,true, true)} />
+
+
 
         <Route path="*" element={<NotFound></NotFound>} />
       </ReactRouterRoutes>

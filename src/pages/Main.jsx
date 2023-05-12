@@ -2,15 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../App.css";
 import Head from "../components/Head";
+import Footer from "../components/Footer";
+
+import BoardLatest from "./board/BoardLatest";
 
 function Main() {
     return (
         <div>
             <Head></Head>
-            <div>
-                <Link to="/introduce">소개페이지</Link>
+            <div className="container_wrap">
+                <BoardLatest></BoardLatest>
             </div>
-            <div>푸터</div>
+            <Footer></Footer>
         </div>
     );
 }
