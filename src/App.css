@@ -227,6 +227,7 @@
   padding-bottom: 5rem;
   min-width: 280px;
 }
+
 .boardlist_pagination_box .pagination {
   display: flex;
   justify-content: center;
@@ -235,9 +236,7 @@
   margin-top: 5rem;
   visibility: visible;
 }
-.boardlist_pagination_box .pagination li {
-  
-}
+
 .boardlist_pagination_box .pagination li a {
   display: block;
   text-align: center;
@@ -249,13 +248,18 @@
   color: #555;
   transition: .3s;
 }
+
 .boardlist_pagination_box .pagination li.active a {
   background: #ebebeb;
   color: #222;
 }
+
 .boardlist_pagination_box .pagination li:hover a {
   text-decoration: underline
 } 
+
+
+
 
 /*-------------- common -------------*/
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap");

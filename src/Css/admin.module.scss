@@ -17,6 +17,7 @@
         width: calc(100% - 250px);
         background: #fdfdfd;
         border-radius: 30px;
+        padding: 0 1rem;
     }
 }
 
@@ -82,15 +83,19 @@
                         display: block;
                     }
 
-                    > a {
+                    a {
                         background: #fdfdfd;
                         color: #064C30;
                         font-weight: 600;
-    
+
                         &::after,
                         &::before {
                             display: block;
                         }
+                    }
+
+                    .gnb_sub {
+                        display: block;
                     }
                 }
                 
@@ -101,6 +106,8 @@
                     padding: 0.5rem 1rem;
                     font-size: .9rem;
                     position: relative;
+
+
 
                     &::after
                     ,&::before {
@@ -151,7 +158,7 @@
 
                         > a {
                             display: block;
-                            font-size: .8rem;
+                            font-size: .75rem;
                             padding: .3rem 1rem .3rem 3rem;
                             position: relative;
 
@@ -224,7 +231,6 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0 2rem;
         border-bottom: 1px solid #ddd;
         border-radius: 30px 30px 0 0;
 
@@ -252,20 +258,29 @@
             .util {
                 display: flex;
                 align-items: center;
-                column-gap: .8rem;
+                column-gap: .5rem;
 
                 > li {
+                    position: relative;
 
                     .util_sub {
                         display: flex;
-                        column-gap: .8rem;
+                        column-gap: .5rem;
 
                         > li {
 
                             a {
-                                padding: .5rem 1rem;
+                                padding: .4rem .7rem;
                                 border: 1px solid #ccc;
                                 border-radius: 30px;
+                                font-size: 0.8rem;
+                                transition: .3s;
+
+                                &:hover {
+                                    background: #2A7256;
+                                    color: #fdfdfd;
+                                    border-color: transparent;
+                                }
                             }
                         }
                     }
@@ -273,6 +288,7 @@
                     .profile {
                         display: flex;
                         align-items: center;
+                        cursor: pointer;
 
                         .img {
                             width: 2rem;
@@ -288,19 +304,50 @@
                             display: flex;
                             align-items: center;
 
+                            &.active {
+                                svg {
+                                    transform: rotate(-180deg);
+                                }
+                            }
+
                             svg {
                                 font-size: 1rem;
+                                transition: .5s;
                             }
                         }
                     }
 
                     .profile_sub {
                         position: absolute;
-
+                        top: calc(100% + .7rem);  
+                        right: 0;
+                        width: 100%;
+                        min-width: 8rem;
+                        border: 1px solid #ddd;
+                        border-top: 0 none;
+                        background: #fff;
+                        display: none;
+                        
+                        &.active {
+                            display: block;
+                        }
 
                         li {
                             a {
+                                display: flex;
+                                align-items: center;
+                                padding: .3rem .5rem;
+                                font-size: .8rem;
+                                transition: .3s;
 
+                                &:hover {
+                                    background: #ececec;
+                                }
+
+                                svg {
+                                    font-size: .8rem;
+                                    margin-left: 0.5rem;
+                                }
                             }
                         }
                     }
@@ -315,6 +362,16 @@
 }
 
 .admin_foot {
-    height: 50px;
-    border-top: 1px solid #ddd;
+    
+    .container {
+        height: 50px;
+        border-top: 1px solid #ddd;
+
+        p {
+            text-align: right;
+            font-size: .8rem;
+            line-height: 25 px;
+        }
+    }
+
 }
