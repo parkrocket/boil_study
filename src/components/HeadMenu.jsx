@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function HeadMenu(props) {
-let toggleClassCheck = props.isClick ? 'active' : '';
+    let toggleClassCheck = props.isClick ? "active" : "";
 
     return (
         <ul className={`gnb ${toggleClassCheck}`}>
@@ -11,9 +11,6 @@ let toggleClassCheck = props.isClick ? 'active' : '';
             </li>
             <li>
                 <Link to="/board">자유게시판</Link>
-            </li>
-            <li>
-                <Link to="/ppp">404에러</Link>
             </li>
         </ul>
     );

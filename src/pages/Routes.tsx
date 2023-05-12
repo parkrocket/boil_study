@@ -29,6 +29,7 @@ export const Routes = () => {
         <Route path="/admin" element={Auth(Admin,true, true)} />
         <Route path="/board/:boardId" element={Auth(BoardView,true)} />
         <Route path="/board/write" element={Auth(BoardWrite,true)} />
+        <Route path="/board/page/:page" element={Auth(BoardList,true)} />
         <Route path="/board/update/:boardId" element={Auth(BoardUpdate,true)} />
         <Route path="/dblook" element={<DbLook />} />
         <Route path="/passwordcheck" element={Auth(PasswordCheck,true)} />

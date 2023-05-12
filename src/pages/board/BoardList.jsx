@@ -3,18 +3,28 @@ import Head from "../../components/Head";
 import boardListStyle from "../../Css/boardlist.module.scss";
 import axios from "axios";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { SERVER_URL } from "../Config";
 import moment from "moment";
+import Paging from "../../components/Pagination";
 
 function BoardList() {
     const [List, setList] = useState([]);
+    const [count, setCount] = useState(0);
+    //const [page, setPage] = useState(1);
+
+    const list = 8;
+    const params = useParams();
 
     useEffect(() => {
-        axios.post(`${SERVER_URL}/api/board/list`, { page: 12 }).then((response) => {
-            setList(response.data.list);
-        });
-    }, []);
+        axios
+            .post(`${SERVER_URL}/api/board/list`, { list: list, page: Number(params.page) })
+            .then((response) => {
+                console.log(response);
+                setList(response.data.list);
+                setCount(response.data.count);
+            });
+    }, [params.page]);
 
     const boardList = List.map((list, index) => {
         const listDateTime = list.datetime
@@ -48,6 +58,9 @@ function BoardList() {
                 </div>
                 <div className={boardListStyle.board_wrap}>
                     <ul>{boardList}</ul>
+                </div>
+                <div>
+                    <Paging count={count} page={Number(params.page)} list={list}></Paging>
                 </div>
             </div>
         </div>
