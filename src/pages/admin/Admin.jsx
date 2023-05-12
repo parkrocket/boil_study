@@ -3,10 +3,8 @@ import AdminLnb from './AdminLnb';
 import AdminHead from './AdminHead';
 import AdminMain from './AdminMain';
 import AdminFoot from './AdminFoot';
-// import commonStyle from '../../Css/common.module.scss';
 import adminStyle from '../../Css/admin.module.scss';
 import { ChakraProvider } from "@chakra-ui/react";
-//import Head from "../../components/Head";
 
 function Admin() {
 
