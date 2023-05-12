@@ -14,13 +14,18 @@ function BoardList() {
     //const [page, setPage] = useState(1);
 
     const list = 8;
-    const params = useParams();
+    let params = useParams();
+
+    if (params.page === undefined) {
+        params.page = 1;
+    }
 
     useEffect(() => {
         axios
-            .post(`${SERVER_URL}/api/board/list`, { list: list, page: Number(params.page) })
+            .post(`${SERVER_URL}/api/board/list`, { list: list, page: params.page })
             .then((response) => {
-                console.log(response);
+                console.log(response.data.list);
+
                 setList(response.data.list);
                 setCount(response.data.count);
             });
