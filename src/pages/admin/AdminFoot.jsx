@@ -5,7 +5,9 @@ import adminStyle from '../../Css/admin.module.scss';
 function AdminFoot() {
     return (
         <div className={`${adminStyle.admin_foot}`}>
-            AdminFoot
+            <div className={`${adminStyle.container}`}>
+                <p>Hello, this is the admin page. Welcome.</p>
+            </div>
         </div>
     );
 }

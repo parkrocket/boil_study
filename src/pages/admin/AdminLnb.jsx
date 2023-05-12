@@ -9,6 +9,7 @@ import EditNoteIcon from '@mui/icons-material/EditNote';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { NavLink, Link } from "react-router-dom";
 
 function AdminLnb() {
     return (
@@ -19,35 +20,51 @@ function AdminLnb() {
                 </h1>
                 <nav>
                     <ul className={`${adminStyle.gnb}`}>
-                        <li><a href=""><EditNoteIcon/><span>캠페인 등록</span></a></li>
+                        <li>
+                            <NavLink to="" className={({isActive}) => {	return isActive ? 'active' : ''; }}><EditNoteIcon/><span>캠페인 등록</span></NavLink>
+                        </li>
                         <li className={`${adminStyle.active}`}>
-                            <a href=""><FormatListBulletedIcon/><span>캠페인 목록</span><ExpandMoreIcon className={`${adminStyle.arrow_ico}`}/></a>
+                            <NavLink to=""><FormatListBulletedIcon/><span>캠페인 목록</span><ExpandMoreIcon className={`${adminStyle.arrow_ico}`}/></NavLink>
                             <ul className={`${adminStyle.gnb_sub}`}>
-                                <li><a href="" className={`${adminStyle.active}`}>전체 캠페인</a></li>
-                                <li><a href="">선정 캠페인</a></li>
-                                <li><a href="">모집 캠페인</a></li>
-                                <li><a href="">리뷰 캠페인</a></li>
+                                <li>
+                                    <NavLink to="" className={`${adminStyle.active}`}>전체 캠페인</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to="">선정 캠페인</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to="">모집 캠페인</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to="">리뷰 캠페인</NavLink>
+                                </li>
                             </ul>
                         </li>
-                        <li><a href=""><ContentCopyIcon/><span>등록된 리뷰</span></a></li>
-                        <li><a href=""><BarChartIcon/><span>브랜드 비교분석</span></a></li>
-                        <li><a href=""><ControlPointDuplicateIcon/><span>포인트 충전</span></a></li>
                         <li>
-                            <a href=""><MoreHorizIcon/><span>고객센터</span><ExpandMoreIcon className={`${adminStyle.arrow_ico}`}/></a>
+                            <NavLink to=""><ContentCopyIcon/><span>등록된 리뷰</span></NavLink>
+                            </li>
+                        <li>
+                            <NavLink to=""><BarChartIcon/><span>브랜드 비교분석</span></NavLink>
+                            </li>
+                        <li>
+                            <NavLink to=""><ControlPointDuplicateIcon/><span>포인트 충전</span></NavLink>
+                            </li>
+                        <li>
+                            <NavLink to=""><MoreHorizIcon/><span>고객센터</span><ExpandMoreIcon className={`${adminStyle.arrow_ico}`}/></NavLink>
                             <ul className={`${adminStyle.gnb_sub}`}>
-                                <li><a href="">구매내역(견적서)</a></li>
-                                <li><a href="">공지사항</a></li>
-                                <li><a href="">1:1 문의</a></li>
+                                <li><NavLink to="">구매내역(견적서)</NavLink></li>
+                                <li><NavLink to="">공지사항</NavLink></li>
+                                <li><NavLink to="">1:1 문의</NavLink></li>
                             </ul>
                         </li>
                     </ul>
                 </nav>
                 <div className={`${adminStyle.notify_box}`}>
                     <p>
-                        <a href=""><NotificationsNoneIcon/><span>선정하지 않은 캠페인이 있습니다.</span></a>
+                        <Link to=""><NotificationsNoneIcon/><span>선정하지 않은 캠페인이 있습니다.</span></Link>
                     </p>
                     <p>
-                        <a href=""><NotificationsNoneIcon/><span>선정하지 않은 캠페인이 있습니다.</span></a>
+                        <Link to=""><NotificationsNoneIcon/><span>선정하지 않은 캠페인이 있습니다.</span></Link>
                     </p>
                 </div>
             </div>
