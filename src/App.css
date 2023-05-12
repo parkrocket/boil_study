@@ -234,6 +234,49 @@
   }
 }
 
+
+
+
+
+/*-------------- pagination -------------*/
+.boardlist_pagination_box {
+  padding-bottom: 5rem;
+  min-width: 280px;
+}
+
+.boardlist_pagination_box .pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 2px;
+  margin-top: 5rem;
+  visibility: visible;
+}
+
+.boardlist_pagination_box .pagination li a {
+  display: block;
+  text-align: center;
+  line-height: 2rem;
+  font-size: 1rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 100%;
+  color: #555;
+  transition: .3s;
+}
+
+.boardlist_pagination_box .pagination li.active a {
+  background: #ebebeb;
+  color: #222;
+}
+
+.boardlist_pagination_box .pagination li:hover a {
+  text-decoration: underline
+} 
+
+
+
+
 /*-------------- common -------------*/
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap");
 @font-face {

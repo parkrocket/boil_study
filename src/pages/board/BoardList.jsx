@@ -64,7 +64,7 @@ function BoardList() {
                 <div className={boardListStyle.board_wrap}>
                     <ul>{boardList}</ul>
                 </div>
-                <div>
+                <div className="boardlist_pagination_box">
                     <Paging count={count} page={Number(params.page)} list={list}></Paging>
                 </div>
             </div>
