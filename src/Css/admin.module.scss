@@ -140,7 +140,7 @@
 
                     .arrow_ico {
                         position: absolute;
-                        right: 1rem;
+                        right: 2rem;
                         top: 50%;   
                         transform: translateY(-50%);
                     }
@@ -359,6 +359,125 @@
 
 .admin_main {
     height: calc(100% - 100px);
+    background: #f8f8f8;
+
+    .container {
+        padding: .5rem;
+        
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+            > div {
+ 
+
+                h3 {
+                    font-size: .8rem;
+                    color: #222;
+                    font-weight: 600;
+                    margin-bottom: 1rem;
+                }
+            }
+
+            .left {
+                width: calc(70% - .5rem);
+            }
+
+            .right {
+                width: calc(30% - .5rem);
+            }
+        }
+
+        .row1 {
+
+            .count_list {
+                display: flex;
+                padding: 1rem;
+                justify-content: space-between;
+                background: #fff;
+                border-radius: 14px;
+                box-shadow: 2px 2px 5px rgba(0,0,0,.1);
+
+                li {
+                    width: 24%;
+                    background: #ededed;
+                    border-radius: 14px;
+                    padding: .7rem 1rem;
+                    position: relative;
+
+                    h4 {
+                        color: #555;
+                        font-size: .7rem;
+                        font-weight: 500;
+                        margin-bottom: 0.1rem;
+                    }
+                    p {
+                        font-size: 1.2rem;
+                        font-weight: 600;
+                    }
+
+                    .refresh {
+                        position: absolute;
+                        top: .7rem;
+                        right: 1rem; 
+                        
+                        svg {
+                            font-size: 1rem;
+                            color: #555;
+                            transition: .3s;
+                            
+                            &:hover {
+                                color: #000;
+                            }
+                        }  
+
+                    }
+                }
+
+                .point {
+                    background: #98C3B1;
+                }
+            }
+
+            .notify {
+                height: 100%;
+                padding: .7rem 1rem;
+                background: #fff;
+                border-radius: 14px;
+                box-shadow: 2px 2px 5px rgba(0,0,0,.1);
+
+                ul {
+
+                    li {
+                        display: flex;  
+                        align-items: center;
+                        position: relative;
+                        font-size: 0.9rem;
+
+                        svg {
+                            font-size: 1rem;
+                            color: #064C30;
+                            margin-right: 0.5rem;
+                        }
+
+                        strong {
+                            color: #064C30;
+                            font-weight: 900;
+                            margin-right: .2rem;
+                        }
+
+                        span {
+                            position: absolute;
+                            right: 0;
+                            color: #bbb;
+                            font-size: 0.8rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 .admin_foot {

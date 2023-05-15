@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import adminStyle from '../../Css/admin.module.scss';
 import HomeIcon from '@mui/icons-material/Home';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
@@ -12,16 +12,22 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { NavLink, Link } from "react-router-dom";
 
 function AdminLnb() {
+
+    const [ click, setClick ] = useState(false);
+    const onClick = () => {
+        setClick(!click);
+    };
+
     return (
         <div className={`${adminStyle.admin_lnb}`}>
             <div className={`${adminStyle.container}`}>
                 <h1 className={`${adminStyle.tit}`}>
-                    <a href="#">admin home<HomeIcon/></a>
+                    <Link to="#">admin home<HomeIcon/></Link>
                 </h1>
                 <nav>
                     <ul className={`${adminStyle.gnb}`}>
                         <li>
-                            <NavLink to="" className={({isActive}) => {	return isActive ? 'active' : ''; }}><EditNoteIcon/><span>캠페인 등록</span></NavLink>
+                            <NavLink to="" ><EditNoteIcon/><span>캠페인 등록</span></NavLink>
                         </li>
                         <li className={`${adminStyle.active}`}>
                             <NavLink to=""><FormatListBulletedIcon/><span>캠페인 목록</span><ExpandMoreIcon className={`${adminStyle.arrow_ico}`}/></NavLink>
