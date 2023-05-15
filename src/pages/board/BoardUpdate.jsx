@@ -12,7 +12,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
 function Login(props) {
-    const boardId = useParams().boardId;
+    const params = useParams();
     const [Subject, setSubject] = useState("");
     const [Content, setContent] = useState("");
     const [updateBoard, setUpdateBoard] = useState({});
@@ -23,12 +23,11 @@ function Login(props) {
 
     const quillRef = useRef();
 
-    console.log(updateBoard);
-
     useEffect(() => {
-        const data = { boardId: boardId };
+        const data = { boardId: params.boardId, wrNo: params.wrNo };
 
         console.log(data);
+
         axios.post(`${SERVER_URL}/api/board/view`, data).then((response) => {
             if (response.data.viewsuccess === false) {
                 alert("글 불러오기가 실패했습니다.");
@@ -39,7 +38,7 @@ function Login(props) {
             setSubject(response.data.view.subject);
             setContent(response.data.view.content);
         });
-    }, [boardId, navigate]);
+    }, [params, navigate]);
 
     const onSubjectHandler = (event) => {
         setSubject(event.currentTarget.value);
@@ -56,12 +55,13 @@ function Login(props) {
         const data = {
             subject: Subject,
             content: Content,
-            boardId: boardId,
+            boardId: params.boardId,
+            wrNo: params.wrNo,
         };
 
         axios.post(`${SERVER_URL}/api/board/update`, data).then((response) => {
             alert("수정이 완료되었습니다.");
-            navigate(`/board/${boardId}`);
+            navigate(`/board/${params.boardId}/${params.wrNo}`);
         });
     };
 
@@ -83,7 +83,8 @@ function Login(props) {
             try {
                 const result = await axios.post(`${SERVER_URL}/api/board/imageUpload`, formData);
 
-                const IMG_URL = result.data.url;
+                console.log(result);
+                const IMG_URL = result.data.thumbUrl;
 
                 const editor = quillRef.current.getEditor();
 

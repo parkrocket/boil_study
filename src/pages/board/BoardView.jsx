@@ -12,7 +12,7 @@ import Confirm from "../../components/Confirm";
 import { useDisclosure } from "@chakra-ui/react";
 
 function BoardView() {
-    const boardId = useParams().boardId;
+    const params = useParams();
     const [BoardView, setBoardView] = useState({});
     const [CommentList, setCommentList] = useState([]);
     const [confirm, setConfirm] = useState(false);
@@ -32,7 +32,8 @@ function BoardView() {
     const user = useSelector((state) => state);
 
     useEffect(() => {
-        const data = { boardId: boardId };
+        const data = { boardId: params.boardId, wrNo: params.wrNo };
+
         axios.post(`${SERVER_URL}/api/board/view`, data).then((response) => {
             if (response.data.viewsuccess === false) {
                 alert("글 불러오기가 실패했습니다.");
@@ -50,7 +51,7 @@ function BoardView() {
 
             setCommentList(response.data.list);
         });
-    }, [boardId, navigate]);
+    }, [params, navigate]);
 
     const refreshComment = (newComment) => {
         setCommentList(newComment);
@@ -61,7 +62,7 @@ function BoardView() {
         : "";
 
     function boardDeleteHandler() {
-        const data = { boardId: BoardView.board_id };
+        const data = { boardId: params.boardId, wrNo: params.wrNo };
 
         if (BoardView.comment !== 0) {
             alert("코멘트가 있는 글은 삭제하실 수 없습니다.");
@@ -75,7 +76,7 @@ function BoardView() {
             }
 
             alert("글이 삭제되었습니다.");
-            navigate("/board");
+            navigate(`/board/${params.boardId}`);
         });
 
         console.log(BoardView);
@@ -107,7 +108,7 @@ function BoardView() {
 
                 {(user.user.auth._id === BoardView.user_id || user.user.auth.isAdmin === true) && (
                     <div>
-                        <Link to={`/board/update/${BoardView.board_id}`}>수정</Link>
+                        <Link to={`/board/update/${params.boardId}/${BoardView.wr_no}`}>수정</Link>
                         <button onClick={confirmOpen}>삭제</button>
                     </div>
                 )}

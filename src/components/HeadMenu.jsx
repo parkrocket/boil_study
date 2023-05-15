@@ -12,6 +12,9 @@ function HeadMenu(props) {
             <li>
                 <Link to="/board">자유게시판</Link>
             </li>
+            <li>
+                <Link to="/board/notice">공지사항</Link>
+            </li>
         </ul>
     );
 }

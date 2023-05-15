@@ -11,21 +11,26 @@ import Paging from "../../components/Pagination";
 function BoardList() {
     const [List, setList] = useState([]);
     const [count, setCount] = useState(0);
-    //const [page, setPage] = useState(1);
 
-    const list = 8;
+    const pageList = 8;
     let params = useParams();
 
     if (params.page === undefined) {
         params.page = 1;
     }
 
+    if (params.boardId === undefined) {
+        params.boardId = "free";
+    }
+
     useEffect(() => {
         axios
-            .post(`${SERVER_URL}/api/board/list`, { list: list, page: params.page })
+            .post(`${SERVER_URL}/api/board/list`, {
+                list: pageList,
+                page: params.page,
+                boardId: params.boardId,
+            })
             .then((response) => {
-                console.log(response.data.list);
-
                 setList(response.data.list);
                 setCount(response.data.count);
             });
@@ -36,10 +41,13 @@ function BoardList() {
             ? moment(list.datetime).format("YYYY-MM-DD HH:mm:ss")
             : "";
 
+        //게시판 넘버링 계산식 총 게시물수 - 반복인덱스 - (현재페이지 - 1) * 한페이지당 보이는 게시글수
+        const numbering = count - index - (params.page - 1) * pageList;
+
         return (
             <li key={index}>
-                <Link to={`/board/${list.board_id}`}>
-                    <p className={`${boardListStyle.number}`}>{list.board_id}</p>
+                <Link to={`/board/${params.boardId}/${list.wr_no}`}>
+                    <p className={`${boardListStyle.number}`}>{numbering}</p>
                     <p className={`${boardListStyle.nickname}`}>{list.user_nickname}</p>
                     <p className={`${boardListStyle.subject}`}>
                         <span>{list.subject}</span>
@@ -57,7 +65,9 @@ function BoardList() {
             <div className={`${boardListStyle.container}`}>
                 <h2 className={`${boardListStyle.tit} fontf`}>자유게시판</h2>
                 <div className={boardListStyle.board_wrap}>
-                    <Link to="/board/write" className={`${boardListStyle.write_btn}`}>
+                    <Link
+                        to={`/board/${params.boardId}/write`}
+                        className={`${boardListStyle.write_btn}`}>
                         글작성하기 시작
                     </Link>
                 </div>
@@ -65,7 +75,7 @@ function BoardList() {
                     <ul>{boardList}</ul>
                 </div>
                 <div className="boardlist_pagination_box">
-                    <Paging count={count} page={Number(params.page)} list={list}></Paging>
+                    <Paging count={count} page={Number(params.page)} list={pageList}></Paging>
                 </div>
             </div>
         </div>

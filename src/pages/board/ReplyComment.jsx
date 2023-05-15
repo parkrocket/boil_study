@@ -7,7 +7,7 @@ function ReplyComment(props) {
     const renderReplyComment = () => {
         return props.commentList.map((comment, index) => (
             <React.Fragment key={index}>
-                {comment.response === props.parentCommentId && (
+                {comment.response === props.parentCommentNo && (
                     <div style={{ width: "100%", paddingLeft: "0" }}>
                         <SingleComment
                             key={index}
@@ -18,7 +18,7 @@ function ReplyComment(props) {
 
                         <ReplyComment
                             refreshComment={props.refreshComment}
-                            parentCommentId={comment.comment_id}
+                            parentCommentNo={comment.comment_no}
                             commentList={props.commentList}
                             depth={props.depth + 40}></ReplyComment>
                     </div>

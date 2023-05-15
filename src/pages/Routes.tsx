@@ -28,11 +28,11 @@ export const Routes = () => {
         <Route path="/register" element={Auth(Register,false)} />
         <Route path="/mypage" element={Auth(Mypage,true)} />
         <Route path="/board" element={Auth(BoardList,true)} />
-        
-        <Route path="/board/:boardId" element={Auth(BoardView,true)} />
-        <Route path="/board/write" element={Auth(BoardWrite,true)} />
+        <Route path="/board/:boardId" element={Auth(BoardList,true)} />
+        <Route path="/board/:boardId/:wrNo" element={Auth(BoardView,true)} />
+        <Route path="/board/:boardId/write" element={Auth(BoardWrite,true)} />
         <Route path="/board/page/:page" element={Auth(BoardList,true)} />
-        <Route path="/board/update/:boardId" element={Auth(BoardUpdate,true)} />
+        <Route path="/board/update/:boardId/:wrNo" element={Auth(BoardUpdate,true)} />
         <Route path="/dblook" element={<DbLook />} />
         <Route path="/passwordcheck" element={Auth(PasswordCheck,true)} />
         <Route path="/test" element={<Test value={'테스트 컴포넌트 :)😁'} />} />

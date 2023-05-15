@@ -7,6 +7,7 @@ import { SERVER_URL } from "../Config";
 import Confirm from "../../components/Confirm";
 import { border, useDisclosure } from "@chakra-ui/react";
 import { BorderBottom } from "@mui/icons-material";
+import { useParams } from "react-router-dom";
 
 function SingleComment(props) {
     const [replyOpen, setReplyOpen] = useState(false);
@@ -22,6 +23,7 @@ function SingleComment(props) {
     };
 
     const user = useSelector((state) => state);
+    const params = useParams();
 
     const listDateTime = props.comment.datetime
         ? moment(props.comment.datetime).format("YYYY-MM-DD HH:mm:ss")
@@ -39,8 +41,9 @@ function SingleComment(props) {
         const data = {
             content: replyText,
             userId: user.user.auth._id,
-            commentId: props.comment.comment_id,
-            boardId: props.comment.board_id,
+            commentId: props.comment.comment_no,
+            wrNo: params.wrNo,
+            boardId: params.boardId,
         };
 
         axios.post(`${SERVER_URL}/api/comment/write`, data).then((response) => {
@@ -64,8 +67,14 @@ function SingleComment(props) {
         onOpen();
     }
 
+    console.log(props);
+
     function deleteCommentHandler() {
-        const data = { commentId: props.comment.comment_id, boardId: props.comment.board_id };
+        const data = {
+            commentNo: props.comment.comment_no,
+            wrNo: props.comment.board_no,
+            boardId: params.boardId,
+        };
 
         axios.post(`${SERVER_URL}/api/comment/delete`, data).then((response) => {
             if (response.data.commentDeleteSuccess === true) {
@@ -91,11 +100,11 @@ function SingleComment(props) {
             <ul style={{ paddingLeft: props.depth }} className={`${boardCommentStyle.list}`}>
                 <li className={`${boardCommentStyle.nickname}`}>{props.comment.user_nickname}</li>
                 <li className={`${boardCommentStyle.cont}`}>
-                    {props.comment.content.split("\n").map((line) => {
+                    {props.comment.content.split("\n").map((line, index) => {
                         return (
-                            <>
+                            <React.Fragment key={index}>
                                 {line} <br />
-                            </>
+                            </React.Fragment>
                         );
                     })}
                 </li>

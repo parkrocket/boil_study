@@ -34,6 +34,8 @@ function AdminBoardWrite() {
             ) {
                 alert("게시판이 생성되었습니다.");
                 navigate(`/admin/board`);
+            } else {
+                alert("게시판 생성에 실패하셨습니다.");
             }
         });
 

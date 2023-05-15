@@ -9,17 +9,16 @@ import boardCommentStyle from "../../Css/boardComment.module.scss";
 
 function BoardComment(props) {
     const user = useSelector((state) => state.user);
-    const BoardId = useParams();
+    const params = useParams();
 
     const [Text, setText] = useState("");
     const [OpenReplyCommentNumber, setOpenReplyCommentNumber] = useState();
 
     //const [depth,setDepth] = useState(0);
 
-
     // console.log(props);
 
-    let depth = 0
+    let depth = 0;
 
     const textHandler = (e) => {
         setText(e.currentTarget.value);
@@ -35,7 +34,9 @@ function BoardComment(props) {
         const data = {
             content: Text,
             userId: user.auth._id,
-            boardId: BoardId.boardId,
+            boardId: params.boardId,
+            wrNo: params.wrNo,
+            commentId: 0,
         };
 
         axios.post(`${SERVER_URL}/api/comment/write`, data).then((response) => {
@@ -66,11 +67,13 @@ function BoardComment(props) {
                             <React.Fragment key={index}>
                                 <SingleComment
                                     comment={comment}
-                                    refreshComment={props.refreshComment} depth={depth}></SingleComment>
+                                    refreshComment={props.refreshComment}
+                                    depth={depth}></SingleComment>
                                 <ReplyComment
-                                    parentCommentId={comment.comment_id}
+                                    parentCommentNo={comment.comment_no}
                                     commentList={props.commentList}
-                                    refreshComment={props.refreshComment}  depth={depth}></ReplyComment>
+                                    refreshComment={props.refreshComment}
+                                    depth={depth}></ReplyComment>
                             </React.Fragment>
                         );
                     } else {

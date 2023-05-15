@@ -1,6 +1,6 @@
 import React, { useState, useRef, useMemo } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 import { SERVER_URL } from "../Config";
@@ -16,6 +16,14 @@ function Login(props) {
     const [Content, setContent] = useState("");
 
     const user = useSelector((state) => state);
+
+    let params = useParams();
+
+    console.log(params);
+
+    if (params.boardId === undefined) {
+        alert("게시판이 없습니다.");
+    }
 
     const navigate = useNavigate();
 
@@ -33,10 +41,15 @@ function Login(props) {
     const onSubmitHandler = (event) => {
         event.preventDefault();
 
-        const data = { subject: Subject, content: Content, userid: user.user.auth._id };
+        const data = {
+            boardId: params.boardId,
+            subject: Subject,
+            content: Content,
+            userid: user.user.auth._id,
+        };
 
         axios.post(`${SERVER_URL}/api/board/write`, data).then((response) => {
-            navigate("/board");
+            navigate(`/board/${params.boardId}`);
         });
     };
 
@@ -58,7 +71,7 @@ function Login(props) {
             try {
                 const result = await axios.post(`${SERVER_URL}/api/board/imageUpload`, formData);
 
-                const IMG_URL = result.data.url;
+                const IMG_URL = result.data.thumbUrl;
 
                 const editor = quillRef.current.getEditor();
 
