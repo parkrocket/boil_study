@@ -131,7 +131,7 @@ function Mypage() {
             <Head></Head>
             <div className="container_wrap">
                 <div className={loginStyle.login_wrap}>
-                    <form onSubmit={onSubmitHandler}>
+                    <form onSubmit={onSubmitHandler} entype="multipart/formdata">
                         <div className={loginStyle.log_section}>
                             <label className={`${loginStyle.profileImg}`}>
                                 <Avatar src={profileImg} className={`${loginStyle.img}`}></Avatar>

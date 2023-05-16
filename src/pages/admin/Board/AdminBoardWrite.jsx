@@ -1,18 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import AdminLnb from "../AdminLnb";
 import AdminHead from "../AdminHead";
 import AdminFoot from "../AdminFoot";
 import adminStyle from "../../../Css/admin.module.scss";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, Select } from "@chakra-ui/react";
 import axios from "axios";
 import { SERVER_URL } from "../../Config";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function AdminBoardWrite() {
     const [tableId, setTableId] = useState("");
     const [tableName, setTableName] = useState("");
+    const [fileUploadNumber, setFileUploadNumber] = useState(2);
 
     const navigate = useNavigate();
+    const params = useParams();
+    const ref = useRef();
+
+    let apiUrl = "";
+    if (params.boardId === undefined) {
+        apiUrl = `${SERVER_URL}/api/admin/board/insert`;
+    } else {
+        apiUrl = `${SERVER_URL}/api/admin/board/update`;
+    }
+    useEffect(() => {
+        if (params.boardId !== undefined) {
+            axios
+                .post(`${SERVER_URL}/api/admin/board/view`, { boardId: params.boardId })
+                .then((response) => {
+                    if (response.data.boardViewSuccess === false) {
+                        alert("게시물을 불러오지 못했습니다.");
+                    }
+
+                    setTableId(response.data.view.board_id);
+                    setTableName(response.data.view.board_name);
+                    setFileUploadNumber(response.data.view.upload_count);
+                });
+
+            ref.current.readOnly = true;
+        }
+    }, [params.boardId]);
 
     function tableIdChangeHandler(e) {
         setTableId(e.target.value);
@@ -23,24 +50,46 @@ function AdminBoardWrite() {
     }
 
     function onSubmitHandler(e) {
-        const data = { tableId: tableId, tableName: tableName };
+        const data = { tableId: tableId, tableName: tableName, uploadCount: fileUploadNumber };
 
-        axios.post(`${SERVER_URL}/api/admin/board/insert`, data).then((response) => {
-            console.log(response);
-            if (
-                response.data.boardInsertSuccess &&
-                response.data.createTablesuccess &&
-                response.data.commentInsertSuccess
-            ) {
-                alert("게시판이 생성되었습니다.");
-                navigate(`/admin/board`);
+        axios.post(apiUrl, data).then((response) => {
+            if (params.boardId !== undefined) {
+                if (response.data.boardUpdateSuccess) {
+                    alert("게시판이 수정되었습니다.");
+                    navigate(`/admin/board`);
+                } else {
+                    alert("게시판 수정에 실패하셨습니다.");
+                }
             } else {
-                alert("게시판 생성에 실패하셨습니다.");
+                if (
+                    response.data.boardInsertSuccess &&
+                    response.data.createTablesuccess &&
+                    response.data.commentInsertSuccess
+                ) {
+                    alert("게시판이 생성되었습니다.");
+                    navigate(`/admin/board`);
+                } else {
+                    alert("게시판 생성에 실패하셨습니다.");
+                }
             }
         });
 
         e.preventDefault();
     }
+
+    const uploadCountOption = [...Array(10)].map((el, index) => {
+        return (
+            <option key={index} defaultValue={index + 1}>
+                {index + 1}
+            </option>
+        );
+    });
+
+    function selectChangeHandler(e) {
+        setFileUploadNumber(e.target.value);
+    }
+
+    console.log(fileUploadNumber);
 
     return (
         <ChakraProvider>
@@ -53,13 +102,21 @@ function AdminBoardWrite() {
                             테이블 ID
                             <input
                                 type="text"
-                                defaultValue=""
-                                onChange={tableIdChangeHandler}></input>
+                                defaultValue={tableId}
+                                onChange={tableIdChangeHandler}
+                                ref={ref}></input>
                             테이블 이름
                             <input
                                 type="text"
-                                defaultValue=""
+                                defaultValue={tableName}
                                 onChange={tableNameChangeHandler}></input>
+                            업로드 파일 갯수
+                            <Select
+                                placeholder="업로드 파일 갯수"
+                                value={fileUploadNumber}
+                                onChange={selectChangeHandler}>
+                                {uploadCountOption}
+                            </Select>
                             <button>전송</button>
                         </form>
                     </div>

@@ -34,30 +34,32 @@ function BoardList() {
                 setList(response.data.list);
                 setCount(response.data.count);
             });
-    }, [params.page]);
+    }, [params]);
 
-    const boardList = List.map((list, index) => {
-        const listDateTime = list.datetime
-            ? moment(list.datetime).format("YYYY-MM-DD HH:mm:ss")
-            : "";
+    const boardList =
+        List &&
+        List.map((list, index) => {
+            const listDateTime = list.datetime
+                ? moment(list.datetime).format("YYYY-MM-DD HH:mm:ss")
+                : "";
 
-        //게시판 넘버링 계산식 총 게시물수 - 반복인덱스 - (현재페이지 - 1) * 한페이지당 보이는 게시글수
-        const numbering = count - index - (params.page - 1) * pageList;
+            //게시판 넘버링 계산식 총 게시물수 - 반복인덱스 - (현재페이지 - 1) * 한페이지당 보이는 게시글수
+            const numbering = count - index - (params.page - 1) * pageList;
 
-        return (
-            <li key={index}>
-                <Link to={`/board/${params.boardId}/${list.wr_no}`}>
-                    <p className={`${boardListStyle.number}`}>{numbering}</p>
-                    <p className={`${boardListStyle.nickname}`}>{list.user_nickname}</p>
-                    <p className={`${boardListStyle.subject}`}>
-                        <span>{list.subject}</span>
-                        {list.comment !== 0 && <span>({list.comment})</span>}
-                    </p>
-                    <p className={`${boardListStyle.time}`}>{listDateTime}</p>
-                </Link>
-            </li>
-        );
-    });
+            return (
+                <li key={index}>
+                    <Link to={`/board/${params.boardId}/${list.wr_no}`}>
+                        <p className={`${boardListStyle.number}`}>{numbering}</p>
+                        <p className={`${boardListStyle.nickname}`}>{list.user_nickname}</p>
+                        <p className={`${boardListStyle.subject}`}>
+                            <span>{list.subject}</span>
+                            {list.comment !== 0 && <span>({list.comment})</span>}
+                        </p>
+                        <p className={`${boardListStyle.time}`}>{listDateTime}</p>
+                    </Link>
+                </li>
+            );
+        });
 
     return (
         <div>

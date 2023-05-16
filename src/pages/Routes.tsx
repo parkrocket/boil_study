@@ -32,7 +32,7 @@ export const Routes = () => {
         <Route path="/board/:boardId/:wrNo" element={Auth(BoardView,true)} />
         <Route path="/board/:boardId/write" element={Auth(BoardWrite,true)} />
         <Route path="/board/page/:page" element={Auth(BoardList,true)} />
-        <Route path="/board/update/:boardId/:wrNo" element={Auth(BoardUpdate,true)} />
+        <Route path="/board/update/:boardId/:wrNo" element={Auth(BoardWrite,true)} />
         <Route path="/dblook" element={<DbLook />} />
         <Route path="/passwordcheck" element={Auth(PasswordCheck,true)} />
         <Route path="/test" element={<Test value={'테스트 컴포넌트 :)😁'} />} />
@@ -43,7 +43,7 @@ export const Routes = () => {
         <Route path="/admin" element={Auth(Admin,true, true)} />
         <Route path="/admin/board" element={Auth(AdminBoard,true, true)} />
         <Route path="/admin/board/write" element={Auth(AdminBoardWrite,true, true)} />
-
+        <Route path="/admin/board/update/:boardId" element={Auth(AdminBoardWrite,true, true)} />
 
 
         <Route path="*" element={<NotFound></NotFound>} />

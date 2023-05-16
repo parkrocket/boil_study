@@ -17,6 +17,7 @@ function BoardView() {
     const [CommentList, setCommentList] = useState([]);
     const [confirm, setConfirm] = useState(false);
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const [fileList, setFileList] = useState([]);
 
     const cancelRef = React.useRef();
 
@@ -50,6 +51,10 @@ function BoardView() {
             }
 
             setCommentList(response.data.list);
+        });
+
+        axios.post(`${SERVER_URL}/api/board/boardUpdateInfo`, data).then((response) => {
+            setFileList(response.data.files);
         });
     }, [params, navigate]);
 
@@ -91,6 +96,46 @@ function BoardView() {
         onOpen();
     }
 
+    function fileDownloadHandler(e) {
+        if (window.confirm("파일을 다운로드 하시겠습니까?")) {
+            const data = { path: e.target.dataset["path"], fileName: e.target.dataset["filename"] };
+            axios({
+                url: `${SERVER_URL}/api/board/fileDownload`,
+                method: "post",
+                responseType: "blob",
+                data: data,
+            }).then((response) => {
+                console.log(response.data);
+                const url = window.URL.createObjectURL(new Blob([response.data]));
+                const link = document.createElement("a");
+                link.href = url;
+                link.setAttribute("download", `${e.target.dataset["filename"]}`);
+                document.body.appendChild(link);
+                link.click();
+                link.parentNode.removeChild(link);
+                console.log(url);
+            });
+        }
+    }
+
+    const fileListComp = fileList.map((file, index) => {
+        return (
+            <React.Fragment key={index}>
+                {file.filename && (
+                    <span>
+                        첨부파일 #{index + 1}:{" "}
+                        <button
+                            onClick={fileDownloadHandler}
+                            data-path={file.filepath}
+                            data-filename={file.filename}>
+                            {file.filename}
+                        </button>
+                    </span>
+                )}
+            </React.Fragment>
+        );
+    });
+
     return (
         <div>
             <Head></Head>
@@ -105,6 +150,7 @@ function BoardView() {
                         dangerouslySetInnerHTML={{ __html: BoardView.content }}
                         className={`${boardViewStyle.cont}`}></div>
                 </div>
+                <div>{fileListComp}</div>
 
                 {(user.user.auth._id === BoardView.user_id || user.user.auth.isAdmin === true) && (
                     <div>

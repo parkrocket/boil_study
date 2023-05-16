@@ -25,7 +25,7 @@ function AdminBoard() {
             .then((response) => {
                 setBoardList(response.data.list);
             });
-    }, []);
+    }, [params.page]);
 
     const adminboardList = boardList.map((list, index) => {
         return (
@@ -35,7 +35,9 @@ function AdminBoard() {
                     <p>
                         <span>{list.board_name}</span>
                     </p>
+                    <p>{list.upload_count}</p>
                 </Link>
+                <Link to={`/admin/board/update/${list.board_id}`}>수정</Link>
             </li>
         );
     });
