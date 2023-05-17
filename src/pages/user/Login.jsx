@@ -73,8 +73,8 @@ function Login(props) {
             <div className={loginStyle.wrap}>
                 <div className={loginStyle.login_wrap}>
                     <div className={loginStyle.login_title}>
-                        <h2 className={`${loginStyle.logo} ${loginStyle.fontf}`}>kakao</h2>
-                        <span>kakao 로그인</span>
+                        <h2 className={`${loginStyle.logo} ${loginStyle.fontf}`}>LinkBoard</h2>
+                        <span>LinkBoard 로그인</span>
                     </div>
                     <form onSubmit={onSubmitHandler}>
                         <div className={loginStyle.log_section}>

@@ -3,7 +3,7 @@ import Head from "../../components/Head";
 import boardListStyle from "../../Css/boardlist.module.scss";
 import axios from "axios";
 import { useEffect } from "react";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { SERVER_URL } from "../Config";
 import moment from "moment";
 import Paging from "../../components/Pagination";
@@ -11,6 +11,7 @@ import Paging from "../../components/Pagination";
 function BoardList() {
     const [List, setList] = useState([]);
     const [count, setCount] = useState(0);
+    const [boardSubject, setBoardSubject] = useState("");
 
     const pageList = 8;
     let params = useParams();
@@ -33,6 +34,7 @@ function BoardList() {
                     navigate("/");
                 }
                 console.log(response.data.info);
+                setBoardSubject(response.data.info.board_name);
             });
 
         axios
@@ -45,7 +47,7 @@ function BoardList() {
                 setList(response.data.list);
                 setCount(response.data.count);
             });
-    }, [params]);
+    }, [params.page, params.boardId, navigate]);
 
     const boardList =
         List &&
@@ -76,12 +78,12 @@ function BoardList() {
         <div>
             <Head></Head>
             <div className={`${boardListStyle.container}`}>
-                <h2 className={`${boardListStyle.tit} fontf`}>자유게시판</h2>
+                <h2 className={`${boardListStyle.tit} fontf`}>{boardSubject}</h2>
                 <div className={boardListStyle.board_wrap}>
                     <Link
                         to={`/board/${params.boardId}/write`}
                         className={`${boardListStyle.write_btn}`}>
-                        글작성하기 시작
+                        글 작성하기
                     </Link>
                 </div>
                 <div className={boardListStyle.board_wrap}>

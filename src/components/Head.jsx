@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import HeadRight from "./HeadRight";
 import HeadMenu from "./HeadMenu";
@@ -29,7 +29,7 @@ function Head() {
             <div id="header" className={scrollCheck}>
                 <div className="header-inner">
                     <h1 className="logo fontf">
-                        <Link to="/">kakao</Link>
+                        <Link to="/">LinkBoard</Link>
                     </h1>
                     <HeadMenu isClick={isClick}></HeadMenu>
                     <HeadRight setIsClick={setIsClick} isClick={isClick}></HeadRight>

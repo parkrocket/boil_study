@@ -21,8 +21,8 @@ function AdminLnb() {
         <div className={`${adminStyle.admin_lnb}`}>
             <div className={`${adminStyle.container}`}>
                 <h1 className={`${adminStyle.tit}`}>
-                    <Link to="#">
-                        admin home
+                    <Link to="/admin">admin home</Link>
+                    <Link to="/">
                         <HomeIcon />
                     </Link>
                 </h1>

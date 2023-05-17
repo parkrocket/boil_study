@@ -161,8 +161,8 @@ function Register() {
                     <form onSubmit={onSubmitHandler}>
                         <input type="hidden" name="idcheck" defaultValue={IdCheck}></input>
                         <div className={loginStyle.login_title}>
-                            <h2 className={`${loginStyle.logo} ${loginStyle.fontf}`}>kakao</h2>
-                            <span>kakao 회원가입</span>
+                            <h2 className={`${loginStyle.logo} ${loginStyle.fontf}`}>LinkBoard</h2>
+                            <span>LinkBoard 회원가입</span>
                         </div>
                         <div className={loginStyle.log_section}>
                             <em>아이디</em>
