@@ -4,10 +4,10 @@ import { Avatar } from "@chakra-ui/react";
 import LogoutIcon from '@mui/icons-material/Logout';
 import MenuIcon from '@mui/icons-material/Menu';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 
-function AdminHead() {
+function AdminHead(props) {
 
     const [nickNameClick, setNickNameClick] = useState(false);
     const [gnbMenuClick, setgnbMenuClick] = useState(false);
@@ -21,7 +21,7 @@ function AdminHead() {
         <div className={`${adminStyle.admin_head}`}>
             <div className={`${adminStyle.container}`}>
                 <div className={`${adminStyle.left}`}>
-                    <a href="" className={`${adminStyle.ham_btn}`}><MenuIcon/></a>
+                    <Link to="" className={`${adminStyle.ham_btn}`}><MenuIcon/></Link>
                 </div>
                 <div className={`${adminStyle.right}`}>
                     <ul className={`${adminStyle.util}`}>
