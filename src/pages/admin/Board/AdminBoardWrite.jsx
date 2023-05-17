@@ -79,8 +79,8 @@ function AdminBoardWrite() {
 
     const uploadCountOption = [...Array(10)].map((el, index) => {
         return (
-            <option key={index} defaultValue={index + 1}>
-                {index + 1}
+            <option key={index} defaultValue={index}>
+                {index}
             </option>
         );
     });

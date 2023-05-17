@@ -70,8 +70,10 @@ function Login(props) {
             formData.append("wrNo", params.wrNo);
         }
 
-        for (let i = 0; i < event.target.upload_files.length; i++) {
-            formData.append("upload_files", event.target.upload_files[i].files[0]);
+        if (fileCount !== 0) {
+            for (let i = 0; i < event.target.upload_files.length; i++) {
+                formData.append("upload_files", event.target.upload_files[i].files[0]);
+            }
         }
 
         let apiUrl;
@@ -150,7 +152,6 @@ function Login(props) {
             </React.Fragment>
         );
     });
-
     return (
         <div>
             <Head></Head>
@@ -185,12 +186,14 @@ function Login(props) {
                                     style={{ height: "430px" }}
                                     onChange={onContentHandler}></ReactQuill>
                             </div>
-                            <div
-                                className={`log_section ${boardWriteStyle.boardWrite_section}`}
-                                style={{ marginTop: "60px" }}>
-                                <em>파일업로드</em>
-                                <div>{fileUploadInput}</div>
-                            </div>
+                            {fileCount !== 0 && (
+                                <div
+                                    className={`log_section ${boardWriteStyle.boardWrite_section}`}
+                                    style={{ marginTop: "60px" }}>
+                                    <em>파일업로드</em>
+                                    <div>{fileUploadInput}</div>
+                                </div>
+                            )}
 
                             <div>
                                 <input

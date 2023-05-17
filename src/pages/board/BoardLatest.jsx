@@ -23,8 +23,8 @@ function BoardLatest() {
             let data = [];
 
             Promise.all(
-                response.data.boardsList.map((el, index) => {
-                    axios
+                response.data.boardsList.map(async (el, index) => {
+                    await axios
                         .post(`${SERVER_URL}/api/board/latest`, {
                             boardId: el.board_id,
                             count: 5,
@@ -39,6 +39,7 @@ function BoardLatest() {
                         });
                 })
             ).then(() => {
+                console.log(data);
                 setLatestList(data);
             });
         });
@@ -68,8 +69,8 @@ function BoardLatest() {
         });
 
         return (
-            <React.Fragment>
-                <Box key={index}>
+            <React.Fragment key={index}>
+                <Box>
                     <Card>
                         <CardHeader>
                             <Heading size="md">{list.board_name}</Heading>
