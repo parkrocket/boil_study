@@ -3,7 +3,7 @@ import Head from "../../components/Head";
 import boardListStyle from "../../Css/boardlist.module.scss";
 import axios from "axios";
 import { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { SERVER_URL } from "../Config";
 import moment from "moment";
 import Paging from "../../components/Pagination";
@@ -14,6 +14,7 @@ function BoardList() {
 
     const pageList = 8;
     let params = useParams();
+    const navigate = useNavigate();
 
     if (params.page === undefined) {
         params.page = 1;
@@ -24,6 +25,16 @@ function BoardList() {
     }
 
     useEffect(() => {
+        axios
+            .post(`${SERVER_URL}/api/admin/board/boardInfo`, { boardId: params.boardId })
+            .then((response) => {
+                if (response.data.info === undefined) {
+                    alert("해당 게시판이 존재하지 않습니다.");
+                    navigate("/");
+                }
+                console.log(response.data.info);
+            });
+
         axios
             .post(`${SERVER_URL}/api/board/list`, {
                 list: pageList,
