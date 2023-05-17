@@ -10,12 +10,8 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { NavLink, Link } from "react-router-dom";
-import {
-    BrowserRouter,
-    Routes,
-    Route,
-  } from "react-router-dom";
-  import Home from "./../../App";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./../../App";
 
 function AdminLnb(props) {
     const [gnbClick1, setGnbClick1] = useState(false);
@@ -78,7 +74,7 @@ function AdminLnb(props) {
         setGnbClick5(gnbClick5 ? !gnbClick5 : gnbClick5);
         setGnbClick6(!gnbClick6);
     };
-    
+
     let gnbToggleClassCheck1 = gnbClick1 ? `${adminStyle.active}` : "";
     let gnbToggleClassCheck2 = gnbClick2 ? `${adminStyle.active}` : "";
     let gnbToggleClassCheck3 = gnbClick3 ? `${adminStyle.active}` : "";
@@ -90,14 +86,9 @@ function AdminLnb(props) {
         <div className={`${adminStyle.admin_lnb}`}>
             <div className={`${adminStyle.container}`}>
                 <h1 className={`${adminStyle.tit}`}>
-<<<<<<< HEAD
-                    <Link to="/admin">admin home</Link>
-                    <Link to="/">
-=======
                     <Link href="/admin">
                         <span className={`${adminStyle.pc}`}>admin home</span>
                         <span className={`${adminStyle.mo}`}>admin</span>
->>>>>>> e9fcfd6aa4b53df50f72b84bd62a12f2e5a6df00
                         <HomeIcon />
                     </Link>
                 </h1>
