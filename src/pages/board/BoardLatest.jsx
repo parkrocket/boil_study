@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { SERVER_URL } from "../Config";
 import moment from "moment";
+import { Link } from "react-router-dom";
+import "moment/locale/ko";
 import {
     Box,
     Card,
@@ -11,7 +13,6 @@ import {
     Stack,
     StackDivider,
     Text,
-    Spacer,
     Flex,
     Avatar,
 } from "@chakra-ui/react";
@@ -32,37 +33,40 @@ function BoardLatest() {
     }
 
     const boardListPage = latestList.map((list, index) => {
-        /*
-        const listDateTime = list.datetime
-            ? moment(list.datetime).format("YYYY-MM-DD HH:mm:ss")
-            : "";
-            */
+        let listDateTime = "";
+
         const boardListWrap = list.list.map((boardList, index) => {
+            listDateTime = elapsedTime(boardList.datetime);
+            console.log(boardList.comment);
             return (
-                <Box key={index} className={`${boardLatestStyle.content_inner}`}>
-                    <Box className={`${boardLatestStyle.profile}`}>
-                        <Avatar className={`${boardLatestStyle.img}`}></Avatar>
-                        <Text className={`${boardLatestStyle.nickname}`}>
-                            <span>nickName</span>
+                <Link to={`/board/${list.boardId}/${boardList.wr_no}`} key={index}>
+                    <Box className={`${boardLatestStyle.content_inner}`}>
+                        <Box className={`${boardLatestStyle.profile}`}>
+                            <Avatar
+                                className={`${boardLatestStyle.img}`}
+                                src={boardList.user_image}></Avatar>
+                            <Text className={`${boardLatestStyle.nickname}`}>
+                                <span>{boardList.user_nickname}</span>
+                            </Text>
+                            <Text className={`${boardLatestStyle.time}`}>{listDateTime}</Text>
+                        </Box>
+                        <Heading
+                            size="xs"
+                            textTransform="uppercase"
+                            className={`${boardLatestStyle.tit}`}>
+                            {boardList.subject}
+                        </Heading>
+                        <Text fontSize="sm" className={`${boardLatestStyle.txt}`}>
+                            {boardList.content.replace(/<[^>]*>?/g, "")}
                         </Text>
-                        <Text className={`${boardLatestStyle.time}`}>
-                            <span>1분</span> 전
-                        </Text>
+                        {boardList.comment !== 0 && (
+                            <Box className={`${boardLatestStyle.count}`}>
+                                <ChatIcon />
+                                <span>{boardList.comment}</span>
+                            </Box>
+                        )}
                     </Box>
-                    <Heading
-                        size="xs"
-                        textTransform="uppercase"
-                        className={`${boardLatestStyle.tit}`}>
-                        {boardList.subject}
-                    </Heading>
-                    <Text fontSize="sm" className={`${boardLatestStyle.txt}`}>
-                        {boardList.content.replace(/<[^>]*>?/g, "")}
-                    </Text>
-                    <Box className={`${boardLatestStyle.count}`}>
-                        <ChatIcon />
-                        <span>23</span>
-                    </Box>
-                </Box>
+                </Link>
             );
         });
 
@@ -85,6 +89,30 @@ function BoardLatest() {
             </React.Fragment>
         );
     });
+
+    function elapsedTime(date) {
+        const start = new Date(date);
+        const end = new Date();
+
+        const diff = (end - start) / 1000;
+
+        const times = [
+            { name: "년", milliSeconds: 60 * 60 * 24 * 365 },
+            { name: "개월", milliSeconds: 60 * 60 * 24 * 30 },
+            { name: "일", milliSeconds: 60 * 60 * 24 },
+            { name: "시간", milliSeconds: 60 * 60 },
+            { name: "분", milliSeconds: 60 },
+        ];
+
+        for (const value of times) {
+            const betweenTime = Math.floor(diff / value.milliSeconds);
+
+            if (betweenTime > 0) {
+                return `${betweenTime}${value.name} 전`;
+            }
+        }
+        return "방금 전";
+    }
 
     return (
         <div>

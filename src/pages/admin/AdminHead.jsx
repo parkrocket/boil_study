@@ -19,7 +19,6 @@ function AdminHead() {
 
     const handleNickNameClick = () => {
         setNickNameClick(!nickNameClick);
-        console.log(nickNameClick);
     };
 
     const logOutHandler = (event) => {
