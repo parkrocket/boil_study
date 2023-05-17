@@ -13,7 +13,10 @@ import {
     Text,
     Spacer,
     Flex,
+    Avatar
 } from "@chakra-ui/react";
+import ChatIcon from '@mui/icons-material/Chat';
+import boardLatestStyle from "../../Css/boardLatest.module.scss";
 
 function BoardLatest() {
     const [latestList, setLatestList] = useState([]);
@@ -57,40 +60,48 @@ function BoardLatest() {
             */
         const boardListWrap = list.list.map((boardList, index) => {
             return (
-                <Box key={index}>
-                    <Heading size="xs" textTransform="uppercase">
+                <Box key={index} className={`${boardLatestStyle.content_inner}`}>
+                    <Box className={`${boardLatestStyle.profile}`}>
+                        <Avatar className={`${boardLatestStyle.img}`}></Avatar>
+                        <Text className={`${boardLatestStyle.nickname}`}><span>nickName</span></Text>
+                        <Text className={`${boardLatestStyle.time}`}><span>1분</span> 전</Text>
+                    </Box>
+                    <Heading size="xs" textTransform="uppercase" className={`${boardLatestStyle.tit}`}>
                         {boardList.subject}
                     </Heading>
-                    <Text pt="2" fontSize="sm">
+                    <Text fontSize="sm" className={`${boardLatestStyle.txt}`}>
                         {boardList.content.replace(/<[^>]*>?/g, "")}
                     </Text>
+                    <Box className={`${boardLatestStyle.count}`}>
+                        <ChatIcon/><span>23</span>
+                    </Box>
                 </Box>
             );
         });
 
         return (
             <React.Fragment key={index}>
-                <Box>
-                    <Card>
-                        <CardHeader>
+                <Box className={`${boardLatestStyle.wrapper}`}>
+                    <Card className={`${boardLatestStyle.inner}`}>
+                        <CardHeader className={`${boardLatestStyle.tit}`}>
                             <Heading size="md">{list.board_name}</Heading>
                         </CardHeader>
 
-                        <CardBody>
+                        <CardBody className={`${boardLatestStyle.content}`}>
                             <Stack divider={<StackDivider />} spacing="4">
                                 {boardListWrap}
                             </Stack>
                         </CardBody>
                     </Card>
                 </Box>
-                <Spacer></Spacer>
+                {/* <Spacer></Spacer> */}
             </React.Fragment>
         );
     });
 
     return (
         <div>
-            <Flex spacing="24px">{boardListPage.length !== 0 && boardListPage}</Flex>
+            <Flex spacing="24px" className={`${boardLatestStyle.board_latest_container}`}>{boardListPage.length !== 0 && boardListPage}</Flex>
         </div>
     );
 }
