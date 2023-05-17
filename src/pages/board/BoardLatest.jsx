@@ -13,38 +13,17 @@ import {
     Text,
     Spacer,
     Flex,
-    Avatar
+    Avatar,
 } from "@chakra-ui/react";
-import ChatIcon from '@mui/icons-material/Chat';
+import ChatIcon from "@mui/icons-material/Chat";
 import boardLatestStyle from "../../Css/boardLatest.module.scss";
 
 function BoardLatest() {
     const [latestList, setLatestList] = useState([]);
 
     useEffect(() => {
-        axios.get(`${SERVER_URL}/api/board/boards`).then((response) => {
-            let data = [];
-
-            Promise.all(
-                response.data.boardsList.map(async (el, index) => {
-                    await axios
-                        .post(`${SERVER_URL}/api/board/latest`, {
-                            boardId: el.board_id,
-                            count: 5,
-                        })
-                        .then((response2) => {
-                            data.push({
-                                board_id: el.board_id,
-                                board_name: el.board_name,
-                                list: response2.data.list,
-                            });
-                            return data;
-                        });
-                })
-            ).then(() => {
-                console.log(data);
-                setLatestList(data);
-            });
+        axios.post(`${SERVER_URL}/api/board/allLatest`, { count: 5 }).then((response) => {
+            setLatestList(response.data.bd);
         });
     }, []);
 
@@ -63,17 +42,25 @@ function BoardLatest() {
                 <Box key={index} className={`${boardLatestStyle.content_inner}`}>
                     <Box className={`${boardLatestStyle.profile}`}>
                         <Avatar className={`${boardLatestStyle.img}`}></Avatar>
-                        <Text className={`${boardLatestStyle.nickname}`}><span>nickName</span></Text>
-                        <Text className={`${boardLatestStyle.time}`}><span>1분</span> 전</Text>
+                        <Text className={`${boardLatestStyle.nickname}`}>
+                            <span>nickName</span>
+                        </Text>
+                        <Text className={`${boardLatestStyle.time}`}>
+                            <span>1분</span> 전
+                        </Text>
                     </Box>
-                    <Heading size="xs" textTransform="uppercase" className={`${boardLatestStyle.tit}`}>
+                    <Heading
+                        size="xs"
+                        textTransform="uppercase"
+                        className={`${boardLatestStyle.tit}`}>
                         {boardList.subject}
                     </Heading>
                     <Text fontSize="sm" className={`${boardLatestStyle.txt}`}>
                         {boardList.content.replace(/<[^>]*>?/g, "")}
                     </Text>
                     <Box className={`${boardLatestStyle.count}`}>
-                        <ChatIcon/><span>23</span>
+                        <ChatIcon />
+                        <span>23</span>
                     </Box>
                 </Box>
             );
@@ -84,7 +71,7 @@ function BoardLatest() {
                 <Box className={`${boardLatestStyle.wrapper}`}>
                     <Card className={`${boardLatestStyle.inner}`}>
                         <CardHeader className={`${boardLatestStyle.tit}`}>
-                            <Heading size="md">{list.board_name}</Heading>
+                            <Heading size="md">{list.boardName}</Heading>
                         </CardHeader>
 
                         <CardBody className={`${boardLatestStyle.content}`}>
@@ -101,7 +88,9 @@ function BoardLatest() {
 
     return (
         <div>
-            <Flex spacing="24px" className={`${boardLatestStyle.board_latest_container}`}>{boardListPage.length !== 0 && boardListPage}</Flex>
+            <Flex spacing="24px" className={`${boardLatestStyle.board_latest_container}`}>
+                {boardListPage.length !== 0 && boardListPage}
+            </Flex>
         </div>
     );
 }
