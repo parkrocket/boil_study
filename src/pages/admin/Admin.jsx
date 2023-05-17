@@ -7,13 +7,14 @@ import adminStyle from '../../Css/admin.module.scss';
 import { ChakraProvider } from "@chakra-ui/react";
 
 function Admin() {
+    const [hamClick, setHamClick] = useState(false);
 
     return (
         <ChakraProvider>
-            <div className={`${adminStyle.admin}`}>
-                <AdminLnb></AdminLnb>
+            <div className={`${adminStyle.admin} ${adminStyle.active}`}>
+                <AdminLnb hamClick={hamClick} setHamClick={setHamClick}></AdminLnb>
                 <div className={`${adminStyle.right}`}>
-                    <AdminHead></AdminHead>
+                    <AdminHead  hamClick={hamClick} setHamClick={setHamClick}></AdminHead>
                     <AdminMain></AdminMain>
                     <AdminFoot></AdminFoot>
                 </div>
