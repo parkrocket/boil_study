@@ -5,6 +5,7 @@ import { useCookies } from "react-cookie";
 import { logout } from "../_actions/user_actions";
 import { useNavigate } from "react-router-dom";
 import { Avatar } from "@chakra-ui/react";
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 function HeadRight(props) {
     const user = useSelector((state) => state.user);
@@ -14,11 +15,17 @@ function HeadRight(props) {
     const [cookies, setCookie, removeCookie] = useCookies(["x_auth"]);
     const [profile, setProfile] = useState(`${user.auth.image}`);
     const [isHovering, setIsHovering] = useState(false);
+    const [profileClick, setProfileClick] = useState(false);
 
     const handleClick = () => {
         props.setIsClick(!props.isClick);
     };
     let toggleClassCheck = props.isClick ? "active" : "";
+    
+    const handleProfileClik = () => {
+        setProfileClick(!profileClick);
+    }
+    let profileToggleClassCheck = profileClick ? "active" : "";
 
     const handleMouseEnter = () => {
         setIsHovering(true);
@@ -60,12 +67,12 @@ function HeadRight(props) {
     } else {
         return (
             <ul className="head-login">
-                <li onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-                    <div className="profile">
+                <li>
+                    <div className="profile" onClick={handleProfileClik}>
                         <Avatar src={profile} className="img"></Avatar>
-                        <p>{user.auth.nickName}</p>
+                        <p>{user.auth.nickName}</p><ArrowDropDownIcon className={`${profileToggleClassCheck}`}/>
                     </div>
-                    <ul className={`head-login-sub ${isHoveringCheck}`}>
+                    <ul className={`head-login-sub ${profileToggleClassCheck}`}>
                         {user.auth.isAdmin && (
                             <li>
                                 <Link to="/admin">관리자</Link>
