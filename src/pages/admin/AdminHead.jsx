@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import adminStyle from "../../Css/admin.module.scss";
 import { Avatar } from "@chakra-ui/react";
+<<<<<<< HEAD
 import LogoutIcon from "@mui/icons-material/Logout";
 import MenuIcon from "@mui/icons-material/Menu";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
@@ -10,6 +11,16 @@ import { logout } from "../../_actions/user_actions";
 import { useCookies } from "react-cookie";
 
 function AdminHead() {
+=======
+import LogoutIcon from '@mui/icons-material/Logout';
+import MenuIcon from '@mui/icons-material/Menu';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { NavLink, Link } from "react-router-dom";
+
+
+function AdminHead(props) {
+
+>>>>>>> e9fcfd6aa4b53df50f72b84bd62a12f2e5a6df00
     const [nickNameClick, setNickNameClick] = useState(false);
     const [cookies, setCookie, removeCookie] = useCookies(["x_auth"]);
 
@@ -39,9 +50,13 @@ function AdminHead() {
         <div className={`${adminStyle.admin_head}`}>
             <div className={`${adminStyle.container}`}>
                 <div className={`${adminStyle.left}`}>
+<<<<<<< HEAD
                     <a href="#!" className={`${adminStyle.ham_btn}`}>
                         <MenuIcon />
                     </a>
+=======
+                    <Link to="" className={`${adminStyle.ham_btn}`}><MenuIcon/></Link>
+>>>>>>> e9fcfd6aa4b53df50f72b84bd62a12f2e5a6df00
                 </div>
                 <div className={`${adminStyle.right}`}>
                     <ul className={`${adminStyle.util}`}>
