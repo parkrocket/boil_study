@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { SERVER_URL } from "../Config";
 import { Link } from "react-router-dom";
 import {
@@ -11,39 +11,27 @@ import {
     Stack,
     StackDivider,
     Text,
-    Flex,
     Avatar,
 } from "@chakra-ui/react";
 import ChatIcon from "@mui/icons-material/Chat";
 import boardLatestStyle from "../../Css/boardLatest.module.scss";
 
-
 function BoardLatestList_dana(props) {
-
-    console.log(props.cont);
-    // console.log(props.cont.board_name);
-
     const [detail, setDetail] = useState([]);
 
-    let boardName = props.cont.board_name;
-    let id = props.cont.board_id;
+    const ob = { boardId: props.cont.board_id, count: 5 };
 
-    const ob = { boardId : id, count : 5 };
-
-
-    useEffect (() => {
-        axios.post(`${SERVER_URL}/api/board/latestList`, ob ).then((response) => {
-            if( response.data.LatestListSuccess === false ){
-                alert('게시글을 불러올 수 없습니다.');
+    useEffect(() => {
+        axios.post(`${SERVER_URL}/api/board/latestList`, ob).then((response) => {
+            if (response.data.LatestListSuccess === false) {
+                alert("게시글을 불러올 수 없습니다.");
             }
-            console.log(response.data.LatestList);
+
             setDetail(response.data.LatestList);
-        })
+        });
     }, []);
 
-    // console.log(detail);
     const boardContainer = detail.map((cont, index) => {
-
         let listDateTime = "";
         listDateTime = elapsedTime(cont.datetime);
 
@@ -53,8 +41,7 @@ function BoardLatestList_dana(props) {
                     <Box className={`${boardLatestStyle.profile}`}>
                         <Avatar
                             className={`${boardLatestStyle.img}`}
-                            src={cont.user_image}>
-                        </Avatar>
+                            src={cont.user_image}></Avatar>
                         <Text className={`${boardLatestStyle.nickname}`}>
                             <span>{cont.user_id}</span>
                         </Text>
@@ -104,23 +91,23 @@ function BoardLatestList_dana(props) {
         return "방금 전";
     }
 
-  return (
-    <React.Fragment>
-        <Box className={`${boardLatestStyle.wrapper}`}>
-            <Card className={`${boardLatestStyle.inner}`}>
-                <CardHeader className={`${boardLatestStyle.tit}`}>
-                    <Heading size="md">{boardName}</Heading>
-                </CardHeader>
+    return (
+        <React.Fragment>
+            <Box className={`${boardLatestStyle.wrapper}`}>
+                <Card className={`${boardLatestStyle.inner}`}>
+                    <CardHeader className={`${boardLatestStyle.tit}`}>
+                        <Heading size="md">{props.cont.board_name}</Heading>
+                    </CardHeader>
 
-                <CardBody className={`${boardLatestStyle.content}`}>
-                    <Stack divider={<StackDivider />} spacing="2">
-                        {boardContainer}
-                    </Stack>
-                </CardBody>
-            </Card>
-        </Box>
-    </React.Fragment>
-  )
+                    <CardBody className={`${boardLatestStyle.content}`}>
+                        <Stack divider={<StackDivider />} spacing="2">
+                            {boardContainer}
+                        </Stack>
+                    </CardBody>
+                </Card>
+            </Box>
+        </React.Fragment>
+    );
 }
 
-export default BoardLatestList_dana
+export default BoardLatestList_dana;

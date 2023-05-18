@@ -14,6 +14,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./../../App";
 
 function AdminLnb(props) {
+    console.log(props.path);
+
     const [gnbClick1, setGnbClick1] = useState(false);
     const [gnbClick2, setGnbClick2] = useState(false);
     const [gnbClick3, setGnbClick3] = useState(false);

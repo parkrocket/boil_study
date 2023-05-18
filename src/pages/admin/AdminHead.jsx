@@ -42,9 +42,9 @@ function AdminHead(props) {
         <div className={`${adminStyle.admin_head}`}>
             <div className={`${adminStyle.container}`}>
                 <div className={`${adminStyle.left}`}>
-                    <Link to="" onClick={handleHamClick} className={`${adminStyle.ham_btn}`}>
+                    <button onClick={handleHamClick} className={`${adminStyle.ham_btn}`}>
                         <MenuIcon />
-                    </Link>
+                    </button>
                 </div>
                 <div className={`${adminStyle.right}`}>
                     <ul className={`${adminStyle.util}`}>
