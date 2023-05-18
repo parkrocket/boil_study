@@ -11,7 +11,7 @@ function Admin() {
 
     return (
         <ChakraProvider>
-            <div className={`${adminStyle.admin} ${adminStyle.active}`}>
+            <div className={`${adminStyle.admin} ${hamClick ? adminStyle.active : ""}`}>
                 <div className={`${adminStyle.admin_lnb_outer}`}>
                     <AdminLnb hamClick={hamClick} setHamClick={setHamClick}></AdminLnb>
                 </div>
