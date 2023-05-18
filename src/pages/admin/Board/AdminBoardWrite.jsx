@@ -1,9 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import AdminLnb from "../AdminLnb";
-import AdminHead from "../AdminHead";
-import AdminFoot from "../AdminFoot";
-import adminStyle from "../../../Css/admin.module.scss";
-import { ChakraProvider, Select } from "@chakra-ui/react";
+import { Select } from "@chakra-ui/react";
 import axios from "axios";
 import { SERVER_URL } from "../../Config";
 import { useNavigate, useParams } from "react-router-dom";
@@ -92,38 +88,29 @@ function AdminBoardWrite() {
     console.log(fileUploadNumber);
 
     return (
-        <ChakraProvider>
-            <div className={`${adminStyle.admin}`}>
-                <AdminLnb></AdminLnb>
-                <div className={`${adminStyle.right}`}>
-                    <AdminHead></AdminHead>
-                    <div>
-                        <form onSubmit={onSubmitHandler}>
-                            테이블 ID
-                            <input
-                                type="text"
-                                defaultValue={tableId}
-                                onChange={tableIdChangeHandler}
-                                ref={ref}></input>
-                            테이블 이름
-                            <input
-                                type="text"
-                                defaultValue={tableName}
-                                onChange={tableNameChangeHandler}></input>
-                            업로드 파일 갯수
-                            <Select
-                                placeholder="업로드 파일 갯수"
-                                value={fileUploadNumber}
-                                onChange={selectChangeHandler}>
-                                {uploadCountOption}
-                            </Select>
-                            <button>전송</button>
-                        </form>
-                    </div>
-                    <AdminFoot></AdminFoot>
-                </div>
-            </div>
-        </ChakraProvider>
+        <div>
+            <form onSubmit={onSubmitHandler}>
+                테이블 ID
+                <input
+                    type="text"
+                    defaultValue={tableId}
+                    onChange={tableIdChangeHandler}
+                    ref={ref}></input>
+                테이블 이름
+                <input
+                    type="text"
+                    defaultValue={tableName}
+                    onChange={tableNameChangeHandler}></input>
+                업로드 파일 갯수
+                <Select
+                    placeholder="업로드 파일 갯수"
+                    value={fileUploadNumber}
+                    onChange={selectChangeHandler}>
+                    {uploadCountOption}
+                </Select>
+                <button>전송</button>
+            </form>
+        </div>
     );
 }
 
