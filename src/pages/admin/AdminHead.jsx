@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../_actions/user_actions";
 import { useCookies } from "react-cookie";
 
-function AdminHead() {
+function AdminHead(props) {
     const [nickNameClick, setNickNameClick] = useState(false);
     const [cookies, setCookie, removeCookie] = useCookies(["x_auth"]);
 
@@ -19,6 +19,10 @@ function AdminHead() {
 
     const handleNickNameClick = () => {
         setNickNameClick(!nickNameClick);
+    };
+
+    const handleHamClick = () => {
+        props.setHamClick(!props.hamClick);
     };
 
     const logOutHandler = (event) => {
@@ -38,7 +42,7 @@ function AdminHead() {
         <div className={`${adminStyle.admin_head}`}>
             <div className={`${adminStyle.container}`}>
                 <div className={`${adminStyle.left}`}>
-                    <Link to="" className={`${adminStyle.ham_btn}`}>
+                    <Link to="" onClick={handleHamClick} className={`${adminStyle.ham_btn}`}>
                         <MenuIcon />
                     </Link>
                 </div>

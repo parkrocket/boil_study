@@ -21,7 +21,7 @@ function AdminLnb(props) {
     const [gnbClick5, setGnbClick5] = useState(false);
     const [gnbClick6, setGnbClick6] = useState(false);
 
-    const onClick1 = () => {
+    const handleGnbClick1 = () => {
         setGnbClick1(!gnbClick1);
         setGnbClick2(gnbClick2 ? !gnbClick2 : gnbClick2);
         setGnbClick3(gnbClick3 ? !gnbClick3 : gnbClick3);
@@ -30,7 +30,7 @@ function AdminLnb(props) {
         setGnbClick6(gnbClick6 ? !gnbClick6 : gnbClick6);
     };
 
-    const onClick2 = () => {
+    const handleGnbClick2 = () => {
         setGnbClick1(gnbClick1 ? !gnbClick1 : gnbClick1);
         setGnbClick2(!gnbClick2);
         setGnbClick3(gnbClick3 ? !gnbClick3 : gnbClick3);
@@ -39,7 +39,7 @@ function AdminLnb(props) {
         setGnbClick6(gnbClick6 ? !gnbClick6 : gnbClick6);
     };
 
-    const onClick3 = () => {
+    const handleGnbClick3 = () => {
         setGnbClick1(gnbClick1 ? !gnbClick1 : gnbClick1);
         setGnbClick2(gnbClick2 ? !gnbClick2 : gnbClick2);
         setGnbClick3(!gnbClick3);
@@ -48,7 +48,7 @@ function AdminLnb(props) {
         setGnbClick6(gnbClick6 ? !gnbClick6 : gnbClick6);
     };
 
-    const onClick4 = () => {
+    const handleGnbClick4 = () => {
         setGnbClick1(gnbClick1 ? !gnbClick1 : gnbClick1);
         setGnbClick2(gnbClick2 ? !gnbClick2 : gnbClick2);
         setGnbClick3(gnbClick3 ? !gnbClick3 : gnbClick3);
@@ -57,7 +57,7 @@ function AdminLnb(props) {
         setGnbClick6(gnbClick6 ? !gnbClick6 : gnbClick6);
     };
 
-    const onClick5 = () => {
+    const handleGnbClick5 = () => {
         setGnbClick1(gnbClick1 ? !gnbClick1 : gnbClick1);
         setGnbClick2(gnbClick2 ? !gnbClick2 : gnbClick2);
         setGnbClick3(gnbClick3 ? !gnbClick3 : gnbClick3);
@@ -66,7 +66,7 @@ function AdminLnb(props) {
         setGnbClick6(gnbClick6 ? !gnbClick6 : gnbClick6);
     };
 
-    const onClick6 = () => {
+    const handleGnbClick6 = () => {
         setGnbClick1(gnbClick1 ? !gnbClick1 : gnbClick1);
         setGnbClick2(gnbClick2 ? !gnbClick2 : gnbClick2);
         setGnbClick3(gnbClick3 ? !gnbClick3 : gnbClick3);
@@ -86,7 +86,7 @@ function AdminLnb(props) {
         <div className={`${adminStyle.admin_lnb}`}>
             <div className={`${adminStyle.container}`}>
                 <h1 className={`${adminStyle.tit}`}>
-                    <Link href="/admin">
+                    <Link to="/admin">
                         <span className={`${adminStyle.pc}`}>admin home</span>
                         <span className={`${adminStyle.mo}`}>admin</span>
                         <HomeIcon />
@@ -94,13 +94,13 @@ function AdminLnb(props) {
                 </h1>
                 <nav>
                     <ul className={`${adminStyle.gnb}`}>
-                        <li onClick={onClick1} className={`${gnbToggleClassCheck1}`}>
+                        <li onClick={handleGnbClick1} className={`${gnbToggleClassCheck1}`}>
                             <NavLink to="">
                                 <EditNoteIcon />
                                 <span>캠페인 등록</span>
                             </NavLink>
                         </li>
-                        <li onClick={onClick2} className={`${gnbToggleClassCheck2}`}>
+                        <li onClick={handleGnbClick2} className={`${gnbToggleClassCheck2}`}>
                             <NavLink to="">
                                 <FormatListBulletedIcon />
                                 <span>게시판 관리</span>
@@ -123,25 +123,25 @@ function AdminLnb(props) {
                                 </li>
                             </ul>
                         </li>
-                        <li onClick={onClick3} className={`${gnbToggleClassCheck3}`}>
+                        <li onClick={handleGnbClick3} className={`${gnbToggleClassCheck3}`}>
                             <NavLink to="">
                                 <ContentCopyIcon />
                                 <span>등록된 리뷰</span>
                             </NavLink>
                         </li>
-                        <li onClick={onClick4} className={`${gnbToggleClassCheck4}`}>
+                        <li onClick={handleGnbClick4} className={`${gnbToggleClassCheck4}`}>
                             <NavLink to="">
                                 <BarChartIcon />
                                 <span>브랜드 비교분석</span>
                             </NavLink>
                         </li>
-                        <li onClick={onClick5} className={`${gnbToggleClassCheck5}`}>
+                        <li onClick={handleGnbClick5} className={`${gnbToggleClassCheck5}`}>
                             <NavLink to="">
                                 <ControlPointDuplicateIcon />
                                 <span>포인트 충전</span>
                             </NavLink>
                         </li>
-                        <li onClick={onClick6} className={`${gnbToggleClassCheck6}`}>
+                        <li onClick={handleGnbClick6} className={`${gnbToggleClassCheck6}`}>
                             <NavLink to="">
                                 <MoreHorizIcon />
                                 <span>고객센터</span>
