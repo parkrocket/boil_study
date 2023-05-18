@@ -24,6 +24,7 @@ function BoardLatest() {
 
     useEffect(() => {
         axios.post(`${SERVER_URL}/api/board/allLatest`, { count: 5 }).then((response) => {
+            console.log(response);
             setLatestList(response.data.bd);
         });
     }, []);

@@ -10,10 +10,14 @@ function Head() {
     const [isScroll, setIsScroll] = useState(false);
 
     const handleScroll = () => {
-        if (window.scrollY > 50) {
-            setIsScroll(true);
-        } else {
-            setIsScroll(false);
+        console.log(document.getElementById("root").offsetHeight);
+
+        if (document.getElementById("root").offsetHeight > 1200) {
+            if (window.scrollY > 50) {
+                setIsScroll(true);
+            } else {
+                setIsScroll(false);
+            }
         }
     };
     let scrollCheck = isScroll ? "active" : "";

@@ -10,12 +10,12 @@ import moment from "moment";
 import { useSelector } from "react-redux";
 import Confirm from "../../components/Confirm";
 import { useDisclosure } from "@chakra-ui/react";
+import { ViewIcon, TimeIcon } from "@chakra-ui/icons";
 
 function BoardView() {
     const params = useParams();
     const [BoardView, setBoardView] = useState({});
     const [CommentList, setCommentList] = useState([]);
-    const [confirm, setConfirm] = useState(false);
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [fileList, setFileList] = useState([]);
 
@@ -40,7 +40,7 @@ function BoardView() {
                 alert("글 불러오기가 실패했습니다.");
                 navigate("/board");
             }
-
+            console.log("글가져오기");
             setBoardView(response.data.view);
         });
 
@@ -143,7 +143,15 @@ function BoardView() {
                 <h2 className={`${boardViewStyle.tit} fontf`}>자유게시판</h2>
                 <div className={`${boardViewStyle.wrapper}`}>
                     <h2 className={`${boardViewStyle.cont_tit}`}>
-                        {BoardView.subject} <span>{viewDateTime}</span>
+                        {BoardView.subject}{" "}
+                        <span>
+                            <ViewIcon></ViewIcon>
+                            {BoardView.hit}
+                        </span>
+                        <span>
+                            <TimeIcon></TimeIcon>
+                            {viewDateTime}
+                        </span>
                     </h2>
 
                     <div
