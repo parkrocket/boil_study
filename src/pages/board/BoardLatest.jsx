@@ -79,7 +79,7 @@ function BoardLatest() {
                         </CardHeader>
 
                         <CardBody className={`${boardLatestStyle.content}`}>
-                            <Stack divider={<StackDivider />} spacing="4">
+                            <Stack divider={<StackDivider />} spacing="2">
                                 {boardListWrap}
                             </Stack>
                         </CardBody>
