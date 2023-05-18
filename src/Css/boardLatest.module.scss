@@ -1,7 +1,7 @@
 .board_latest_container {
     width: 100%;
     margin: 3rem 0;
-    column-gap: .7rem;
+    gap: .7rem;
     justify-content: space-between;
     flex-wrap: wrap;
 
@@ -9,6 +9,7 @@
         width: calc((100% - 2rem)/3);
 
         .inner {
+            box-shadow: 2px 2px 5px rgba(0,0,0,.3);
 
             > .tit {
 
