@@ -3,6 +3,10 @@
     background: #065C38;
     height: 100vh;
 
+    .admin_lnb_outer {
+        position: relative;
+        z-index: 2;
+    }
     .admin_lnb {
         position: fixed;
         top: 0;
@@ -11,6 +15,7 @@
         height: 100%;
         color: #fdfdfd;
     }
+
 
     >.right {
         margin: 8px 8px 8px 250px;
@@ -67,9 +72,24 @@
                         .gnb_sub {
                             position: absolute;
                             left: 100%;
-                            z-index: 10000000000000;
+                            z-index: 2;
                             top: 0;
                             width: 200px;
+                            background: #fff;
+                            padding: .5rem 0;
+                            box-shadow: 2px 2px 5px rgba(0,0,0,.4);
+
+                            li {
+                                a {
+                                    background: #fff;
+                                    border-radius: 0;
+                                    transition: .3s;
+
+                                    &:hover {
+                                        background: #ececec;
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -192,7 +212,6 @@
 
                             &.active {
                                 background: #ececec;
-                                border-radius: 0 20px 20px 0;
                             }
 
                             &:hover {

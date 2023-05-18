@@ -4,14 +4,14 @@ import "../App.css";
 import Head from "../components/Head";
 import Footer from "../components/Footer";
 
-import BoardLatest from "./board/BoardLatest";
+import BoardLatestDana from "./board/BoardLatest";
 
 function Main() {
     return (
         <div>
             <Head></Head>
             <div className="container_wrap">
-                <BoardLatest></BoardLatest>
+                <BoardLatestDana></BoardLatestDana>
             </div>
             <Footer></Footer>
         </div>
