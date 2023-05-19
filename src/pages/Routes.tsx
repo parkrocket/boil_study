@@ -18,6 +18,7 @@ import AdminBoard from './admin/Board/AdminBoard';
 import AdminBoardWrite from './admin/Board/AdminBoardWrite';
 import PasswordCheck from './PasswordCheck';
 import AdminMain from './admin/AdminMain';
+import AdminBoardTest from './admin/Board/AdminBoardTest';
 
 
 export const Routes = () => {
@@ -43,8 +44,9 @@ export const Routes = () => {
 
 
         <Route path="/admin" element={Auth(Admin,true, true)}>
-          <Route path="" element={<AdminMain />}></Route>
+          <Route path="" element={<AdminMain/>}></Route>
           <Route path="board" element={<AdminBoard />}></Route>
+          <Route path="board/test" element={<AdminBoardTest />}></Route>
           <Route path="board/write" element={<AdminBoardWrite />}></Route>
         </Route>
         {/**

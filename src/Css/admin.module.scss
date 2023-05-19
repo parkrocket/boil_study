@@ -82,6 +82,13 @@
 
                     .gnb_sub {
                         display: block;
+
+                        a {
+                            .active{
+                                background: #ececec;
+
+                            }
+                        }
                     }
                 }
                 
@@ -96,7 +103,9 @@
                     &:hover {
                         text-decoration: underline;
                     }
-                    .cate
+                    .cate_ico {
+                        font-size: 1.1rem;
+                    }
 
                     .arrow_ico {
                         position: absolute;
