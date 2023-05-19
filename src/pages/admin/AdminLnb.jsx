@@ -62,8 +62,11 @@ function AdminLnb(props) {
                     <Link to="/admin">
                         <span className={`${adminStyle.pc}`}>admin home</span>
                         <span className={`${adminStyle.mo}`}>admin</span>
+                    </Link>
+                    <Link to="/" className={`${adminStyle.home_btn}`}>
                         <HomeIcon />
                     </Link>
+
                 </h1>
                 <nav>
                     <ul className={`${adminStyle.gnb}`}>

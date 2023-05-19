@@ -23,6 +23,37 @@
         background: #fafafa;
         border-radius: 30px;
         padding: 0 1rem;
+
+        /*----- admin main component common start -----*/
+        .admin_outer {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,.1);
+            margin: 8px 0;
+        
+            > .container {
+                padding: 0.5rem;
+                max-width: 1200px;
+                width: 96%;
+                min-height: calc(100vh - 60px - 50px - 16px);
+                margin: 0 auto;
+                padding: 2rem 0;
+
+                .tit_box {
+                    margin-bottom: 2rem;
+                    
+                    .tit {
+                        display: flex;
+                        align-items: center;
+                        font-size: 1.1rem;
+                        line-height: 1;
+                        font-weight: 600;
+                        column-gap: .3rem;
+                    }
+                }
+            }
+        }
+        /*----- admin main component common end -----*/
     }
 
     &.active {
@@ -46,20 +77,15 @@
             margin: 4rem 0 2rem;
             padding: 0 1rem;
             color: #fdfdfd;
+            display: flex;
+            justify-content: space-between;
 
             a {
-                display: block;
+                display: inline-block;
                 font-size: 1.6rem;
                 text-transform: uppercase;
                 font-family: impact;
                 position: relative;
-
-                svg {
-                    position: absolute;
-                    top: 50%;
-                    right: 0;
-                    transform: translateY(-50%);
-                }
 
                 .mo {
                     display: none;
@@ -75,7 +101,7 @@
                 &.active {
 
                     > a {
-                        background: #fdfdfd;
+                        background: #fafafa;
                         color: #0B0B09;
                         font-weight: 600;
                     }
@@ -215,6 +241,7 @@
                 width: 1rem;
                 height: 1rem;
                 position: relative;
+                margin-left: 0.5rem;
 
                 svg {
                     font-size: 1.5rem;
@@ -269,7 +296,7 @@
                             height: 2rem;
                         }
 
-                         p {
+                        p {
                             margin-left: .5rem;
                             white-space: nowrap;
                             overflow: hidden;
@@ -522,19 +549,21 @@
 
         .admin_lnb {
                 
-            width: 70px;
+            width: 60px;
     
             .container {
     
                 .tit {
                     padding: 0;
-    
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    flex-direction: column-reverse;
+                    
                     a {
                         text-align: center;
                         font-size: 1rem;
     
-                        .pc,
-                        svg {
+                        .pc {
                             display: none;
                         }
     
@@ -563,11 +592,12 @@
                         }
     
                         .gnb_sub {
+                            display: none;
                             position: absolute;
                             left: 100%;
                             z-index: 2;
                             top: 0;
-                            width: 200px;
+                            width: 170px;
                             background: #fff;
                             padding: .5rem 0;
                             box-shadow: 2px 2px 5px rgba(0,0,0,.4);
@@ -578,11 +608,22 @@
                                     background: #fff;
                                     border-radius: 0;
                                     transition: .3s;
+
+                                    &.active {
+                                        background: #ececec;
+                                    }
     
                                     &:hover {
                                         background: #ececec;
                                     }
                                 }
+                            }
+                        }
+
+                        &:hover {
+
+                            .gnb_sub {
+                                display: block;
                             }
                         }
                     }
@@ -591,12 +632,26 @@
                 .notify_box {
 
                     p {
-    
+                        padding: .4rem .2rem;
+                        transition: .3s;
                         a {
                             width: 100%;
                             white-space: nowrap;
                             overflow: hidden;
                             text-overflow: ellipsis;
+
+                            svg {
+                                font-size: 0.8rem;
+                            }
+
+                            span {
+                                font-size: 0.7rem;
+                            }
+                        }
+
+                        &:hover {
+                            position: relative;
+                            width: 200px;
                         }
                     }
                 }
@@ -604,8 +659,8 @@
         }
     
         > .right {
-            width: calc(100% - 70px);
-            margin-left: 70px;
+            width: calc(100% - 60px);
+            margin-left: 60px;
         }
     }
 }
@@ -639,11 +694,47 @@
 
         .admin_lnb {
             width: 50px;
+
+            .container {
+
+                .gnb {
+                    > li {
+                        .gnb_sub {
+                            width: 150px;
+                        }
+                    }
+                }
+            }
         }
 
         > .right {
             width: calc(100% - 50px);
             margin-left: 50px;
+        }
+    }
+
+    .admin_head {
+
+        .container {
+
+            .right {
+
+                .util {
+
+                    > li {
+
+                        .profile {
+
+                            p {
+
+                                span {
+                                    font-size: 0.9rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -670,6 +761,52 @@
 
                     >div {
                         width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width : 400px) {
+    .admin_head {
+
+        .container {
+
+            .right {
+
+                .util {
+                    flex-wrap: wrap;
+                    justify-content: flex-end;
+                    row-gap: .2rem;
+
+                    > li {
+
+                        .util_sub {
+                            column-gap: .3rem;
+
+                            > li {
+
+                                a {
+                                    padding: 0.3rem;
+                                }
+                            }
+                        }
+
+                        .profile {
+
+                            .img {
+                                width: 1.8rem;
+                                height: 1.8rem;
+                            }
+
+                            p {
+                                margin-left: 0.3rem;
+
+                                span {
+                                }
+                            }
+                        }
                     }
                 }
             }
