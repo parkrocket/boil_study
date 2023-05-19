@@ -10,29 +10,53 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { NavLink, Link } from "react-router-dom";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./../../App";
 
 function AdminLnb(props) {
-    // console.log(props.path);
-    const subPathName = useLocation().pathname;
-    console.log(subPathName);
+    //console.log(props.path);
+    const adminMenu = useSelector((state) => state);
+    
+    
 
     useEffect(() => {
-        const ppp = document.getElementsByClassName("menu1");
-        const ppp2 = document.getElementsByClassName("menu2");
 
-        Array.prototype.forEach.call(ppp, (element) => {
-            const href = element.href.replace(window.location.origin, "");
+        if(adminMenu.adminMenu.adminMenu !== undefined){
+            
+            console.log(adminMenu.adminMenu.adminMenu);
+        
+            if(adminMenu.adminMenu.adminMenu.menu !== 0){
 
-            // console.log(props.path, href);
-            if (props.path === href) {
-                //element.className = `${adminStyle.active}`;
-                element.parentElement.className = `${adminStyle.active}`;
-            } else {
-                element.parentElement.classList.remove(`${adminStyle.active}`);
+                const menu = adminMenu.adminMenu.adminMenu.menu;
+                const subMenu = adminMenu.adminMenu.adminMenu.subMenu;
+
+                console.log(menu, subMenu);
+
+
+                const ppp = document.getElementsByClassName("menu1");
+
+                Array.prototype.forEach.call(ppp, (element, index) => {
+                    //console.log();
+
+                    //console.log(index + 1,menu);
+
+                    if((index + 1) ===  menu){
+                        //console.log("asdasfasdff")
+                    }
+
+                    const href = element.href.replace(window.location.origin, "");
+
+                    //console.log(props.path, href);
+                    if (props.path === href) {
+                        //element.className = `${adminStyle.active}`;
+                        element.parentElement.className = `${adminStyle.active}`;
+                    } else {
+                        element.parentElement.classList.remove(`${adminStyle.active}`);
+                    }
+                });
             }
-        });
+        }
         
     }, [props.path]);
 

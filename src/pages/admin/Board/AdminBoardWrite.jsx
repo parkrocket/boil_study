@@ -3,6 +3,8 @@ import { Select } from "@chakra-ui/react";
 import axios from "axios";
 import { SERVER_URL } from "../../Config";
 import { useNavigate, useParams } from "react-router-dom";
+import adminBoardStyle from "../../../Css/adminBoard.module.scss";
+
 
 function AdminBoardWrite() {
     const [tableId, setTableId] = useState("");
