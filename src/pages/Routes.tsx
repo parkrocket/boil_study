@@ -7,6 +7,7 @@ import Register from './user/Register';
 import Test from './Test';
 import DbLook from './DbLook';
 import Auth from '../hoc/Auth';
+import AdminHoc from '../hoc/AdminHoc';
 import NotFound from '../pages/NotFound';
 import BoardList from './board/BoardList';
 import BoardWrite from './board/BoardWrite';
@@ -44,8 +45,8 @@ export const Routes = () => {
 
         <Route path="/admin" element={Auth(Admin,true, true)}>
           <Route path="" element={<AdminMain/>}></Route>
-          <Route path="board" element={<AdminBoard />}></Route>
-          <Route path="board/write" element={<AdminBoardWrite />}></Route>
+          <Route path="board" element={AdminHoc(AdminBoard,2,1)}></Route>
+          <Route path="board/write" element={AdminHoc(AdminBoardWrite,2,1)}></Route>
         </Route>
         {/**
         <Route path="/admin/board" element={Auth(AdminBoard,true, true)} />

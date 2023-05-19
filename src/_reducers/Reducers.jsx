@@ -1,5 +1,12 @@
 import React from "react";
-import { LOGIN_USER, REGISTER_USER, AUTH_USER, LOGOUT_USER, UPDATE_USER } from "../_actions/types";
+import {
+    LOGIN_USER,
+    REGISTER_USER,
+    AUTH_USER,
+    LOGOUT_USER,
+    UPDATE_USER,
+    ADMIN_MENU,
+} from "../_actions/types";
 
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import promiseMiddleware from "redux-promise";
@@ -7,6 +14,7 @@ import ReduxThunk from "redux-thunk";
 
 const rootReducer = combineReducers({
     user,
+    adminMenu,
 });
 
 const Reducers = configureStore({
@@ -26,6 +34,15 @@ function user(state = {}, action) {
             return { ...state, logout: action.payload };
         case UPDATE_USER:
             return { ...state, update: action.payload };
+        default:
+            return state;
+    }
+}
+
+function adminMenu(state = {}, action) {
+    switch (action.type) {
+        case ADMIN_MENU:
+            return { ...state, adminMenu: action.payload };
         default:
             return state;
     }
