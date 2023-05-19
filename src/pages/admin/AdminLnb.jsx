@@ -98,13 +98,13 @@ function AdminLnb(props) {
                     <ul className={`${adminStyle.gnb}`}>
                         <li onClick={handleGnbClick1} className={`${gnbToggleClassCheck1}`}>
                             <NavLink to="">
-                                <EditNoteIcon />
+                                <EditNoteIcon className={`${adminStyle.cate_ico}`}/>
                                 <span>캠페인 등록</span>
                             </NavLink>
                         </li>
                         <li onClick={handleGnbClick2} className={`${gnbToggleClassCheck2}`}>
                             <NavLink to="">
-                                <FormatListBulletedIcon />
+                                <FormatListBulletedIcon className={`${adminStyle.cate_ico}`}/>
                                 <span>게시판 관리</span>
                                 <ExpandMoreIcon className={`${adminStyle.arrow_ico}`} />
                             </NavLink>
@@ -127,25 +127,25 @@ function AdminLnb(props) {
                         </li>
                         <li onClick={handleGnbClick3} className={`${gnbToggleClassCheck3}`}>
                             <NavLink to="">
-                                <ContentCopyIcon />
+                                <ContentCopyIcon className={`${adminStyle.cate_ico}`}/>
                                 <span>등록된 리뷰</span>
                             </NavLink>
                         </li>
                         <li onClick={handleGnbClick4} className={`${gnbToggleClassCheck4}`}>
                             <NavLink to="">
-                                <BarChartIcon />
+                                <BarChartIcon className={`${adminStyle.cate_ico}`}/>
                                 <span>브랜드 비교분석</span>
                             </NavLink>
                         </li>
                         <li onClick={handleGnbClick5} className={`${gnbToggleClassCheck5}`}>
                             <NavLink to="">
-                                <ControlPointDuplicateIcon />
+                                <ControlPointDuplicateIcon className={`${adminStyle.cate_ico}`}/>
                                 <span>포인트 충전</span>
                             </NavLink>
                         </li>
                         <li onClick={handleGnbClick6} className={`${gnbToggleClassCheck6}`}>
                             <NavLink to="">
-                                <MoreHorizIcon />
+                                <MoreHorizIcon className={`${adminStyle.cate_ico}`}/>
                                 <span>고객센터</span>
                                 <ExpandMoreIcon className={`${adminStyle.arrow_ico}`} />
                             </NavLink>

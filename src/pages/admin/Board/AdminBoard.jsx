@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { SERVER_URL } from "../../Config";
 import { useParams, Link } from "react-router-dom";
+import adminBoardStyle from "../../../Css/adminBoard.module.scss";
 
 function AdminBoard() {
     const [boardList, setBoardList] = useState([]);
@@ -39,12 +40,14 @@ function AdminBoard() {
     });
 
     return (
-        <React.Fragment>
-            <div>
-                <Link to="/admin/board/write">게시판 만들기</Link>
+        <div className={`${adminBoardStyle.admin_board}`}>
+            <div className={`${adminBoardStyle.container}`}>
+                <div>
+                    <Link to="/admin/board/write">게시판 만들기</Link>
+                </div>
+                <div>{adminboardList}</div>
             </div>
-            <div>{adminboardList}</div>
-        </React.Fragment>
+        </div>
     );
 }
 
