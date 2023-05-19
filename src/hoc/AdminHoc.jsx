@@ -4,12 +4,17 @@ import { useDispatch } from "react-redux";
 
 import { adminMenu } from "../_actions/adminMenu_action";
 
-function AdminHoc(ChildrenComponent, menu, subMenu = 1) {
-    function AuthenticationCheck() {
+function AdminHoc(ChildrenComponent1, menu, subMenu = 1) {
+    function AuthenticationCheck1() {
         const dispatch = useDispatch();
 
         const data = { menu, subMenu };
+<<<<<<< HEAD
+        
+        
+=======
 
+>>>>>>> 6dd86b43f18750977de69eb29be003da46fdb3d4
         useEffect(() => {
             dispatch(adminMenu(data));
         }, [dispatch]);
@@ -20,14 +25,14 @@ function AdminHoc(ChildrenComponent, menu, subMenu = 1) {
 
         return (
             <div>
-                <ChildrenComponent></ChildrenComponent>
+                <ChildrenComponent1 data={data}></ChildrenComponent1>
             </div>
         );
     }
 
     return (
         <div>
-            <AuthenticationCheck></AuthenticationCheck>
+            <AuthenticationCheck1></AuthenticationCheck1>
         </div>
     );
 }

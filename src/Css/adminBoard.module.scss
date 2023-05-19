@@ -1,0 +1,103 @@
+.admin_board {
+
+    .container {
+        background: #fff;
+        padding: 0.5rem;
+        max-width: 1200px;
+        width: 96%;
+        margin: 0 auto;
+        padding: 4rem 0;
+
+        .tit_box {
+            margin-bottom: 2rem;
+            
+            .tit {
+                display: block;
+                font-size: 1.4rem;
+                line-height: 1;
+                text-align: center;
+            }
+        }
+
+        .board_list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            row-gap: 1rem;
+
+            li {
+                width: 49%;
+                list-style: none;
+                background: #fff;
+                border-radius: 14px;
+                box-shadow: 2px 2px 5px rgba(0,0,0,.1);
+                padding: 1rem;
+                position: relative;
+
+                .board {
+                    display: flex;
+                    padding-left: 3.5rem;
+                    gap: 1rem;
+
+                    .board_ico {
+                        position: absolute;
+                        top: 50%;
+                        left: 1.5rem;
+                        transform: translateY(-50%);
+
+                        svg {
+                            font-size: 2rem;
+                            color: #202a25;
+                            // color: #5d4c91;
+                        }
+                        
+                        span {
+                            color: #5d4c91;
+                            font-weight: 700;
+                            position: absolute;
+                            top: 48%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                        }
+                    }
+
+                    p {
+                        position: relative;
+
+                        &:not(:last-child) {
+                            
+                            &::before {
+                                position: absolute;
+                                top: 50%;
+                                right: -.5rem;
+                                transform: translateY(-50%);
+                                content: '';
+                                width: 2px;
+                                height: 2px;
+                                background: #666;
+                            }
+                        }
+                    }
+                }
+
+                .retouch_btn {
+                    position: absolute;
+                    top: 1rem;
+                    right: 1.5rem;
+                    color: #aaa;
+                    font-size: 0.8rem;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width : 1000px) {
+    
+    .admin_board {
+
+        .container {
+
+        }
+    }
+}

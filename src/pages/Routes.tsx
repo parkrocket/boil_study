@@ -19,7 +19,6 @@ import AdminBoard from './admin/Board/AdminBoard';
 import AdminBoardWrite from './admin/Board/AdminBoardWrite';
 import PasswordCheck from './PasswordCheck';
 import AdminMain from './admin/AdminMain';
-import AdminBoardTest from './admin/Board/AdminBoardTest';
 import UserList from './admin/User/UserList';
 import ConfigList from './admin/Config/ConfigList';
 
