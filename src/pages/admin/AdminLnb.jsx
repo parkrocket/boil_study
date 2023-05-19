@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import adminStyle from "../../Css/admin.module.scss";
 import HomeIcon from "@mui/icons-material/Home";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
@@ -16,6 +16,21 @@ import Home from "./../../App";
 function AdminLnb(props) {
     console.log(props.path);
 
+    useEffect(() => {
+        const ppp = document.getElementsByClassName("menu1");
+
+        Array.prototype.forEach.call(ppp, (element) => {
+            const href = element.href.replace("http://localhost:3000", "");
+
+            console.log(props.path, href);
+            if (props.path === href) {
+                //element.className = `${adminStyle.active}`;
+                element.parentElement.className = `${adminStyle.active}`;
+            }
+        });
+    }, [props.path]);
+
+    /*
     const [gnbClick1, setGnbClick1] = useState(false);
     const [gnbClick2, setGnbClick2] = useState(false);
     const [gnbClick3, setGnbClick3] = useState(false);
@@ -83,7 +98,7 @@ function AdminLnb(props) {
     let gnbToggleClassCheck4 = gnbClick4 ? `${adminStyle.active}` : "";
     let gnbToggleClassCheck5 = gnbClick5 ? `${adminStyle.active}` : "";
     let gnbToggleClassCheck6 = gnbClick6 ? `${adminStyle.active}` : "";
-
+    */
     return (
         <div className={`${adminStyle.admin_lnb}`}>
             <div className={`${adminStyle.container}`}>
@@ -96,14 +111,14 @@ function AdminLnb(props) {
                 </h1>
                 <nav>
                     <ul className={`${adminStyle.gnb}`}>
-                        <li onClick={handleGnbClick1} className={`${gnbToggleClassCheck1}`}>
-                            <NavLink to="">
+                        <li className={``}>
+                            <NavLink to="/admin" className="menu1">
                                 <EditNoteIcon />
                                 <span>캠페인 등록</span>
                             </NavLink>
                         </li>
-                        <li onClick={handleGnbClick2} className={`${gnbToggleClassCheck2}`}>
-                            <NavLink to="">
+                        <li className={``}>
+                            <NavLink to="/admin/board" className="menu1">
                                 <FormatListBulletedIcon />
                                 <span>게시판 관리</span>
                                 <ExpandMoreIcon className={`${adminStyle.arrow_ico}`} />
@@ -115,7 +130,7 @@ function AdminLnb(props) {
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="">선정 캠페인</NavLink>
+                                    <NavLink to="/admin/pick">선정 캠페인</NavLink>
                                 </li>
                                 <li>
                                     <NavLink to="">모집 캠페인</NavLink>
@@ -125,26 +140,26 @@ function AdminLnb(props) {
                                 </li>
                             </ul>
                         </li>
-                        <li onClick={handleGnbClick3} className={`${gnbToggleClassCheck3}`}>
-                            <NavLink to="">
+                        <li className={``}>
+                            <NavLink to="/admin" className="menu1">
                                 <ContentCopyIcon />
                                 <span>등록된 리뷰</span>
                             </NavLink>
                         </li>
-                        <li onClick={handleGnbClick4} className={`${gnbToggleClassCheck4}`}>
-                            <NavLink to="">
+                        <li className={``}>
+                            <NavLink to="/admin" className="menu1">
                                 <BarChartIcon />
                                 <span>브랜드 비교분석</span>
                             </NavLink>
                         </li>
-                        <li onClick={handleGnbClick5} className={`${gnbToggleClassCheck5}`}>
-                            <NavLink to="">
+                        <li className={``}>
+                            <NavLink to="/admin" className="menu1">
                                 <ControlPointDuplicateIcon />
                                 <span>포인트 충전</span>
                             </NavLink>
                         </li>
-                        <li onClick={handleGnbClick6} className={`${gnbToggleClassCheck6}`}>
-                            <NavLink to="">
+                        <li className={``}>
+                            <NavLink to="/admin" className="menu1">
                                 <MoreHorizIcon />
                                 <span>고객센터</span>
                                 <ExpandMoreIcon className={`${adminStyle.arrow_ico}`} />

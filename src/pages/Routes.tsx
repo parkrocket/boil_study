@@ -43,7 +43,7 @@ export const Routes = () => {
 
 
         <Route path="/admin" element={Auth(Admin,true, true)}>
-          <Route path="" element={<AdminMain />}></Route>
+          <Route path="" element={<AdminMain/>}></Route>
           <Route path="board" element={<AdminBoard />}></Route>
           <Route path="board/write" element={<AdminBoardWrite />}></Route>
         </Route>
