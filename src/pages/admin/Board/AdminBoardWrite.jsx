@@ -3,7 +3,9 @@ import { Select } from "@chakra-ui/react";
 import axios from "axios";
 import { SERVER_URL } from "../../Config";
 import { useNavigate, useParams } from "react-router-dom";
-import adminBoardStyle from "../../../Css/adminBoard.module.scss";
+import ContentPasteIcon from '@mui/icons-material/ContentPaste';
+import adminBoardWriteStyle from "../../../Css/adminBoardWrite.module.scss";
+import adminStyle from "../../../Css/admin.module.scss";
 
 
 function AdminBoardWrite() {
@@ -90,28 +92,41 @@ function AdminBoardWrite() {
     console.log(fileUploadNumber);
 
     return (
-        <div>
-            <form onSubmit={onSubmitHandler}>
-                테이블 ID
-                <input
-                    type="text"
-                    defaultValue={tableId}
-                    onChange={tableIdChangeHandler}
-                    ref={ref}></input>
-                테이블 이름
-                <input
-                    type="text"
-                    defaultValue={tableName}
-                    onChange={tableNameChangeHandler}></input>
-                업로드 파일 갯수
-                <Select
-                    placeholder="업로드 파일 갯수"
-                    value={fileUploadNumber}
-                    onChange={selectChangeHandler}>
-                    {uploadCountOption}
-                </Select>
-                <button>전송</button>
-            </form>
+        <div className={`${adminBoardWriteStyle.admin_board_write} ${adminStyle.admin_outer}`}>
+            <div className={`${adminStyle.container}`}>
+                <div className={`${adminStyle.tit_box}`}>
+                    <h2 className={`${adminStyle.tit}`}><ContentPasteIcon/>게시판 등록</h2>
+                </div>
+                <div className={`${adminBoardWriteStyle.form_box}`}>
+                    <form onSubmit={onSubmitHandler}>
+                        <div>
+                            <label>테이블 ID</label>
+                            <input
+                                type="text"
+                                defaultValue={tableId}
+                                onChange={tableIdChangeHandler}
+                                ref={ref}></input>
+                        </div>
+                        <div>
+                            <label>테이블 이름</label>
+                            <input
+                                type="text"
+                                defaultValue={tableName}
+                                onChange={tableNameChangeHandler}></input>
+                        </div>
+                        <div>
+                            <label>업로드 파일 갯수</label>
+                            <Select
+                                placeholder="업로드 파일 갯수"
+                                value={fileUploadNumber}
+                                onChange={selectChangeHandler}>
+                                {uploadCountOption}
+                            </Select>
+                        </div>
+                        <button className={`${adminBoardWriteStyle.submit_btn}`}>전송</button>
+                    </form>
+                </div>
+            </div>
         </div>
     );
 }

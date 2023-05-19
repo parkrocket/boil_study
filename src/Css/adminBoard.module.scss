@@ -1,103 +1,166 @@
 .admin_board {
 
     .container {
-        background: #fff;
-        padding: 0.5rem;
-        max-width: 1200px;
-        width: 96%;
-        margin: 0 auto;
-        padding: 4rem 0;
-
-        .tit_box {
-            margin-bottom: 2rem;
-            
-            .tit {
-                display: block;
-                font-size: 1.4rem;
-                line-height: 1;
-                text-align: center;
-            }
-        }
 
         .board_list {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
-            row-gap: 1rem;
+            padding-top: 1rem;
 
-            li {
-                width: 49%;
+            .board_add_btn {
+                position: absolute;
+                bottom: 100%;
+                right: 0;
+                display: flex;
+                align-items: center;
+                gap: .2rem;
+                color: #333;
+
+                svg {
+                    font-size: 1rem;
+                }
+            }
+
+            .list_head {
+                display: flex;
+                align-items: center;
+                background: #fff !important;
+                border-bottom: 2px solid #bbb !important;
+                
+                p {
+                    font-size: .9rem !important;
+                    font-weight: 600;
+                    line-height: 1.1;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    .mo_br {
+                        display: none;
+                    }
+                }
+            }
+            
+            li {                
+                width: 100%;
                 list-style: none;
-                background: #fff;
-                border-radius: 14px;
-                box-shadow: 2px 2px 5px rgba(0,0,0,.1);
-                padding: 1rem;
+                padding: .8rem 0;
                 position: relative;
+                background: #fff;
+                display: flex;
+                justify-content: space-between;
+
+                &:not(:last-child) {
+                    border-bottom: 1px solid #ddd;
+                }
+
+                &:nth-child(even) {
+                    background: #F0F1F9;
+                }
+                
+                &:hover {
+                    background: #d3d6ee;
+                }
 
                 .board {
-                    display: flex;
-                    padding-left: 3.5rem;
-                    gap: 1rem;
-
-                    .board_ico {
-                        position: absolute;
-                        top: 50%;
-                        left: 1.5rem;
-                        transform: translateY(-50%);
-
-                        svg {
-                            font-size: 2rem;
-                            color: #202a25;
-                            // color: #5d4c91;
-                        }
-                        
-                        span {
-                            color: #5d4c91;
-                            font-weight: 700;
-                            position: absolute;
-                            top: 48%;
-                            left: 50%;
-                            transform: translate(-50%, -50%);
-                        }
-                    }
+                    width: 92%;
+                    display: grid;
+                    grid-template-columns: .6fr 3fr 4fr 2.4fr;
 
                     p {
-                        position: relative;
+                        font-size: 0.85rem;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
 
-                        &:not(:last-child) {
-                            
-                            &::before {
-                                position: absolute;
-                                top: 50%;
-                                right: -.5rem;
-                                transform: translateY(-50%);
-                                content: '';
-                                width: 2px;
-                                height: 2px;
-                                background: #666;
-                            }
-                        }
+                    .index {
+                        text-align: center;
+                        min-width: 30px;
+                    }
+    
+                    .board_upload_count {
+                        text-align: center;
                     }
                 }
 
                 .retouch_btn {
-                    position: absolute;
-                    top: 1rem;
-                    right: 1.5rem;
+                    white-space: nowrap;
+                    text-align: center;
+                    width: 8%;
+                    min-width: 20px;
                     color: #aaa;
                     font-size: 0.8rem;
+                    padding-right: 0.5rem;
                 }
             }
         }
     }
 }
 
-@media screen and (max-width : 1000px) {
+@media screen and (max-width : 800px) {
     
     .admin_board {
 
         .container {
+            .board_list {
 
+                .board_add_btn {
+                    font-size: 0.7rem;
+                }
+
+                .list_head {
+
+                    p {
+                        font-size: 0.8rem;
+                    }
+                }
+            
+                li {
+                    padding: 0.7rem 0;
+
+                    .board_upload_count {
+                        min-width: auto;
+                        white-space: nowrap;
+                    }
+
+                    .board {
+
+                        p {
+                            font-size: .8rem;
+                        }
+                    }
+
+                    .retouch_btn {
+                        font-size: 0.65rem;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width : 600px) {
+    .admin_board {
+
+        .container {
+    
+            .board_list {
+
+                li {
+
+                    .board_upload_count {
+
+                        .mo_br {
+                            display: block;
+                        }
+                    }
+                }
+            }
         }
     }
 }
