@@ -19,6 +19,7 @@ import AdminBoard from './admin/Board/AdminBoard';
 import AdminBoardWrite from './admin/Board/AdminBoardWrite';
 import PasswordCheck from './PasswordCheck';
 import AdminMain from './admin/AdminMain';
+import AdminBoardTest from './admin/Board/AdminBoardTest';
 
 
 export const Routes = () => {
@@ -45,8 +46,10 @@ export const Routes = () => {
 
         <Route path="/admin" element={Auth(Admin,true, true)}>
           <Route path="" element={<AdminMain/>}></Route>
+
           <Route path="board" element={AdminHoc(AdminBoard,2,1)}></Route>
           <Route path="board/write" element={AdminHoc(AdminBoardWrite,2,1)}></Route>
+
         </Route>
         {/**
         <Route path="/admin/board" element={Auth(AdminBoard,true, true)} />

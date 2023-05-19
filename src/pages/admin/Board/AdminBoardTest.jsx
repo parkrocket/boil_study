@@ -43,7 +43,7 @@ function AdminBoard() {
         <div className={`${adminBoardStyle.admin_board}`}>
             <div className={`${adminBoardStyle.container}`}>
                 <div>
-                    <Link to="/admin/board/write">게시판 만들기</Link>
+                    <Link to="/admin/board/write">게시판 만들기testtesttesttest</Link>
                 </div>
                 <div>{adminboardList}</div>
             </div>

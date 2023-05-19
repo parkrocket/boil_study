@@ -11,7 +11,7 @@ function Admin() {
     const [hamClick, setHamClick] = useState(false);
     const location = useLocation();
 
-    console.log(location);
+    // console.log(location);
 
     return (
         <ChakraProvider>

@@ -10,6 +10,7 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { NavLink, Link } from "react-router-dom";
+
 import { useSelector } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./../../App";
@@ -20,19 +21,26 @@ function AdminLnb(props) {
 
     console.log(adminMenu);
 
+
     useEffect(() => {
         const ppp = document.getElementsByClassName("menu1");
+        const ppp2 = document.getElementsByClassName("menu2");
 
         Array.prototype.forEach.call(ppp, (element) => {
+
             //console.log();
             const href = element.href.replace(window.location.origin, "");
 
             //console.log(props.path, href);
+
             if (props.path === href) {
                 //element.className = `${adminStyle.active}`;
                 element.parentElement.className = `${adminStyle.active}`;
+            } else {
+                element.parentElement.classList.remove(`${adminStyle.active}`);
             }
         });
+        
     }, [props.path]);
 
     /*
@@ -118,54 +126,54 @@ function AdminLnb(props) {
                     <ul className={`${adminStyle.gnb}`}>
                         <li className={``}>
                             <NavLink to="/admin" className="menu1">
-                                <EditNoteIcon />
+                                <EditNoteIcon className={`${adminStyle.cate_ico}`}/>
                                 <span>캠페인 등록</span>
                             </NavLink>
                         </li>
-                        <li className={``}>
-                            <NavLink to="/admin/board" className="menu1">
-                                <FormatListBulletedIcon />
+                        <li>
+                            <NavLink to="/admin/board"  className="menu1">
+                                <FormatListBulletedIcon className={`${adminStyle.cate_ico}`}/>
                                 <span>게시판 관리</span>
                                 <ExpandMoreIcon className={`${adminStyle.arrow_ico}`} />
                             </NavLink>
                             <ul className={`${adminStyle.gnb_sub}`}>
                                 <li>
-                                    <NavLink to="/admin/board" className={`${adminStyle.active}`}>
+                                    <NavLink to="/admin/board" className="menu2">
                                         전체 게시판
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/admin/pick">선정 캠페인</NavLink>
+                                    <NavLink to="/admin/board/test" className="menu2">선정 캠페인</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="">모집 캠페인</NavLink>
+                                    <NavLink to="/admin/board/test2" className="menu2">모집 캠페인</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="">리뷰 캠페인</NavLink>
+                                    <NavLink to="/admin/board/test3" className="menu2">리뷰 캠페인</NavLink>
                                 </li>
                             </ul>
                         </li>
-                        <li className={``}>
-                            <NavLink to="/admin" className="menu1">
-                                <ContentCopyIcon />
+                        <li>
+                            <NavLink to="/admin"  className="menu1">
+                                <ContentCopyIcon className={`${adminStyle.cate_ico}`}/>
                                 <span>등록된 리뷰</span>
                             </NavLink>
                         </li>
-                        <li className={``}>
-                            <NavLink to="/admin" className="menu1">
-                                <BarChartIcon />
+                        <li>
+                            <NavLink to="/admin"  className="menu1">
+                                <BarChartIcon className={`${adminStyle.cate_ico}`}/>
                                 <span>브랜드 비교분석</span>
                             </NavLink>
                         </li>
-                        <li className={``}>
-                            <NavLink to="/admin" className="menu1">
-                                <ControlPointDuplicateIcon />
+                        <li>
+                            <NavLink to="/admin"  className="menu1">
+                                <ControlPointDuplicateIcon className={`${adminStyle.cate_ico}`}/>
                                 <span>포인트 충전</span>
                             </NavLink>
                         </li>
-                        <li className={``}>
-                            <NavLink to="/admin" className="menu1">
-                                <MoreHorizIcon />
+                        <li>
+                            <NavLink to="/admin"  className="menu1">
+                                <MoreHorizIcon className={`${adminStyle.cate_ico}`}/>
                                 <span>고객센터</span>
                                 <ExpandMoreIcon className={`${adminStyle.arrow_ico}`} />
                             </NavLink>
