@@ -48,6 +48,7 @@ export const Routes = () => {
           <Route path="" element={Auth(AdminMain,true, true)}></Route>
           <Route path="config" element={Auth(ConfigList,true, true,1,0)}></Route>
           <Route path="users" element={Auth(UserList,true, true,2,0)}></Route>
+          <Route path="users/page/:page" element={Auth(UserList,true, true,2,0)}></Route>
           <Route path="board/write" element={Auth(AdminBoardWrite,true, true,3,1)}></Route>
           <Route path="board" element={Auth(AdminBoard,true, true,3,2)}></Route>
           

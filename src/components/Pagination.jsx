@@ -7,7 +7,7 @@ const Paging = (props) => {
     const navigate = useNavigate();
 
     function pageChangeHandler(page) {
-        navigate(`/board/page/${page}`);
+        navigate(`${props.path}${page}`);
     }
 
     return (

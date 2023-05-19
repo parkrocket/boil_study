@@ -22,6 +22,11 @@ function AdminHead(props) {
     };
 
     const handleHamClick = () => {
+        const booleanObject = {
+            AdminLnbOpen: !props.hamClick,
+        };
+        window.localStorage.setItem("AdminLnbOpen", JSON.stringify(booleanObject));
+
         props.setHamClick(!props.hamClick);
     };
 

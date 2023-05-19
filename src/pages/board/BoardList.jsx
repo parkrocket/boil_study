@@ -90,7 +90,11 @@ function BoardList() {
                     <ul>{boardList}</ul>
                 </div>
                 <div className="boardlist_pagination_box">
-                    <Paging count={count} page={Number(params.page)} list={pageList}></Paging>
+                    <Paging
+                        count={count}
+                        page={Number(params.page)}
+                        list={pageList}
+                        path="/board/page/"></Paging>
                 </div>
             </div>
         </div>
