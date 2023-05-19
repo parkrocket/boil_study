@@ -4,9 +4,10 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useCookies } from "react-cookie";
 import { auth } from "../_actions/user_actions";
+import { adminMenu } from "../_actions/adminMenu_action";
 import Empty from "../pages/Empty";
 
-function Auth(ChildrenComponent, option, adminRoute = false) {
+function Auth(ChildrenComponent, option, adminRoute = false, menu = 0, subMenu = 0) {
     function AuthenticationCheck() {
         const navigate = useNavigate();
         const dispatch = useDispatch();
@@ -40,7 +41,12 @@ function Auth(ChildrenComponent, option, adminRoute = false) {
                     setView(true);
                 }
             });
-        }, [dispatch, navigate, cookies, view]);
+
+            if (adminRoute === true) {
+                const data = { menu, subMenu };
+                dispatch(adminMenu(data));
+            }
+        }, []);
 
         // null -> 모두다 가능
         // true -> 로그인 한 인원만
