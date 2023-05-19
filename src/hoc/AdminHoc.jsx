@@ -9,8 +9,12 @@ function AdminHoc(ChildrenComponent1, menu, subMenu = 1) {
         const dispatch = useDispatch();
 
         const data = { menu, subMenu };
+<<<<<<< HEAD
         
         
+=======
+
+>>>>>>> 6dd86b43f18750977de69eb29be003da46fdb3d4
         useEffect(() => {
             dispatch(adminMenu(data));
         }, [dispatch]);
