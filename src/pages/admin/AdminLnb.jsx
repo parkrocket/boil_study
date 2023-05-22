@@ -9,6 +9,7 @@ import EditNoteIcon from "@mui/icons-material/EditNote";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import { NavLink, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -88,7 +89,7 @@ function AdminLnb(props) {
                         </li>
                         <li className={``}>
                             <NavLink to="/admin/users" className="menu1">
-                                <EditNoteIcon className={`${adminStyle.cate_ico}`} />
+                                <ManageAccountsIcon className={`${adminStyle.cate_ico}`} />
                                 <span>회원 관리</span>
                             </NavLink>
                         </li>
