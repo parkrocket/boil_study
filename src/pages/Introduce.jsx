@@ -52,7 +52,7 @@ function Introduce(props) {
     return (
         <>
             <Head></Head>
-            <Center>
+            <Center mt={100}>
                 {[property, property_ino, property_dy].map((el, index) => (
                     <Box
                         maxW="sm"

@@ -8,6 +8,7 @@ function Head() {
 
     const [isClick, setIsClick] = useState(false);
     const [isScroll, setIsScroll] = useState(false);
+    const [isHover, setIsHover] = useState(false);
 
     const handleScroll = () => {
         console.log(document.getElementById("root").offsetHeight);
@@ -30,12 +31,12 @@ function Head() {
 
     return (
         <div>
-            <div id="header" className={scrollCheck}>
-                <div className="header-inner">
+            <div id="header" className={`${scrollCheck} ${isHover ? 'active' : ''}`}>
+                <div className="header-inner" onMouseLeave={() => setIsHover(false)}>
                     <h1 className="logo fontf">
                         <Link to="/">LinkBoard</Link>
                     </h1>
-                    <HeadMenu isClick={isClick}></HeadMenu>
+                    <HeadMenu isClick={isClick} isHover={isHover} setIsHover={setIsHover}></HeadMenu>
                     <HeadRight setIsClick={setIsClick} isClick={isClick}></HeadRight>
                 </div>
             </div>
