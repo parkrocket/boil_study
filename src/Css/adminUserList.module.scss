@@ -1,0 +1,55 @@
+.container {
+
+    .user_list {
+        
+        > li {
+            display: grid;
+            grid-template-columns : 1fr 2fr 2fr 2fr 3fr;
+            gap: 1rem;
+            padding: .5rem 1rem;
+
+       
+        }
+
+        .list_head {
+            border-bottom: 2px solid #ddd;
+            border-top: 1px solid #ddd;
+
+            .check_box {
+
+                input {
+
+                }
+            }
+
+            p {
+                font-weight: 600;
+                font-size: .8rem;
+                text-align: center;
+            }
+        }
+        
+        li:not(.list_head) {
+            border-bottom: 1px solid #ddd;
+            
+            .check_box {
+
+                input {
+
+                }
+            }
+
+            p {
+                font-size: 0.78rem;
+            }
+
+            &:nth-child(odd) {
+                background: #F0F1F9;
+            }
+
+            &:hover {
+                background: #d3d6ee;
+            }
+        }
+    }
+}

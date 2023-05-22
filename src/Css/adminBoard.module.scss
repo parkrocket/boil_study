@@ -4,7 +4,6 @@
 
         .board_list {
             width: 100%;
-            max-width: 800px;
             margin: 0 auto;
             position: relative;
             display: flex;
@@ -30,10 +29,10 @@
                 display: flex;
                 align-items: center;
                 background: #fff !important;
-                border-bottom: 2px solid #bbb !important;
+                border-top: 2px solid #bbb !important;
                 
                 p {
-                    font-size: .9rem !important;
+                    font-size: .8rem !important;
                     font-weight: 600;
                     line-height: 1.1;
                     display: flex;
@@ -54,12 +53,13 @@
                 background: #fff;
                 display: flex;
                 justify-content: space-between;
+                border-bottom: 1px solid #ddd;
 
                 &:not(:last-child) {
                     border-bottom: 1px solid #ddd;
                 }
 
-                &:nth-child(even) {
+                &:nth-child(odd) {
                     background: #F0F1F9;
                 }
                 
@@ -73,7 +73,7 @@
                     grid-template-columns: .6fr 3fr 4fr 2.4fr;
 
                     p {
-                        font-size: 0.85rem;
+                        font-size: 0.78rem;
                         white-space: nowrap;
                         overflow: hidden;
                         text-overflow: ellipsis;
@@ -95,7 +95,7 @@
                     width: 8%;
                     min-width: 20px;
                     color: #aaa;
-                    font-size: 0.8rem;
+                    font-size: 0.7rem;
                     padding-right: 0.5rem;
                 }
             }
