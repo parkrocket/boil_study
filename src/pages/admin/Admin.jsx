@@ -11,7 +11,14 @@ function Admin() {
     const localSt = window.localStorage.getItem("AdminLnbOpen");
     const data = JSON.parse(localSt);
 
-    const [hamClick, setHamClick] = useState(data.AdminLnbOpen);
+    let initLnbOpen = "";
+    if (localSt === null) {
+        initLnbOpen = false;
+    } else {
+        initLnbOpen = data.AdminLnbOpen;
+    }
+
+    const [hamClick, setHamClick] = useState(initLnbOpen);
     const location = useLocation();
     const [adminMenus, setAdminMenus] = useState({});
 

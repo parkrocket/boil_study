@@ -64,7 +64,6 @@ function AdminLnb(props) {
                     <Link to="/" className={`${adminStyle.home_btn}`}>
                         <HomeIcon />
                     </Link>
-
                 </h1>
                 <nav>
                     <ul className={`${adminStyle.gnb}`}>
@@ -72,7 +71,20 @@ function AdminLnb(props) {
                             <NavLink to="/admin/config" className="menu1">
                                 <EditNoteIcon className={`${adminStyle.cate_ico}`} />
                                 <span>사이트 관리</span>
+                                <ExpandMoreIcon className={`${adminStyle.arrow_ico}`} />
                             </NavLink>
+                            <ul className={`${adminStyle.gnb_sub}`}>
+                                <li>
+                                    <NavLink to="/admin/config" className="menu2">
+                                        사이트 관리
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to="/admin/menu" className="menu2">
+                                        메뉴 관리
+                                    </NavLink>
+                                </li>
+                            </ul>
                         </li>
                         <li className={``}>
                             <NavLink to="/admin/users" className="menu1">
@@ -137,6 +149,7 @@ function AdminLnb(props) {
                         </li>
                     </ul>
                 </nav>
+                {/** 
                 <div className={`${adminStyle.notify_box}`}>
                     <p>
                         <Link to="">
@@ -151,6 +164,7 @@ function AdminLnb(props) {
                         </Link>
                     </p>
                 </div>
+                **/}
             </div>
         </div>
     );

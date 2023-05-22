@@ -21,6 +21,7 @@ import PasswordCheck from './PasswordCheck';
 import AdminMain from './admin/AdminMain';
 import UserList from './admin/User/UserList';
 import ConfigList from './admin/Config/ConfigList';
+import MenuEdit from './admin/Config/MenuEdit'
 
 export const Routes = () => {
     return (
@@ -46,7 +47,8 @@ export const Routes = () => {
 
         <Route path="/admin" element={Auth(Admin,true, true)}>
           <Route path="" element={Auth(AdminMain,true, true)}></Route>
-          <Route path="config" element={Auth(ConfigList,true, true,1,0)}></Route>
+          <Route path="config" element={Auth(ConfigList,true, true,1,1)}></Route>
+          <Route path="menu" element={Auth(MenuEdit,true, true,1,2)}></Route>
           <Route path="users" element={Auth(UserList,true, true,2,0)}></Route>
           <Route path="users/page/:page" element={Auth(UserList,true, true,2,0)}></Route>
           <Route path="board/write" element={Auth(AdminBoardWrite,true, true,3,1)}></Route>

@@ -14,8 +14,6 @@ function UserList() {
         params.page = 1;
     }
 
-    console.log(params.page);
-
     const listCount = 20;
 
     useEffect(() => {
@@ -34,17 +32,30 @@ function UserList() {
         return (
             <li key={user.user_no}>
                 <span>
-                    <input type="checkbox" name=""></input>
+                    <input
+                        type="checkbox"
+                        name="user_no[]"
+                        className="user_check"
+                        defaultValue={user.user_no}></input>
                 </span>
                 {user.user_id} {user.user_name} {user.user_nickname} {user.user_datetime}
             </li>
         );
     });
 
+    function userCheckHandler(e) {
+        const query = 'input[name="user_no[]"]:checked';
+
+        const formData = new FormData();
+        console.log(document.querySelectorAll(query));
+    }
+
     return (
         <div>
             <ul>{userListArray}</ul>
-
+            <div>
+                <button onClick={userCheckHandler}>버튼</button>
+            </div>
             <div className="boardlist_pagination_box">
                 <Paging
                     count={count}
