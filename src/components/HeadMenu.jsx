@@ -1,53 +1,48 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { SERVER_URL } from "../pages/Config";
 
 function HeadMenu(props) {
     let toggleClassCheck = props.isClick ? "active" : "";
+    const [headMenu, setHeadMenu] = useState([]);
 
+    useEffect(() => {
+        axios.post(`${SERVER_URL}/api/admin/menu/menuList`).then((response) => {
+            setHeadMenu(response.data.menuList);
+        });
+    }, []);
+
+    console.log(headMenu);
+
+    const HeadMenuComp =
+        headMenu &&
+        headMenu.map((head, index) => {
+            console.log(head);
+
+            const headMenuSubComp = head.menusubList.map((subHead, index) => {
+                console.log(subHead.menuList.menu_link);
+                return (
+                    <li key={subHead.menuList.menu_id}>
+                        <a href={`${subHead.menuList.menu_link}`}>{subHead.menuList.menu_name}</a>
+                    </li>
+                );
+            });
+
+            return (
+                <li key={head.menuList.menu_id}>
+                    <a href={head.menuList.menu_link}>{head.menuList.menu_name}</a>
+                    <ul className="main_sub_gnb">{headMenuSubComp}</ul>
+                </li>
+            );
+        });
     return (
-        <ul className={`main_gnb ${toggleClassCheck}`} onMouseEnter={() => {props.setIsHover(true)}}>
-            <li>
-                <Link to="/introduce">자기소개</Link>
-                <ul className="main_sub_gnb">
-                    <li>
-                        <Link>자기소개1</Link>
-                    </li>
-                    <li>
-                        <Link>자기소개2</Link>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <Link to="/board">자유게시판</Link>
-                <ul className="main_sub_gnb">
-                    <li>
-                        <Link>자유게시판1</Link>
-                    </li>
-                    <li>
-                        <Link>자유게시판2</Link>
-                    </li>
-                    <li>
-                        <Link>자유게시판3</Link>
-                    </li>
-                    <li>
-                        <Link>자유게시판4</Link>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <Link to="/board/notice">공지사항</Link>
-                <ul className="main_sub_gnb">
-                    <li>
-                        <Link>공지사항1</Link>
-                    </li>
-                    <li>
-                        <Link>공지사항2</Link>
-                    </li>
-                    <li>
-                        <Link>공지사항3</Link>
-                    </li>
-                </ul>
-            </li>
+        <ul
+            className={`main_gnb ${toggleClassCheck}`}
+            onMouseEnter={() => {
+                props.setIsHover(true);
+            }}>
+            {HeadMenuComp}
         </ul>
     );
 }
