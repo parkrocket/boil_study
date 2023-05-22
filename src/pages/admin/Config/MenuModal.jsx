@@ -20,6 +20,7 @@ function MenuModal(props) {
     const [menuName, setMenuName] = useState("");
     const [menuLink, setMenuLink] = useState("");
 
+    console.log(props);
     function menuNameHandler(e) {
         setMenuName(e.target.value);
     }
@@ -29,9 +30,17 @@ function MenuModal(props) {
     }
 
     function submitHandler() {
-        const data = { menuName, menuLink };
+        let apiUrl = "";
+        if (props.menuCode === 0) {
+            apiUrl = `${SERVER_URL}/api/admin/menu/menuInsert`;
+        } else {
+            apiUrl = `${SERVER_URL}/api/admin/menu/menuSubInsert`;
+        }
 
-        axios.post(`${SERVER_URL}/api/admin/menu/menuInsert`, data).then((response) => {
+        const data = { menuName, menuLink, menuCode: props.menuCode };
+
+        axios.post(apiUrl, data).then((response) => {
+            console.log(response);
             props.setMenuList(response.data.menuList);
             props.onClose();
         });
@@ -45,6 +54,7 @@ function MenuModal(props) {
                     <ModalHeader>메뉴 추가하기</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
+                        <h6>{props.menuCode}</h6>
                         <FormControl>
                             <FormLabel>메뉴 이름</FormLabel>
                             <Input placeholder="메뉴 이름" onChange={menuNameHandler} />

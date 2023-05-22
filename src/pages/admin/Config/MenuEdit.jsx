@@ -3,10 +3,24 @@ import { Button, useDisclosure } from "@chakra-ui/react";
 import axios from "axios";
 import MenuModal from "./MenuModal";
 import { SERVER_URL } from "../../Config";
+import MenuEditTpl from "./MenuEditTpl";
 
 function MenuEdit() {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [menuList, setMenuList] = useState([]);
+    const [menuCode, setMenuCode] = useState(0);
+
+    function MenuModalOpen(e) {
+        console.log(e.target.dataset["menucode"].length);
+
+        if (e.target.dataset["menucode"].length > 3) {
+            alert("메뉴의 댑스는 현재 2번을 넘을수 없습니다.");
+        } else {
+            setMenuCode(e.target.dataset["menucode"]);
+
+            onOpen();
+        }
+    }
 
     useEffect(() => {
         axios.post(`${SERVER_URL}/api/admin/menu/menuList`).then((response) => {
@@ -18,19 +32,37 @@ function MenuEdit() {
         });
     }, []);
 
-    const menuListComp = menuList.map((menu, index) => {
-        return (
-            <li key={menu.menu_id}>
-                {menu.menu_name} / {menu.menu_link} / {menu.menu_code} /{menu.menu_order}
-            </li>
-        );
-    });
+    const menuListComp =
+        menuList &&
+        menuList.map((menu, index) => {
+            const headMenuSubComp = menu.menusubList.map((subHead, index) => {
+                console.log(subHead.menuList.menu_link);
+                return (
+                    <MenuEditTpl
+                        menuList={subHead.menuList}
+                        MenuModalOpen={MenuModalOpen}></MenuEditTpl>
+                );
+            });
+
+            return (
+                <React.Fragment>
+                    <MenuEditTpl
+                        menuList={menu.menuList}
+                        MenuModalOpen={MenuModalOpen}></MenuEditTpl>
+                    {headMenuSubComp}
+                </React.Fragment>
+            );
+        });
 
     return (
         <>
             <Button onClick={onOpen}>메뉴추가</Button>
 
-            <MenuModal isOpen={isOpen} onClose={onClose} setMenuList={setMenuList}></MenuModal>
+            <MenuModal
+                isOpen={isOpen}
+                onClose={onClose}
+                setMenuList={setMenuList}
+                menuCode={menuCode}></MenuModal>
             <div>{menuListComp}</div>
         </>
     );
