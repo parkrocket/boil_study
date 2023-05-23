@@ -5,6 +5,7 @@ import MenuModal from "./MenuModal";
 import { SERVER_URL } from "../../Config";
 import MenuEditTpl from "./MenuEditTpl";
 import MenuBookIcon from '@mui/icons-material/MenuBook';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import adminStyle from "../../../Css/admin.module.scss";
 import adminMenuEditStyle from "../../../Css/adminMenuEdit.module.scss";
 
@@ -64,7 +65,7 @@ function MenuEdit() {
                     <h2 className={`${adminStyle.tit}`}><MenuBookIcon/>메뉴 관리</h2>
                 </div>
 
-                <Button onClick={onOpen} className={`${adminMenuEditStyle.add_btn}`}>메뉴추가</Button>
+                <button onClick={onOpen} className={`${adminMenuEditStyle.add_btn}`}><AddCircleOutlineIcon/>메뉴추가</button>
 
                 <MenuModal 
                     isOpen={isOpen}

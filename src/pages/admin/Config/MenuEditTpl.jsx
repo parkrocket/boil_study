@@ -10,10 +10,10 @@ function MenuEditTpl(props) {
             <Input defaultValue={props.menuList.menu_link}></Input>
             <Input defaultValue={props.menuList.menu_order}></Input>
             <div>
-                <Button onClick={props.MenuModalOpen} data-menucode={props.menuList.menu_code}>
+                <Button className={`${adminMenuEditStyle.add_btn}`} onClick={props.MenuModalOpen} data-menucode={props.menuList.menu_code}>
                     메뉴추가
                 </Button>
-                <Button>삭제</Button>
+                <Button className={`${adminMenuEditStyle.delete_btn}`}>삭제</Button>
             </div>
         </li>
     );

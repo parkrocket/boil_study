@@ -18,6 +18,12 @@
                 svg {
                     font-size: 1rem;
                 }
+
+                &:hover {
+                    color: #5d4c91;
+                    font-weight: 600;
+                }
+
             }
 
             .list_head {
@@ -87,7 +93,6 @@
                     min-width: 20px;
                     color: #aaa;
                     font-size: 0.7rem;
-                    padding-right: 0.5rem;
                 }
             }
         }

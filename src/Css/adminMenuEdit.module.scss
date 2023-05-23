@@ -1,13 +1,92 @@
 .container {
 
     >.add_btn {
+        display: flex;
+        align-items: center;
+        gap: .2rem;
+        margin-left: auto;
+        margin-right: 0;
 
+        svg {
+            font-size: 1rem;
+        }
+
+        &:hover {
+            color: #5d4c91;
+            font-weight: 600;
+        }
     }
 
     .menu_edit_list {
+        width: 100%;
+        padding-top: 1rem;
 
         .list_head {
-            
+            border-bottom: 2px solid #bbb;
+            background: #fff !important;
+            padding: 0.5rem .3rem;
+
+            p {
+                font-size: 0.8rem;
+                font-weight: 600;
+                text-align: center;
+            }
         }
+        
+        li {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 2fr 55px 155px;
+            column-gap: .4rem;
+            padding: .3rem;
+            border-bottom: 1px solid #ddd;
+
+                &:nth-child(odd) {
+                    background: #F0F1F9;
+                }
+                
+                &:hover {
+                    background: #d3d6ee;
+                }
+
+                input {
+                    font-size: 0.78rem;
+                    background: #fff;
+                    height: 2rem;
+
+                }
+                
+                > div {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: .4rem;
+                    
+                    button {
+                        height: 1.7rem;
+                        font-size: 0.65rem;
+                        color: #fff;
+                        letter-spacing: .03rem;
+                        padding: 0 .7rem;
+                    }
+
+                    .add_btn {
+                        background: #7D6CB2;
+                        
+                        &:hover {
+                            background: #5d4c91;
+                        }
+                    }
+
+                    .delete_btn {
+                        background: #555;
+                        
+                        &:hover {
+                            background: #202a25;
+                        }
+                    }
+                }
+        }
+
     }
 }
