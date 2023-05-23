@@ -3,7 +3,7 @@ import axios from "axios";
 import { SERVER_URL } from "../../Config";
 import Paging from "../../../components/Pagination";
 import { useParams } from "react-router-dom";
-import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import adminUserListStyle from "../../../Css/adminUserList.module.scss";
 import adminStyle from "../../../Css/admin.module.scss";
 
@@ -14,23 +14,22 @@ function UserList() {
 
     const handleSingleCheck = (checked, id) => {
         if (checked) {
-        setCheckItems(prev => [...prev, id]);
+            setCheckItems((prev) => [...prev, id]);
         } else {
             setCheckItems(checkItems.filter((el) => el !== id));
         }
     };
 
     const handleAllCheck = (checked) => {
-        if(checked) {
-        const idArray = [];
-        userList.forEach((el) => idArray.push(el.user_id));
-        setCheckItems(idArray);
+        if (checked) {
+            const idArray = [];
+            userList.forEach((el) => idArray.push(el.user_no));
+            setCheckItems(idArray);
+        } else {
+            setCheckItems([]);
         }
-        else {
-        setCheckItems([]);
-        }
-    }
-    
+    };
+
     let params = useParams();
 
     if (params.page === undefined) {
@@ -48,12 +47,10 @@ function UserList() {
 
             setCount(response.data.count);
             setUserList(response.data.userList);
-
         });
     }, [params.page]);
 
-
-    const userListArray = userList.map((user , index) => {
+    const userListArray = userList.map((user, index) => {
         return (
             <li key={user.user_no}>
                 <div className={`${adminUserListStyle.check_box}`}>
@@ -62,9 +59,8 @@ function UserList() {
                         name="user_no[]"
                         className="user_check"
                         defaultValue={user.user_no}
-                        onChange={(e) => handleSingleCheck(e.target.checked, user.user_id)}
-                        checked={checkItems.includes(user.user_id) ? true : false}
-                        ></input>
+                        onChange={(e) => handleSingleCheck(e.target.checked, user.user_no)}
+                        checked={checkItems.includes(user.user_no) ? true : false}></input>
                 </div>
                 <p className={`${adminUserListStyle.user_id}`}>{user.user_id}</p>
                 <p className={`${adminUserListStyle.user_name}`}>{user.user_name}</p>
@@ -75,26 +71,41 @@ function UserList() {
     });
 
     function userCheckHandler(e) {
-        const query = 'input[name="user_no[]"]:checked';
+        if (checkItems.length === 0) {
+            alert(`삭제할 데이터가 없습니다.`);
 
-        const formData = new FormData();
-        console.log(document.querySelectorAll(query));
+            return;
+        }
+
+        if (window.confirm(`${checkItems.length}개를 삭제하시겠습니까?`)) {
+            const data = { memberList: checkItems, listCount: listCount, page: params.page };
+
+            axios.post(`${SERVER_URL}/api/admin/users/delete`, data).then((response) => {
+                setCount(response.data.count);
+                setUserList(response.data.userList);
+
+                alert("삭제에 성공했습니다.");
+            });
+        }
     }
 
     return (
         <div className={`${adminStyle.admin_outer}`}>
             <div className={`${adminUserListStyle.container} ${adminStyle.container}`}>
                 <div className={`${adminStyle.tit_box}`}>
-                    <h2 className={`${adminStyle.tit}`}><ManageAccountsIcon/>회원 관리</h2>
+                    <h2 className={`${adminStyle.tit}`}>
+                        <ManageAccountsIcon />
+                        회원 관리
+                    </h2>
                 </div>
                 <ul className={`${adminUserListStyle.user_list}`}>
                     <li className={`${adminUserListStyle.list_head}`}>
                         <div className={`${adminUserListStyle.check_box}`}>
-                            <input 
-                            type="checkbox"
-                            name='select-all'
-                            onChange={(e) => handleAllCheck(e.target.checked)}
-                            checked={checkItems.length === userList.length ? true : false}
+                            <input
+                                type="checkbox"
+                                name="select-all"
+                                onChange={(e) => handleAllCheck(e.target.checked)}
+                                checked={checkItems.length === userList.length ? true : false}
                             />
                         </div>
                         <p>ID</p>
@@ -105,7 +116,7 @@ function UserList() {
                     {userListArray}
                 </ul>
                 <div>
-                    <button onClick={userCheckHandler}>버튼</button>
+                    <button onClick={userCheckHandler}>삭제</button>
                 </div>
                 <div className="boardlist_pagination_box">
                     <Paging
