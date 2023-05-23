@@ -3,16 +3,21 @@ import Head from "../../components/Head";
 import boardListStyle from "../../Css/boardlist.module.scss";
 import axios from "axios";
 import { useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { SERVER_URL } from "../Config";
 import moment from "moment";
 import Paging from "../../components/Pagination";
+
 
 function BoardList() {
     const [List, setList] = useState([]);
     const [count, setCount] = useState(0);
     const [boardSubject, setBoardSubject] = useState("");
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [category, setCategory] = useState("");
+    const [searchText, setSearchText] = useState("");
 
+    console.log(searchParams.get("search"))
     const pageList = 8;
     let params = useParams();
     const navigate = useNavigate();
@@ -26,6 +31,8 @@ function BoardList() {
     }
 
     useEffect(() => {
+        setCategory(searchParams.get("category"));
+        setSearchText(searchParams.get("searchText"));
         axios
             .post(`${SERVER_URL}/api/admin/board/boardInfo`, { boardId: params.boardId })
             .then((response) => {
@@ -42,12 +49,13 @@ function BoardList() {
                 list: pageList,
                 page: params.page,
                 boardId: params.boardId,
+                searchText: searchText
             })
             .then((response) => {
                 setList(response.data.list);
                 setCount(response.data.count);
             });
-    }, [params.page, params.boardId, navigate]);
+    }, [params.page, params.boardId, navigate, searchParams, searchText]);
 
     const boardList =
         List &&
@@ -74,6 +82,10 @@ function BoardList() {
             );
         });
 
+    function selectChangeHandler(e) {
+        setCategory(e.target.value);
+    }
+    
     return (
         <div>
             <Head></Head>
@@ -92,7 +104,7 @@ function BoardList() {
                         <fieldset>
                             <ul className={`${boardListStyle.search_list}`}>
                                 <li>
-                                    <select name="category" id="">
+                                    <select name="category" id="" value={category} onChange={selectChangeHandler}>
                                         <option value="cate1">전체</option>
                                         <option value="cate2">제목</option>
                                         <option value="cate3">작성자</option>
@@ -100,10 +112,10 @@ function BoardList() {
                                     </select>
                                 </li>
                                 <li>
-                                    <input type="text" />
+                                    <input type="text" name="searchText" defaultValue={searchText} />
                                 </li>
                                 <li>
-                                    <button>검색</button>
+                                    <button >검색</button>
                                 </li>
                             </ul>
                         </fieldset>

@@ -12,15 +12,14 @@ function HeadMenu(props) {
         });
     }, []);
 
-    console.log(headMenu);
 
     const HeadMenuComp =
         headMenu &&
         headMenu.map((head, index) => {
-            console.log(head);
+            
 
             const headMenuSubComp = head.menusubList.map((subHead, index) => {
-                console.log(subHead.menuList.menu_link);
+                
                 return (
                     <li key={subHead.menuList.menu_id}>
                         <a href={`${subHead.menuList.menu_link}`}>{subHead.menuList.menu_name}</a>
