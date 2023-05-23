@@ -88,15 +88,14 @@
             line-height: 1;
             font-weight: 900;
             letter-spacing: -1px;
-            color: #fff;
+            color: #A7ABDD;
+
             border-bottom: 1px solid #A7ABDD;
             border-top: 1px solid #A7ABDD;
             box-shadow: 
                 0 2px 2px rgba(167, 171, 221,.3),
                 0 -2px 2px rgba(167, 171, 221,.3);
-            
-            span {
-            }
+                text-shadow: 2px 2px 2px rgba(167, 171, 221,.3);
         }
         
         .tit {
@@ -109,7 +108,8 @@
             gap: 1rem;
             
             a {
-                color: #A7ABDD;
+                color: #fff;
+
                 display: inline-block;
                 font-size: 1.15rem;
                 text-transform: uppercase;
