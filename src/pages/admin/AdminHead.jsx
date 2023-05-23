@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import adminStyle from "../../Css/admin.module.scss";
 import { Avatar } from "@chakra-ui/react";
 import LogoutIcon from "@mui/icons-material/Logout";
 import MenuIcon from "@mui/icons-material/Menu";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import { NavLink, useNavigate, Link } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../_actions/user_actions";
 import { useCookies } from "react-cookie";
 
 function AdminHead(props) {
     const [nickNameClick, setNickNameClick] = useState(false);
-    const [cookies, setCookie, removeCookie] = useCookies(["x_auth"]);
+    const [, , removeCookie] = useCookies(["x_auth"]);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();

@@ -19,9 +19,9 @@ import boardLatestStyle from "../../Css/boardLatest.module.scss";
 function BoardLatestList_dana(props) {
     const [detail, setDetail] = useState([]);
 
-    const ob = { boardId: props.cont.board_id, count: 5 };
-
     useEffect(() => {
+        const ob = { boardId: props.cont.board_id, count: 5 };
+
         axios.post(`${SERVER_URL}/api/board/latestList`, ob).then((response) => {
             if (response.data.LatestListSuccess === false) {
                 alert("게시글을 불러올 수 없습니다.");
@@ -29,7 +29,7 @@ function BoardLatestList_dana(props) {
 
             setDetail(response.data.LatestList);
         });
-    }, []);
+    }, [props.cont.board_id]);
 
     const boardContainer = detail.map((cont, index) => {
         let listDateTime = "";

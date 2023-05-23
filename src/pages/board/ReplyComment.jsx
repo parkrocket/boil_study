@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import SingleComment from "./SingleComment";
-
-import axios from "axios";
 
 function ReplyComment(props) {
     const renderReplyComment = () => {

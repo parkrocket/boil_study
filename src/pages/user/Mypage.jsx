@@ -16,7 +16,7 @@ function Mypage() {
     const [NickName, setNickName] = useState("");
     const [Images, setImages] = useState({});
     const [profileImg, setProfileImg] = useState("");
-    const [Cookie, setCookie] = useCookies(["my_auth"]);
+    const [Cookie] = useCookies(["my_auth"]);
 
     const navigate = useNavigate();
 
@@ -38,7 +38,7 @@ function Mypage() {
                 setNickName(response.data.userInfo.user_nickname);
                 setProfileImg(response.data.userInfo.user_image);
             });
-    }, []);
+    }, [Cookie.my_auth, navigate, user.user.auth._id]);
 
     const onPasswordHandler = (event) => {
         setPassword(event.currentTarget.value);

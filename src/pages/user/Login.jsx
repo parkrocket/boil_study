@@ -12,7 +12,7 @@ import "../../Css/media.css";
 function Login(props) {
     const [Id, setId] = useState("");
     const [Password, setPassword] = useState("");
-    const [Cookie, setCookie] = useCookies(["x_auth"]);
+    const [, setCookie] = useCookies(["x_auth"]);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -38,34 +38,6 @@ function Login(props) {
                 alert("아이디가 없거나 비밀번호가 틀렸습니다.");
             }
         });
-
-        //console.log(data2);
-        //console.log(data);
-
-        // TODO: services/ 또는 apis 폴더로 빼기 (논의후))
-
-        /*
-        axios({
-            method: "post",
-            url: "http://54.180.35.70/api/login",
-            data: data,
-        }).then((response) => {
-            if (response.data.success === "failed") {
-                document.getElementById("id").value = "";
-                document.getElementById("password").value = "";
-
-                alert("아이디가 없거나 비밀번호가 틀렸습니다.");
-            } else if (response.data.success === "success") {
-                //alert("로그인 성공");
-
-                setCookie("x_auth", response.data.token);
-                window.localStorage.setItem("userId", response.data.userId);
-
-                navigate("/");
-                console.log(response);
-            }
-        });
-        */
     };
     return (
         <div>

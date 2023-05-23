@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { SERVER_URL } from "../Config";
+import React from "react";
+
 import BoardLatestList from "./BoardLatestList";
 import { Flex } from "@chakra-ui/react";
 import boardLatestStyle from "../../Css/boardLatest.module.scss";

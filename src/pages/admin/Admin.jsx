@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import AdminLnb from "./AdminLnb";
 import AdminHead from "./AdminHead";
 
 import AdminFoot from "./AdminFoot";
 import adminStyle from "../../Css/admin.module.scss";
 import { ChakraProvider } from "@chakra-ui/react";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 function Admin() {
     const localSt = window.localStorage.getItem("AdminLnbOpen");
@@ -19,7 +19,7 @@ function Admin() {
     }
 
     const [hamClick, setHamClick] = useState(initLnbOpen);
-    const location = useLocation();
+
     const [adminMenus, setAdminMenus] = useState({});
 
     return (

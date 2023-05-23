@@ -1,4 +1,3 @@
-import React from "react";
 import {
     LOGIN_USER,
     REGISTER_USER,
@@ -6,6 +5,7 @@ import {
     LOGOUT_USER,
     UPDATE_USER,
     ADMIN_MENU,
+    CONFIG_SET,
 } from "../_actions/types";
 
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
@@ -15,6 +15,7 @@ import ReduxThunk from "redux-thunk";
 const rootReducer = combineReducers({
     user,
     adminMenu,
+    configSet,
 });
 
 const Reducers = configureStore({
@@ -43,6 +44,15 @@ function adminMenu(state = {}, action) {
     switch (action.type) {
         case ADMIN_MENU:
             return { ...state, adminMenu: action.payload };
+        default:
+            return state;
+    }
+}
+
+function configSet(state = {}, action) {
+    switch (action.type) {
+        case CONFIG_SET:
+            return { ...state, config: action.payload };
         default:
             return state;
     }

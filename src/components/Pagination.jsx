@@ -1,7 +1,6 @@
 import React from "react";
 import Pagination from "react-js-pagination";
 import { useNavigate } from "react-router-dom";
-import boardListStyle from "./../Css/boardlist.module.scss";
 
 const Paging = (props) => {
     const navigate = useNavigate();

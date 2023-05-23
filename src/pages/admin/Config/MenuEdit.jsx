@@ -11,8 +11,6 @@ function MenuEdit() {
     const [menuCode, setMenuCode] = useState(0);
 
     function MenuModalOpen(e) {
-        console.log(e.target.dataset["menucode"].length);
-
         if (e.target.dataset["menucode"].length > 3) {
             alert("메뉴의 댑스는 현재 2번을 넘을수 없습니다.");
         } else {
@@ -36,16 +34,16 @@ function MenuEdit() {
         menuList &&
         menuList.map((menu, index) => {
             const headMenuSubComp = menu.menusubList.map((subHead, index) => {
-                console.log(subHead.menuList.menu_link);
                 return (
                     <MenuEditTpl
                         menuList={subHead.menuList}
-                        MenuModalOpen={MenuModalOpen}></MenuEditTpl>
+                        MenuModalOpen={MenuModalOpen}
+                        key={subHead.menuList.menu_id}></MenuEditTpl>
                 );
             });
 
             return (
-                <React.Fragment>
+                <React.Fragment key={menu.menuList.menu_id}>
                     <MenuEditTpl
                         menuList={menu.menuList}
                         MenuModalOpen={MenuModalOpen}></MenuEditTpl>

@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 function PasswordCheck() {
     const [password, setPassword] = useState("");
 
-    const [Cookie, setCookie] = useCookies(["my_auth"]);
+    const [, setCookie] = useCookies(["my_auth"]);
     const user = useSelector((state) => state);
     const navigate = useNavigate();
 
