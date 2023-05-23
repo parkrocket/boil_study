@@ -6,6 +6,7 @@ import { SERVER_URL } from "../../Config";
 import MenuEditTpl from "./MenuEditTpl";
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import SubdirectoryArrowRightIcon from '@mui/icons-material/SubdirectoryArrowRight';
 import adminStyle from "../../../Css/admin.module.scss";
 import adminMenuEditStyle from "../../../Css/adminMenuEdit.module.scss";
 
@@ -39,10 +40,13 @@ function MenuEdit() {
         menuList.map((menu, index) => {
             const headMenuSubComp = menu.menusubList.map((subHead, index) => {
                 return (
-                    <MenuEditTpl
-                        menuList={subHead.menuList}
-                        MenuModalOpen={MenuModalOpen}
-                        key={subHead.menuList.menu_id}></MenuEditTpl>
+                    <div className={`${adminMenuEditStyle.depth2}`}>
+                        <SubdirectoryArrowRightIcon className={`${adminMenuEditStyle.depth2_arrow_ico}`}/>
+                        <MenuEditTpl
+                            menuList={subHead.menuList}
+                            MenuModalOpen={MenuModalOpen}
+                            key={subHead.menuList.menu_id}></MenuEditTpl>
+                    </div>
                 );
             });
 
