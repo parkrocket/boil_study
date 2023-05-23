@@ -87,7 +87,27 @@ function BoardList() {
                     </Link>
                 </div>
                 <div className={boardListStyle.board_wrap}>
-                    <ul>{boardList}</ul>
+                    <ul className={`${boardListStyle.board_list}`}>{boardList}</ul>
+                    <form action="">
+                        <fieldset>
+                            <ul className={`${boardListStyle.search_list}`}>
+                                <li>
+                                    <select name="category" id="">
+                                        <option value="cate1">전체</option>
+                                        <option value="cate2">제목</option>
+                                        <option value="cate3">작성자</option>
+                                        <option value="cate4">댓글</option>
+                                    </select>
+                                </li>
+                                <li>
+                                    <input type="text" />
+                                </li>
+                                <li>
+                                    <button>검색</button>
+                                </li>
+                            </ul>
+                        </fieldset>
+                    </form>
                 </div>
                 <div className="boardlist_pagination_box">
                     <Paging
