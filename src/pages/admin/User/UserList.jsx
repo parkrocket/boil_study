@@ -6,6 +6,7 @@ import { useParams, Link } from "react-router-dom";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import adminUserListStyle from "../../../Css/adminUserList.module.scss";
 import adminStyle from "../../../Css/admin.module.scss";
+import moment from "moment";
 
 function UserList() {
     const [userList, setUserList] = useState([]);
@@ -51,6 +52,9 @@ function UserList() {
     }, [params.page]);
 
     const userListArray = userList.map((user, index) => {
+        const listDateTime = user.user_datetime
+                ? moment(user.user_datetime).format("YYYY-MM-DD HH:mm:ss")
+                : "";
         return (
             <li key={user.user_no}>
                 <div className={`${adminUserListStyle.check_box}`}>
@@ -65,7 +69,7 @@ function UserList() {
                 <p className={`${adminUserListStyle.user_id}`}>{user.user_id}</p>
                 <p className={`${adminUserListStyle.user_name}`}>{user.user_name}</p>
                 <p className={`${adminUserListStyle.user_nickname}`}>{user.user_nickname}</p>
-                <p className={`${adminUserListStyle.user_datetime}`}>{user.user_datetime}</p>
+                <p className={`${adminUserListStyle.user_datetime}`}>{listDateTime}</p>
                 <p className={`${adminUserListStyle.user_datetime}`}>
                     <Link to={`/admin/users/update/${user.user_no}`} className={`${adminUserListStyle.retouch_btn}`}>수정</Link>
                 </p>

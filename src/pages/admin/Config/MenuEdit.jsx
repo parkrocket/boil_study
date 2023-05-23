@@ -35,17 +35,41 @@ function MenuEdit() {
         });
     }, []);
 
+    function deleteHandler(e) {
+        if (window.confirm("정말 삭제하시겠습니까?")) { 
+            if (e.target.dataset["length"] > 0) { 
+                alert("하위 메뉴가 있는 상태로는 삭제할수 없습니다.");
+                return;
+            }
+
+            const data = {menuCode : e.target.dataset["deletecode"]}
+
+            axios.post(`${SERVER_URL}/api/admin/menu/menuDelete`, data).then((response) => {
+                if (response.data.menuDeleteSuccess === false) {
+                    alert("메뉴 삭제에 실패하였습니다.");
+                } else {
+                    setMenuList(response.data.menuList);
+                }
+            });
+        }
+
+    }
+
     const menuListComp =
         menuList &&
         menuList.map((menu, index) => {
-            const headMenuSubComp = menu.menusubList.map((subHead, index) => {
+            console.log(menu.menusubList.length);
+
+            
+
+            const headMenuSubComp = menu.menusubList && menu.menusubList.map((subHead, index) => {
                 return (
-                    <div className={`${adminMenuEditStyle.depth2}`}>
+                    <div className={`${adminMenuEditStyle.depth2}`} key={subHead.menuList.menu_id}>
                         <SubdirectoryArrowRightIcon className={`${adminMenuEditStyle.depth2_arrow_ico}`}/>
                         <MenuEditTpl
                             menuList={subHead.menuList}
                             MenuModalOpen={MenuModalOpen}
-                            key={subHead.menuList.menu_id}></MenuEditTpl>
+                            deleteHandler={deleteHandler}></MenuEditTpl>
                     </div>
                 );
             });
@@ -54,14 +78,28 @@ function MenuEdit() {
                 <React.Fragment key={menu.menuList.menu_id}>
                     <MenuEditTpl
                         menuList={menu.menuList}
-                        MenuModalOpen={MenuModalOpen}></MenuEditTpl>
+                        MenuModalOpen={MenuModalOpen} deleteHandler={deleteHandler} length={ menu.menusubList.length}></MenuEditTpl>
                     {headMenuSubComp}
                 </React.Fragment>
             );
         });
+    
+    function submitHandler() { 
+        const data = new FormData(document.getElementById("form_act"));
+
+        axios.post(`${SERVER_URL}/api/admin/menu/menuUpdate`,data).then((response) => {
+             if (response.data.menuListSuccess === false) {
+                alert("메뉴 업데이트에 실패하였습니다.");
+             } else {
+                 alert("메뉴 수정 완료");
+                setMenuList(response.data.menuList);
+            }
+        });
+    }
 
     return (
         <div className={`${adminStyle.admin_outer}`}>
+            
             <div className={`${adminStyle.container} ${adminMenuEditStyle.container}`}>
                 <div className={`${adminStyle.tit_box}`}>
                     <h2 className={`${adminStyle.tit}`}><MenuBookIcon/>메뉴 관리</h2>
@@ -81,9 +119,12 @@ function MenuEdit() {
                         <p>순서</p>
                         <p>관리</p>
                     </li>
-                    {menuListComp}
+                    <form id="form_act">{menuListComp}</form>
                 </div>
+                <Button onClick={submitHandler}>확인</Button>
             </div>
+                
+            
         </div>
     );
 }
