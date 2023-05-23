@@ -88,5 +88,36 @@
                 }
         }
 
+        .depth2 {
+            position: relative;
+
+            .depth2_arrow_ico {
+                position: absolute;
+                top: 50%;
+                left: .5rem;    
+                transform: translateY(-50%);
+                font-size: 1rem;
+            }
+
+            li {
+                position: relative;
+
+                input {
+                    &:nth-child(2) {
+                        margin-left: 1.5rem;
+                        width: calc(100% - 1.5rem);
+                    }
+                }
+
+                > div {
+
+                    .add_btn {
+                        visibility: hidden;
+                    }
+                }
+            }
+        }
+
+
     }
 }
