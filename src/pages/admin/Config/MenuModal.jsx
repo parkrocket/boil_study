@@ -54,7 +54,7 @@ function MenuModal(props) {
                     <ModalHeader>메뉴 추가하기</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
-                        <h6>{props.menuCode}</h6>
+                        
                         <FormControl>
                             <FormLabel>메뉴 이름</FormLabel>
                             <Input placeholder="메뉴 이름" onChange={menuNameHandler} />
