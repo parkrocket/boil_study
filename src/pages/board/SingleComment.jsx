@@ -5,15 +5,13 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { SERVER_URL } from "../Config";
 import Confirm from "../../components/Confirm";
-import { border, useDisclosure } from "@chakra-ui/react";
-import { BorderBottom } from "@mui/icons-material";
+import { useDisclosure } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 
 function SingleComment(props) {
     const [replyOpen, setReplyOpen] = useState(false);
     const [replyText, setReplyText] = useState("");
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const [confirm, setConfirm] = useState(false);
     const cancelRef = React.useRef();
     const confirmMsg = {
         subject: "댓글 삭제하기",

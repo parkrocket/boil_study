@@ -7,11 +7,9 @@ import Register from './user/Register';
 import Test from './Test';
 import DbLook from './DbLook';
 import Auth from '../hoc/Auth';
-import AdminHoc from '../hoc/AdminHoc';
 import NotFound from '../pages/NotFound';
 import BoardList from './board/BoardList';
 import BoardWrite from './board/BoardWrite';
-import BoardUpdate from './board/BoardUpdate';
 import BoardView from './board/BoardView';
 import Mypage from './user/Mypage';
 import Admin from './admin/Admin';
@@ -22,6 +20,7 @@ import AdminMain from './admin/AdminMain';
 import UserList from './admin/User/UserList';
 import ConfigList from './admin/Config/ConfigList';
 import MenuEdit from './admin/Config/MenuEdit'
+import UserUpdate from './admin/User/UserUpdate';
 
 export const Routes = () => {
     return (
@@ -50,9 +49,11 @@ export const Routes = () => {
           <Route path="config" element={Auth(ConfigList,true, true,1,1)}></Route>
           <Route path="menu" element={Auth(MenuEdit,true, true,1,2)}></Route>
           <Route path="users" element={Auth(UserList,true, true,2,0)}></Route>
+          <Route path="users/update/:userNo" element={Auth(UserUpdate,true, true,2,0)}></Route>
           <Route path="users/page/:page" element={Auth(UserList,true, true,2,0)}></Route>
           <Route path="board/write" element={Auth(AdminBoardWrite,true, true,3,1)}></Route>
           <Route path="board" element={Auth(AdminBoard,true, true,3,2)}></Route>
+          <Route path="/admin/board/update/:boardId" element={Auth(AdminBoardWrite,true, true,3,2)} />
         </Route>
         {/**
         <Route path="/admin/board" element={Auth(AdminBoard,true, true)} />

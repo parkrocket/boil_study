@@ -12,7 +12,6 @@ function BoardComment(props) {
     const params = useParams();
 
     const [Text, setText] = useState("");
-    const [OpenReplyCommentNumber, setOpenReplyCommentNumber] = useState();
 
     //const [depth,setDepth] = useState(0);
 
@@ -22,10 +21,6 @@ function BoardComment(props) {
 
     const textHandler = (e) => {
         setText(e.currentTarget.value);
-    };
-
-    const openCommentNumberChange = (setting) => {
-        setOpenReplyCommentNumber(setting);
     };
 
     const onSubmit = (e) => {

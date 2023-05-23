@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useCookies } from "react-cookie";
 import { auth } from "../_actions/user_actions";
 import { adminMenu } from "../_actions/adminMenu_action";
@@ -44,9 +44,10 @@ function Auth(ChildrenComponent, option, adminRoute = false, menu = 0, subMenu =
 
             if (adminRoute === true) {
                 const data = { menu, subMenu };
+
                 dispatch(adminMenu(data));
             }
-        }, []);
+        }, [cookies, dispatch]);
 
         // null -> 모두다 가능
         // true -> 로그인 한 인원만

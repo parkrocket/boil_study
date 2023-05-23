@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { SERVER_URL } from "../../Config";
 import Paging from "../../../components/Pagination";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import adminUserListStyle from "../../../Css/adminUserList.module.scss";
 import adminStyle from "../../../Css/admin.module.scss";
@@ -66,6 +66,9 @@ function UserList() {
                 <p className={`${adminUserListStyle.user_name}`}>{user.user_name}</p>
                 <p className={`${adminUserListStyle.user_nickname}`}>{user.user_nickname}</p>
                 <p className={`${adminUserListStyle.user_datetime}`}>{user.user_datetime}</p>
+                <p className={`${adminUserListStyle.user_datetime}`}>
+                    <Link to={`/admin/users/update/${user.user_no}`}>수정</Link>
+                </p>
             </li>
         );
     });
@@ -112,6 +115,7 @@ function UserList() {
                         <p>이름</p>
                         <p>닉네임</p>
                         <p>가입일</p>
+                        <p>수정</p>
                     </li>
                     {userListArray}
                 </ul>

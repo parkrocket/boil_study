@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import adminStyle from "../../Css/admin.module.scss";
 import HomeIcon from "@mui/icons-material/Home";
-import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import ControlPointDuplicateIcon from "@mui/icons-material/ControlPointDuplicate";
@@ -9,7 +8,7 @@ import EditNoteIcon from "@mui/icons-material/EditNote";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import { NavLink, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
