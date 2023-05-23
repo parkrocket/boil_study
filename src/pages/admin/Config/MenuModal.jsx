@@ -67,10 +67,10 @@ function MenuModal(props) {
                     </ModalBody>
 
                     <ModalFooter>
-                        <Button colorScheme="blue" onClick={submitHandler}>
+                        <Button colorScheme="purple" onClick={submitHandler}>
                             추가하기
                         </Button>
-                        <Button colorScheme="blue" variant="ghost" mr={3} onClick={props.onClose}>
+                        <Button colorScheme="purple" variant="ghost" mr={3} onClick={props.onClose}>
                             취소
                         </Button>
                     </ModalFooter>

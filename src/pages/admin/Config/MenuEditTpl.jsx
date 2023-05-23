@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Input } from "@chakra-ui/react";
+import adminMenuEditStyle from "../../../Css/adminMenuEdit.module.scss";
 
 function MenuEditTpl(props) {
     return (
@@ -8,9 +9,12 @@ function MenuEditTpl(props) {
             <Input defaultValue={props.menuList.menu_name}></Input>
             <Input defaultValue={props.menuList.menu_link}></Input>
             <Input defaultValue={props.menuList.menu_order}></Input>
-            <Button onClick={props.MenuModalOpen} data-menucode={props.menuList.menu_code}>
-                메뉴추가
-            </Button>
+            <div>
+                <Button className={`${adminMenuEditStyle.add_btn}`} onClick={props.MenuModalOpen} data-menucode={props.menuList.menu_code}>
+                    메뉴추가
+                </Button>
+                <Button className={`${adminMenuEditStyle.delete_btn}`}>삭제</Button>
+            </div>
         </li>
     );
 }

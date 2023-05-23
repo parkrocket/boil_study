@@ -71,7 +71,7 @@ function UserList() {
                 <p className={`${adminUserListStyle.user_nickname}`}>{user.user_nickname}</p>
                 <p className={`${adminUserListStyle.user_datetime}`}>{listDateTime}</p>
                 <p className={`${adminUserListStyle.user_datetime}`}>
-                    <Link to={`/admin/users/update/${user.user_no}`}>수정</Link>
+                    <Link to={`/admin/users/update/${user.user_no}`} className={`${adminUserListStyle.retouch_btn}`}>수정</Link>
                 </p>
             </li>
         );
@@ -119,12 +119,12 @@ function UserList() {
                         <p>이름</p>
                         <p>닉네임</p>
                         <p>가입일</p>
-                        <p>수정</p>
+                        <p></p>
                     </li>
                     {userListArray}
                 </ul>
-                <div>
-                    <button onClick={userCheckHandler}>삭제</button>
+                <div className={`${adminUserListStyle.delete_box}`}>
+                    <button onClick={userCheckHandler} className={`${adminUserListStyle.delete_btn}`}>삭제</button>
                 </div>
                 <div className="boardlist_pagination_box">
                     <Paging
