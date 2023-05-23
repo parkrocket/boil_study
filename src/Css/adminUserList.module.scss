@@ -6,21 +6,11 @@
             display: grid;
             grid-template-columns : 1fr 2fr 2fr 2fr 3fr;
             gap: 1rem;
-            padding: .5rem 1rem;
-
-       
+            padding: .5rem 1rem;       
         }
 
         .list_head {
-            border-bottom: 2px solid #ddd;
-            border-top: 1px solid #ddd;
-
-            .check_box {
-
-                input {
-
-                }
-            }
+            border-bottom: 2px solid #bbb;
 
             p {
                 font-weight: 600;
@@ -31,19 +21,12 @@
         
         li:not(.list_head) {
             border-bottom: 1px solid #ddd;
-            
-            .check_box {
-
-                input {
-
-                }
-            }
 
             p {
                 font-size: 0.78rem;
             }
 
-            &:nth-child(odd) {
+            &:nth-child(even) {
                 background: #F0F1F9;
             }
 

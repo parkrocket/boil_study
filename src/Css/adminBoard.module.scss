@@ -3,12 +3,7 @@
     .container {
 
         .board_list {
-            width: 100%;
-            margin: 0 auto;
             position: relative;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
             padding-top: 1rem;
 
             .board_add_btn {
@@ -29,7 +24,7 @@
                 display: flex;
                 align-items: center;
                 background: #fff !important;
-                border-top: 2px solid #bbb !important;
+                border-bottom: 2px solid #bbb !important;
                 
                 p {
                     font-size: .8rem !important;
@@ -48,16 +43,12 @@
             li {                
                 width: 100%;
                 list-style: none;
-                padding: .8rem 0;
+                padding: .5rem 0;
                 position: relative;
                 background: #fff;
                 display: flex;
                 justify-content: space-between;
                 border-bottom: 1px solid #ddd;
-
-                &:not(:last-child) {
-                    border-bottom: 1px solid #ddd;
-                }
 
                 &:nth-child(odd) {
                     background: #F0F1F9;
