@@ -41,14 +41,6 @@
             padding: .3rem;
             border-bottom: 1px solid #ddd;
 
-                &:nth-child(odd) {
-                    background: #F0F1F9;
-                }
-                
-                &:hover {
-                    background: #d3d6ee;
-                }
-
                 input {
                     font-size: 0.78rem;
                     background: #fff;
@@ -88,8 +80,21 @@
                 }
         }
 
+        > li {
+            background: #F0F1F9;
+
+            &:hover {
+                background: #d3d6ee;
+            }
+        }
+
         .depth2 {
             position: relative;
+            background: #FFFCF2;
+
+            &:hover {
+                background: #FFF5D6;
+            }
 
             .depth2_arrow_ico {
                 position: absolute;
