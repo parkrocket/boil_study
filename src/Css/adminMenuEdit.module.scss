@@ -4,8 +4,7 @@
         display: flex;
         align-items: center;
         gap: .2rem;
-        margin-left: auto;
-        margin-right: 0;
+        margin: 0 0 0 auto;
 
         svg {
             font-size: 1rem;
@@ -80,13 +79,16 @@
                 }
         }
 
-        > li {
-            background: #F0F1F9;
+        form {
 
-            &:hover {
-                background: #d3d6ee;
+            > li {
+                background: #F0F1F9;
+    
+                &:hover {
+                    background: #d3d6ee;
+                }
             }
-        }
+        } 
 
         .depth2 {
             position: relative;
@@ -125,4 +127,21 @@
 
 
     }
+
+    .submit_btn {
+        margin: 1.5rem 0 0 auto;
+        display: block;
+        background: #5D4C91;
+        color: #fff;
+        padding: 0.3rem 2rem;
+        border-radius: 5px;
+        font-size: .8rem;
+        transition: .3s;
+
+        &:hover {
+            background: #4E3F78;
+        }
+    }
+
+
 }

@@ -121,7 +121,8 @@ function MenuEdit() {
                     </li>
                     <form id="form_act">{menuListComp}</form>
                 </div>
-                <Button onClick={submitHandler}>확인</Button>
+
+                <button onClick={submitHandler} className={`${adminMenuEditStyle.submit_btn}`}>확인</button>
             </div>
                 
             
