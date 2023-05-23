@@ -4,6 +4,10 @@ import axios from "axios";
 import MenuModal from "./MenuModal";
 import { SERVER_URL } from "../../Config";
 import MenuEditTpl from "./MenuEditTpl";
+import MenuBookIcon from '@mui/icons-material/MenuBook';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import adminStyle from "../../../Css/admin.module.scss";
+import adminMenuEditStyle from "../../../Css/adminMenuEdit.module.scss";
 
 function MenuEdit() {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -53,16 +57,30 @@ function MenuEdit() {
         });
 
     return (
-        <>
-            <Button onClick={onOpen}>메뉴추가</Button>
+        <div className={`${adminStyle.admin_outer}`}>
+            <div className={`${adminStyle.container} ${adminMenuEditStyle.container}`}>
+                <div className={`${adminStyle.tit_box}`}>
+                    <h2 className={`${adminStyle.tit}`}><MenuBookIcon/>메뉴 관리</h2>
+                </div>
 
-            <MenuModal
-                isOpen={isOpen}
-                onClose={onClose}
-                setMenuList={setMenuList}
-                menuCode={menuCode}></MenuModal>
-            <div>{menuListComp}</div>
-        </>
+                <button onClick={onOpen} className={`${adminMenuEditStyle.add_btn}`}><AddCircleOutlineIcon/>메뉴추가</button>
+
+                <MenuModal 
+                    isOpen={isOpen}
+                    onClose={onClose}
+                    setMenuList={setMenuList}
+                    menuCode={menuCode}></MenuModal>
+                <div className={`${adminMenuEditStyle.menu_edit_list}`}>
+                    <li className={`${adminMenuEditStyle.list_head}`}>
+                        <p>메뉴</p>
+                        <p>링크</p>
+                        <p>순서</p>
+                        <p>관리</p>
+                    </li>
+                    {menuListComp}
+                </div>
+            </div>
+        </div>
     );
 }
 
