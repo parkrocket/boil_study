@@ -4,7 +4,7 @@
         
         > li {
             display: grid;
-            grid-template-columns : 1fr 2fr 2fr 2fr 3fr;
+            grid-template-columns : 1fr 2fr 2fr 2fr 3fr .5fr;
             gap: 1rem;
             padding: .5rem 1rem;       
         }
@@ -24,6 +24,17 @@
 
             p {
                 font-size: 0.78rem;
+                
+                .retouch_btn {
+                    color: #bbb;
+                    font-size: 0.7rem;
+                }
+                
+                &:last-child {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
             }
 
             &:nth-child(even) {
@@ -33,6 +44,21 @@
             &:hover {
                 background: #d3d6ee;
             }
+        }
+    }
+
+    .delete_box {
+        margin-top: 1rem;
+
+        .delete_btn {
+            margin-left: auto;
+            margin-right: 0;
+            display: block;
+            background: #5D4C91;
+            color: #fff;
+            padding: 0.3rem 0.5rem;
+            border-radius: 5px;
+            font-size: 0.7rem;
         }
     }
 }
