@@ -96,7 +96,7 @@ function BoardLatestList_dana(props) {
             <Box className={`${boardLatestStyle.wrapper}`}>
                 <Card className={`${boardLatestStyle.inner}`}>
                     <CardHeader className={`${boardLatestStyle.tit}`}>
-                        <Heading size="md">{props.cont.board_name}</Heading>
+                        <Heading size="md"><Link to={`/board/${props.cont.board_id}`}>{props.cont.board_name}</Link></Heading>
                     </CardHeader>
 
                     <CardBody className={`${boardLatestStyle.content}`}>

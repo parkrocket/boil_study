@@ -53,6 +53,7 @@ function AdminHead(props) {
                 </div>
                 <div className={`${adminStyle.right}`}>
                     <ul className={`${adminStyle.util}`}>
+                        {/** 
                         <li>
                             <ul className={`${adminStyle.util_sub}`}>
                                 <li>
@@ -63,6 +64,7 @@ function AdminHead(props) {
                                 </li>
                             </ul>
                         </li>
+                        **/}
                         <li>
                             <div className={`${adminStyle.profile}`} onClick={handleNickNameClick}>
                                 <Avatar
