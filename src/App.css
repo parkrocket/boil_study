@@ -266,7 +266,7 @@
 }
 
 
-/* header */
+/* footer */
 #footer {
   border-top: 1px solid #ddd;
 }
@@ -276,10 +276,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1280px;
-  width: 100%;
+  max-width: 1240px;
+  width: 94%;
   margin: 0 auto;
+  padding: 2rem 0;
 }
+
+#footer .footer-inner .information_list {
+  display: flex;
+  font-size: .8rem;
+  gap: 1rem;
+  color: #aaa;
+} 
+
 
 /* 공통요소 */
 .wrap {
