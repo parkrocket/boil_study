@@ -1,8 +1,11 @@
 .container {
 
     form {
+        width: 100%;
+        display: block;
 
         .form_box {
+            width: 100%;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
@@ -14,23 +17,103 @@
             }
             
             h4 {
-                width: 5rem;
+                width: 7rem;
                 font-size: .8rem;
                 margin-bottom: .5rem;
             }
 
-            input, label {
-                width: calc( 100% - 8.5rem);
+            > input, 
+            > label {
+                width: calc( 100% - 7.5rem);
                 font-size: .75rem;
                 height: 2rem;
             }
 
-            button {
-                width: 3rem;
-                height: 2rem;
-                font-size: 0.73rem;
+            label {
+                display: flex;
+                flex-wrap: wrap;
+                max-height: 7rem;
+                min-height: 7rem;
+                align-items: flex-end;
+                gap: 0.5rem;
+                white-space: nowrap;
+                
+                .img_box {
+                    display: flex;
+                    align-items: center;
+                }
+
+                img {
+                    height: 7rem;
+                    display: block;
+                    width: auto;
+                    min-width: 5rem;
+                    border: 1px solid #ddd;
+                }
+
+                svg {
+                    font-size: 1rem;
+                }
+            }
+        }
+        button {
+            margin: 1.5rem 0 0 auto;
+            display: block;
+            background: #5D4C91;
+            color: #fff;
+            padding: 0.3rem 2rem;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            transition: 0.3s;
+            height: 2rem;
+            font-size: 0.73rem;
+
+            &:hover {
+                background: #4E3F78;
             }
         }
 
+    }
+}
+
+@media screen and (max-width : 500px) {
+    
+    .container {
+
+        form {
+
+            .form_box {
+
+                h4 {
+                    width: 100%;
+                }
+
+                > input, 
+                > label {
+                    width: 100%;
+                }
+                
+                label {
+
+                    img {
+                        height: 4rem;
+                        min-width: 4rem;
+                    }
+
+                    input {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width : 300px) {
+    .container {
+        
+        form {
+            overflow-x: auto;
+        }
     }
 }
