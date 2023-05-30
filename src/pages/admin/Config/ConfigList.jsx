@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Input, Button } from "@chakra-ui/react";
 import axios from "axios";
 import { SERVER_URL } from "../../Config";
@@ -10,7 +10,9 @@ import adminConfigListStyle from "../../../Css/adminConfigList.module.scss";
 function ConfigList() {
     const [title, setTitle] = useState("");
     const [businessName ,setBusinessName] = useState('');
+    const [logoImageUrl, setLogoImgUrl] = useState('');
 
+    const imgRef = useRef();
 
     const config = useSelector((state) => state.configSet.config.config);
 
@@ -22,10 +24,15 @@ function ConfigList() {
         setTitle(e.target.value);
     }
 
-    
-
     function businessNameChangeHandler(e) {
         setBusinessName(e.target.value);
+    }
+
+    function fileChange(e) {
+        const file = imgRef.current.files[0];
+        const fileReader = new FileReader();
+        setLogoImgUrl(fileReader.result);
+        console.log(fileReader.result);
     }
 
     function onSubmitHandler (e) {
@@ -52,8 +59,6 @@ function ConfigList() {
         });
 
         e.preventDefault();
-
-
     }
 
     return (
@@ -82,7 +87,11 @@ function ConfigList() {
                         <div className={`${adminConfigListStyle.form_box}`}>
                             <h4>로고 이미지</h4>
                             <label>
-                                <input type="file" name="logo_image" />
+                                <img src={logoImageUrl} alt="" />
+                                <Input 
+                                type="file" name="logo_image" 
+                                onChange={fileChange}
+                                ref={imgRef}/>
                             </label>
                         </div>
                         <button>수정</button>
