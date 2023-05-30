@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 
@@ -8,6 +8,7 @@ import { loginUser } from "../../_actions/user_actions";
 import Head from "../../components/Head";
 import loginStyle from "../../Css/login.module.css";
 import "../../Css/media.css";
+const { naver } = window;
 
 function Login(props) {
     const [Id, setId] = useState("");
@@ -16,6 +17,20 @@ function Login(props) {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    const initializeNaverLogin = useCallback(() => {
+        const naverLogin = new naver.LoginWithNaverId({
+            clientId: "pT2rGH0Px2xILokqesF8",
+            callbackUrl: "http://localhost:3000/login/naver",
+            isPopup: false, // popup 형식으로 띄울것인지 설정
+            loginButton: { color: "white", type: 1, height: "47" }, //버튼의 스타일, 타입, 크기를 지정
+        });
+        naverLogin.init();
+    }, []);
+
+    useEffect(() => {
+        initializeNaverLogin();
+    }, [initializeNaverLogin]);
 
     const onIdHandler = (event) => {
         setId(event.currentTarget.value);
@@ -39,6 +54,7 @@ function Login(props) {
             }
         });
     };
+
     return (
         <div>
             <Head></Head>
@@ -70,6 +86,7 @@ function Login(props) {
                         <div className={`${loginStyle.log_section} ${loginStyle.log_lost}`}>
                             <a href="#!">아이디/비밀번호 찾기 </a>
                         </div>
+                        <div id="naverIdLogin" />
                         <div>
                             <input
                                 type="submit"

@@ -21,6 +21,7 @@ import UserList from './admin/User/UserList';
 import ConfigList from './admin/Config/ConfigList';
 import MenuEdit from './admin/Config/MenuEdit'
 import UserUpdate from './admin/User/UserUpdate';
+import NaverLogin from '../pages/user/Social/NaverLogin'
 
 export const Routes = () => {
     return (
@@ -28,7 +29,8 @@ export const Routes = () => {
         
         <Route path="/" element={Auth(Main,null)} />
         <Route path="/introduce" element={Auth(Introduce,true)} />
-        <Route path="/login" element={Auth(Login,false)} />
+        <Route path="/login" element={Auth(Login, false)} />
+        <Route path="/login/naver" element={Auth(NaverLogin,false)} />
         <Route path="/register" element={Auth(Register,false)} />
         <Route path="/mypage" element={Auth(Mypage,true)} />
         <Route path="/board" element={Auth(BoardList,true)} />
