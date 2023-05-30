@@ -71,8 +71,13 @@ function Login(props) {
         }
 
         if (fileCount !== 0) {
-            for (let i = 0; i < event.target.upload_files.length; i++) {
-                formData.append("upload_files", event.target.upload_files[i].files[0]);
+            if (fileCount === 1) {
+                formData.append("upload_files", event.target.upload_files.files[0]);
+            } else {
+                for (let i = 0; i < event.target.upload_files.length; i++) {
+                    formData.append("upload_files", event.target.upload_files[i].files[0]);
+                    console.log(event.target.upload_files[i].files[0]);
+                }
             }
         }
 

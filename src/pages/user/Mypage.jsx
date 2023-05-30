@@ -124,6 +124,7 @@ function Mypage() {
             setProfileImg(fileReader.result);
             setImages(file);
         };
+
     }
 
     return (

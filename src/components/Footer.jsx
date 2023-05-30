@@ -5,7 +5,9 @@ import { configSet } from "../_actions/adminMenu_action";
 
 function Footer() {
     const dispatch = useDispatch();
-    const [businessName ,setBusinessName] = useState('');
+    const [bizName ,setBizName] = useState('');
+    const [bizNumber, setBizNumber] = useState("");
+    const [address, setAddress] = useState("");
 
     useEffect(() => {
         const data = { check: "adminadmin" };
@@ -13,7 +15,9 @@ function Footer() {
             if (response.payload.configListSuccess === false) {
                 alert("설정을 불러오는데 실패했습니다.");
             } else {
-                setBusinessName(response.payload.config.businessName);
+                setBizName(response.payload.config.biz_name);
+                setBizNumber(response.payload.config.biz_number);
+                setAddress(response.payload.config.address);
             }
         });
     }, [dispatch]);
@@ -23,9 +27,9 @@ function Footer() {
             <div id="footer">
                 <div className="footer-inner">
                     <ul className="information_list">
-                        <li>상호 : <span>{businessName}</span></li>
-                        <li>사업자등록 : <span>1234-5678</span></li>
-                        <li>주소 : <span>서울특별시</span></li>
+                        <li>상호명 : <span>{bizName}</span></li>
+                        <li>사업자등록번호 : <span>{bizNumber}</span></li>
+                        <li>주소 : <span>{address}</span></li>
                     </ul>
                 </div>
             </div>

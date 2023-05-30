@@ -1,23 +1,30 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Input, Button } from "@chakra-ui/react";
+import { Input } from "@chakra-ui/react";
 import axios from "axios";
 import { SERVER_URL } from "../../Config";
 import { useSelector } from "react-redux";
-import EditIcon from '@mui/icons-material/Edit';
+import EditIcon from "@mui/icons-material/Edit";
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import adminStyle from "../../../Css/admin.module.scss";
 import adminConfigListStyle from "../../../Css/adminConfigList.module.scss";
 
 function ConfigList() {
     const [title, setTitle] = useState("");
-    const [businessName ,setBusinessName] = useState('');
-    const [logoImageUrl, setLogoImgUrl] = useState('');
-
-    const imgRef = useRef();
+    const [bizName, setBizName] = useState("");
+    const [bizNumber, setBizNumber] = useState("");
+    const [address, setAddress] = useState("");
+    const [logoImgUrl, setLogoImgUrl] = useState("");
+    const [fileImg, setFileImg] = useState("");
+    const [Images, setImages] = useState({});
 
     const config = useSelector((state) => state.configSet.config.config);
 
+    const imgRef = useRef();
+
     useEffect(() => {
         setTitle(config.title);
+        setBizName(config.biz_name);
+        setLogoImgUrl(config.logo_image);
     }, [config]);
 
     function titleChangeHandler(e) {
@@ -25,23 +32,23 @@ function ConfigList() {
     }
 
     function businessNameChangeHandler(e) {
-        setBusinessName(e.target.value);
+        setBizName(e.target.value);
     }
 
-    function fileChange(e) {
-        const file = imgRef.current.files[0];
-        const fileReader = new FileReader();
-        setLogoImgUrl(fileReader.result);
-        console.log(fileReader.result);
+    function businessNumberChangeHandler(e) {
+        setBizNumber(e.target.value);
+    }
+    function addressChangeHandler(e) {
+        setAddress(e.target.value);
     }
 
-    function onSubmitHandler (e) {
+    function onSubmitHandler(e) {
         console.log(e);
 
         const formData = new FormData();
-        
+
         formData.append("title", title);
-        formData.append("businessName", businessName);
+        formData.append("bizName", bizName);
 
         formData.append("logo_image", e.target.logo_image.files[0]);
         console.log(e.target.logo_image.files[0]);
@@ -51,21 +58,39 @@ function ConfigList() {
                 alert("설정을 저장하는데 실패했습니다.");
             }
 
-            console.log(response.data);
-
             setTitle(response.data.config.title);
-            setBusinessName(response.data.config.businessName);
+            setBizName(response.data.config.biz_name);
+            setBizNumber(response.data.config.biz_number);
+            setAddress(response.data.config.address);
+            setLogoImgUrl(response.data.config.logo_image);
             alert("수정이 완료되었습니다.");
         });
 
         e.preventDefault();
+    }
+    
+    function fileChange(e) {
+        const file = imgRef.current.files[0];
+
+        const fileReader = new FileReader();
+
+        fileReader.readAsDataURL(file);
+
+        fileReader.onload = (e) => {
+            setFileImg(fileReader.result);
+            setImages(file);
+        };
+
     }
 
     return (
         <div className={`${adminStyle.admin_outer}`}>
             <div className={`${adminStyle.container} ${adminConfigListStyle.container}`}>
                 <div className={`${adminStyle.tit_box}`}>
-                    <h2 className={`${adminStyle.tit}`}><EditIcon/>사이트 관리</h2>
+                    <h2 className={`${adminStyle.tit}`}>
+                        <EditIcon />
+                        사이트 관리
+                    </h2>
                 </div>
                 <form action="" onSubmit={onSubmitHandler}>
                     <fieldset>
@@ -75,21 +100,38 @@ function ConfigList() {
                                 placeholder="사이트제목"
                                 onChange={titleChangeHandler}
                                 defaultValue={title}></Input>
-                            
                         </div>
                         <div className={`${adminConfigListStyle.form_box}`}>
                             <h4>상호명</h4>
                             <Input
-                                placeholder="푸터 상호명"
+                                placeholder="상호명"
                                 onChange={businessNameChangeHandler}
-                                defaultValue={businessName}></Input>
+                                defaultValue={bizName}></Input>
+                        </div>
+                        <div className={`${adminConfigListStyle.form_box}`}>
+                            <h4>사업자등록번호</h4>
+                            <Input
+                                placeholder="사업자등록번호"
+                                onChange={businessNumberChangeHandler}
+                                defaultValue={bizNumber}></Input>
+                        </div>
+                        <div className={`${adminConfigListStyle.form_box}`}>
+                            <h4>주소</h4>
+                            <Input
+                                placeholder="주소"
+                                onChange={addressChangeHandler}
+                                defaultValue={address}></Input>
                         </div>
                         <div className={`${adminConfigListStyle.form_box}`}>
                             <h4>로고 이미지</h4>
                             <label>
-                                <img src={logoImageUrl} alt="" />
-                                <Input 
-                                type="file" name="logo_image" 
+                                <div className={`${adminConfigListStyle.img_box}`}>
+                                    <img src={`${SERVER_URL}/${logoImgUrl}`} alt="" />
+                                    <ArrowForwardIcon/>
+                                    <img src={fileImg} alt="" />
+                                </div>
+                                <input 
+                                type="file" name="logo_image"
                                 onChange={fileChange}
                                 ref={imgRef}/>
                             </label>
