@@ -3,14 +3,13 @@ import { Input, Button } from "@chakra-ui/react";
 import axios from "axios";
 import { SERVER_URL } from "../../Config";
 import { useSelector } from "react-redux";
-import EditIcon from '@mui/icons-material/Edit';
+import EditIcon from "@mui/icons-material/Edit";
 import adminStyle from "../../../Css/admin.module.scss";
 import adminConfigListStyle from "../../../Css/adminConfigList.module.scss";
 
 function ConfigList() {
     const [title, setTitle] = useState("");
-    const [businessName ,setBusinessName] = useState('');
-
+    const [bizName, setBizName] = useState("");
 
     const config = useSelector((state) => state.configSet.config.config);
 
@@ -22,19 +21,17 @@ function ConfigList() {
         setTitle(e.target.value);
     }
 
-    
-
     function businessNameChangeHandler(e) {
-        setBusinessName(e.target.value);
+        setBizName(e.target.value);
     }
 
-    function onSubmitHandler (e) {
+    function onSubmitHandler(e) {
         console.log(e);
 
         const formData = new FormData();
-        
+
         formData.append("title", title);
-        formData.append("businessName", businessName);
+        formData.append("bizName", bizName);
 
         formData.append("logo_image", e.target.logo_image.files[0]);
         console.log(e.target.logo_image.files[0]);
@@ -47,20 +44,21 @@ function ConfigList() {
             console.log(response.data);
 
             setTitle(response.data.config.title);
-            setBusinessName(response.data.config.businessName);
+            setBizName(response.data.config.businessName);
             alert("수정이 완료되었습니다.");
         });
 
         e.preventDefault();
-
-
     }
 
     return (
         <div className={`${adminStyle.admin_outer}`}>
             <div className={`${adminStyle.container} ${adminConfigListStyle.container}`}>
                 <div className={`${adminStyle.tit_box}`}>
-                    <h2 className={`${adminStyle.tit}`}><EditIcon/>사이트 관리</h2>
+                    <h2 className={`${adminStyle.tit}`}>
+                        <EditIcon />
+                        사이트 관리
+                    </h2>
                 </div>
                 <form action="" onSubmit={onSubmitHandler}>
                     <fieldset>
@@ -70,14 +68,13 @@ function ConfigList() {
                                 placeholder="사이트제목"
                                 onChange={titleChangeHandler}
                                 defaultValue={title}></Input>
-                            
                         </div>
                         <div className={`${adminConfigListStyle.form_box}`}>
                             <h4>상호명</h4>
                             <Input
                                 placeholder="푸터 상호명"
                                 onChange={businessNameChangeHandler}
-                                defaultValue={businessName}></Input>
+                                defaultValue={bizName}></Input>
                         </div>
                         <div className={`${adminConfigListStyle.form_box}`}>
                             <h4>로고 이미지</h4>
