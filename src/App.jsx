@@ -20,6 +20,7 @@ function App() {
             }
         });
     }, [dispatch]);
+    
     return (
         <React.Fragment>
             <HelmetProvider>

@@ -56,7 +56,7 @@ function AdminLnb(props) {
     return (
         <div className={`${adminStyle.admin_lnb}`}>
             <div className={`${adminStyle.container}`}>
-                <h1 className={`${adminStyle.logo}`}>LinkBoard</h1>
+                <h1 className={`${adminStyle.logo}`}>Link<br className={`${adminStyle.mo_br}`}/>Board</h1>
                 <h1 className={`${adminStyle.tit}`}>
                     <Link to="/admin">
                         <span className={`${adminStyle.pc}`}>admin home</span>
