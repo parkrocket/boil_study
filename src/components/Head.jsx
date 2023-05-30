@@ -11,7 +11,7 @@ function Head() {
     const [isHover, setIsHover] = useState(false);
 
     const handleScroll = () => {
-        console.log(document.getElementById("root").offsetHeight);
+        // console.log(document.getElementById("root").offsetHeight);
 
         if (document.getElementById("root").offsetHeight > 1200) {
             if (window.scrollY > 50) {

@@ -94,6 +94,10 @@
                 0 2px 2px rgba(167, 171, 221,.3),
                 0 -2px 2px rgba(167, 171, 221,.3);
                 text-shadow: 2px 2px 2px rgba(167, 171, 221,.3);
+
+                .mo_br {
+                    display: none;
+                }
         }
         
         .tit {
@@ -589,16 +593,25 @@
             width: 60px;
     
             .container {
+
+                .logo {
+                    font-size: 1rem;
+
+                    .mo_br {
+                        display: block;
+                    }
+                }
     
                 .tit {
                     padding: 0;
                     flex-wrap: wrap;
                     justify-content: center;
                     flex-direction: column-reverse;
+                    gap : 0;
                     
                     a {
                         text-align: center;
-                        font-size: 1rem;
+                        font-size: .8rem;
     
                         .pc {
                             display: none;
