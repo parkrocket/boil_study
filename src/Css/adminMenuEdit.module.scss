@@ -35,7 +35,7 @@
         li {
             list-style: none;
             display: grid;
-            grid-template-columns: 1fr 2fr 55px 155px;
+            grid-template-columns: 1fr 2fr 55px 150px;
             column-gap: .4rem;
             padding: .3rem;
             border-bottom: 1px solid #ddd;
@@ -124,8 +124,6 @@
                 }
             }
         }
-
-
     }
 
     .submit_btn {
@@ -142,6 +140,41 @@
             background: #4E3F78;
         }
     }
+}
 
+@media screen and ( max-width : 600px ) {
+    .container {
 
+        .menu_edit_list {
+            overflow-x: auto;
+            
+            li {
+                min-width: 330px;
+                grid-template-columns: 1.3fr 1.7fr 30px 100px;
+
+                input {
+                    padding: 0 .5rem;
+                }
+            }
+
+            .depth2 {
+
+                .depth2_arrow_ico {
+                    font-size: 0.7rem;
+                }
+
+                li {
+
+                    input {
+
+                        &:nth-child(2) {
+                            margin-left: 1rem;
+                            width: calc(100% - 1rem);
+
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
