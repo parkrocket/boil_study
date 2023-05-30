@@ -12,8 +12,9 @@ function Auth(ChildrenComponent, option, adminRoute = false, menu = 0, subMenu =
         const navigate = useNavigate();
         const dispatch = useDispatch();
         const [cookies] = useCookies(["x_auth"]);
-        const [view, setView] = useState(false);
 
+        const [view, setView] = useState(false);
+        console.log(cookies);
         useEffect(() => {
             dispatch(auth(cookies)).then((response) => {
                 if (response.payload.isAuth) {

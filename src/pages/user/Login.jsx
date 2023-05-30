@@ -8,6 +8,9 @@ import { loginUser } from "../../_actions/user_actions";
 import Head from "../../components/Head";
 import loginStyle from "../../Css/login.module.css";
 import "../../Css/media.css";
+
+import { clientId, callbackUrl } from "../Config";
+
 const { naver } = window;
 
 function Login(props) {
@@ -20,8 +23,8 @@ function Login(props) {
 
     const initializeNaverLogin = useCallback(() => {
         const naverLogin = new naver.LoginWithNaverId({
-            clientId: "pT2rGH0Px2xILokqesF8",
-            callbackUrl: "http://localhost:3000/login/naver",
+            clientId: clientId,
+            callbackUrl: callbackUrl,
             isPopup: false, // popup 형식으로 띄울것인지 설정
             loginButton: { color: "white", type: 1, height: "47" }, //버튼의 스타일, 타입, 크기를 지정
         });
