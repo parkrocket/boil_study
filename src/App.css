@@ -88,6 +88,9 @@
 #header .header-inner h1 a {
   display: block;
 }
+#header .header-inner h1 a img {
+  height:64px;
+}
 #header .header-inner .main_gnb {
   display: flex;
   gap: 1rem;
