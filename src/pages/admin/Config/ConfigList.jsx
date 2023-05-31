@@ -126,9 +126,9 @@ function ConfigList() {
                             <h4>로고 이미지</h4>
                             <label>
                                 <div className={`${adminConfigListStyle.img_box}`}>
-                                    <img src={`${SERVER_URL}/${logoImgUrl}`} alt="" />
+                                    <img src={`${SERVER_URL}/${logoImgUrl}`} alt=""/>
                                     <ArrowForwardIcon/>
-                                    <img src={fileImg} alt="" />
+                                    <img src={fileImg} alt=""/>
                                 </div>
                                 <input 
                                 type="file" name="logo_image"
