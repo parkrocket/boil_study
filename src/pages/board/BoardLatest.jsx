@@ -11,9 +11,9 @@ function BoardLatest(props) {
 
     return (
         <React.Fragment>
-            <Flex spacing="24px" className={`${boardLatestStyle.board_latest_container}`}>
+            <div className={`${boardLatestStyle.board_latest_container}`}>
                 {content}
-            </Flex>
+            </div>
         </React.Fragment>
     );
 }
