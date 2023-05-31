@@ -15,13 +15,15 @@ import { SERVER_URL } from "../Config";
 
 function AdminLnb(props) {
     const adminMenu = useSelector((state) => state);
-    const config = useSelector((state) => state.configSet.config.config);
+    const config = useSelector((state) => state);
 
     const [logoImage, setlogoImage] = useState("");
 
     useEffect(() => {
         props.setAdminMenus(adminMenu.adminMenu.adminMenu);
-        setlogoImage(`${SERVER_URL}/${config.logo_image}`);
+        if (config.configSet.config !== undefined) {
+            setlogoImage(`${SERVER_URL}/${config.configSet.config.config.logo_image}`);
+        }
 
         const menu = props.adminMenus.menu;
         const subMenu = props.adminMenus.subMenu;

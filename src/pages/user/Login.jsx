@@ -24,7 +24,7 @@ function Login(props) {
     const [, setCookie] = useCookies(["x_auth"]);
     const [logoImage, setLogoImage] = useState("");
 
-    const config = useSelector((state) => state.configSet.config.config);
+    const config = useSelector((state) => state);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -42,7 +42,10 @@ function Login(props) {
     }, []);
 
     useEffect(() => {
-        setLogoImage(`${SERVER_URL}/${config.logo_image}`);
+        if (config.configSet.config !== undefined) {
+            setLogoImage(`${SERVER_URL}/${config.configSet.config.config.logo_image}`);
+        }
+
         initializeNaverLogin();
     }, [initializeNaverLogin, config]);
 

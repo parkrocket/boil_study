@@ -13,7 +13,7 @@ function Head() {
     const [isHover, setIsHover] = useState(false);
     const [logoImage, setLogoImage] = useState("");
 
-    const config = useSelector((state) => state.configSet.config.config);
+    const config = useSelector((state) => state);
 
     const handleScroll = () => {
         // console.log(document.getElementById("root").offsetHeight);
@@ -30,7 +30,9 @@ function Head() {
     let scrollCheck = isScroll ? "active" : "";
 
     useEffect(() => {
-        setLogoImage(`${SERVER_URL}/${config.logo_image}`);
+        if (config.configSet.config !== undefined) {
+            setLogoImage(`${SERVER_URL}/${config.configSet.config.config.logo_image}`);
+        }
 
         window.addEventListener("scroll", handleScroll);
         return () => {

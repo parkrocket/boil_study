@@ -24,10 +24,12 @@ function Register() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const config = useSelector((state) => state.configSet.config.config);
+    const config = useSelector((state) => state);
 
     useEffect(() => {
-        setLogoImage(`${SERVER_URL}/${config.logo_image}`);
+        if (config.configSet.config !== undefined) {
+            setLogoImage(`${SERVER_URL}/${config.configSet.config.config.logo_image}`);
+        }
     }, [config]);
 
     const onIdHandler = (event) => {
