@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect, useRef } from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 
@@ -11,6 +11,8 @@ import "../../Css/media.css";
 
 import { clientId, callbackUrl } from "../Config";
 
+import naverLogoImage from "../../img/naver_logo.png";
+
 const { naver } = window;
 
 function Login(props) {
@@ -21,12 +23,14 @@ function Login(props) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
+    const naverRef = useRef();
+
     const initializeNaverLogin = useCallback(() => {
         const naverLogin = new naver.LoginWithNaverId({
             clientId: clientId,
             callbackUrl: callbackUrl,
             isPopup: false, // popup 형식으로 띄울것인지 설정
-            loginButton: { color: "white", type: 1, height: "47" }, //버튼의 스타일, 타입, 크기를 지정
+            loginButton: { color: "white", type: 1, height: "20" }, //버튼의 스타일, 타입, 크기를 지정
         });
         naverLogin.init();
     }, []);
@@ -57,6 +61,10 @@ function Login(props) {
             }
         });
     };
+
+    const naverIdLoginHandler = () => {
+        naverRef.current.children[0].click();
+    }
 
     return (
         <div>
@@ -89,7 +97,14 @@ function Login(props) {
                         <div className={`${loginStyle.log_section} ${loginStyle.log_lost}`}>
                             <a href="#!">아이디/비밀번호 찾기 </a>
                         </div>
-                        <div id="naverIdLogin" />
+                        <div id="naverIdLogin" ref={naverRef} className={`${loginStyle.naverIdLogin}`}/>
+                        <div className={`${loginStyle.login_type_box}`}>
+                            <button className={`${loginStyle.naverIdLogin_btn}`}
+                            onClick={naverIdLoginHandler}>
+                                <img src={naverLogoImage} alt="" />
+                                <span>네이버 아이디로 로그인</span>
+                            </button>
+                        </div>
                         <div>
                             <input
                                 type="submit"

@@ -67,6 +67,37 @@ input[type="password"]:focus {
     float: right;
     color: #999;
 }
+
+/* login type start */
+.naverIdLogin {
+    display: none;
+}
+.login_type_box {
+    margin-top: 1rem;
+}
+.login_type_box button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: .5rem;
+    width: 100%;
+    border-radius: 5px;
+    padding: 0.5rem 0;
+    margin-bottom: .5rem;
+}
+.login_type_box .naverIdLogin_btn {
+    background: #fff;
+    border: 1px solid #E6E6EA;
+}
+.login_type_box .naverIdLogin_btn span {
+    color: #767678;
+    font-weight: 500;
+    font-size: .8rem;
+}
+/* login type end */
+
+
+
 @media (max-width: 600px) {
     .login_wrap {
         width: 100%;
