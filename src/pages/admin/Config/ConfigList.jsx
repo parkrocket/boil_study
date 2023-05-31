@@ -4,7 +4,7 @@ import axios from "axios";
 import { SERVER_URL } from "../../Config";
 import { useSelector } from "react-redux";
 import EditIcon from "@mui/icons-material/Edit";
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import adminStyle from "../../../Css/admin.module.scss";
 import adminConfigListStyle from "../../../Css/adminConfigList.module.scss";
 
@@ -24,6 +24,8 @@ function ConfigList() {
         setTitle(config.title);
         setBizName(config.biz_name);
         setLogoImgUrl(config.logo_image);
+        setAddress(config.biz_address);
+        setBizNumber(config.biz_number);
     }, [config]);
 
     function titleChangeHandler(e) {
@@ -48,6 +50,8 @@ function ConfigList() {
 
         formData.append("title", title);
         formData.append("bizName", bizName);
+        formData.append("bizAddress", address);
+        formData.append("bizNumber", bizNumber);
 
         formData.append("logo_image", e.target.logo_image.files[0]);
         console.log(e.target.logo_image.files[0]);
@@ -60,14 +64,14 @@ function ConfigList() {
             setTitle(response.data.config.title);
             setBizName(response.data.config.biz_name);
             setBizNumber(response.data.config.biz_number);
-            setAddress(response.data.config.address);
+            setAddress(response.data.config.biz_address);
             setLogoImgUrl(response.data.config.logo_image);
             alert("수정이 완료되었습니다.");
         });
 
         e.preventDefault();
     }
-    
+
     function fileChange(e) {
         const file = imgRef.current.files[0];
 
@@ -77,6 +81,10 @@ function ConfigList() {
 
         fileReader.onload = (e) => {
             setFileImg(fileReader.result);
+
+            //setImages(file);
+            document.getElementById("image_url").src = fileReader.result;
+
         };
     }
 
@@ -123,14 +131,21 @@ function ConfigList() {
                             <h4>로고 이미지</h4>
                             <label>
                                 <div className={`${adminConfigListStyle.img_box}`}>
-                                    <img src={`${SERVER_URL}/${logoImgUrl}`} alt=""/>
-                                    <ArrowForwardIcon/>
-                                    <img src={fileImg} alt=""/>
+
+                                    <img
+                                        src={`${SERVER_URL}/${logoImgUrl}`}
+                                        alt=""
+                                        id="image_url"
+                                    />
+
                                 </div>
-                                <input 
-                                type="file" name="logo_image"
-                                onChange={fileChange}
-                                ref={imgRef}/>
+                                <input
+                                    style={{ display: "none" }}
+                                    type="file"
+                                    name="logo_image"
+                                    onChange={fileChange}
+                                    ref={imgRef}
+                                />
                             </label>
                         </div>
                         <button>수정</button>
