@@ -15,7 +15,6 @@ function ConfigList() {
     const [address, setAddress] = useState("");
     const [logoImgUrl, setLogoImgUrl] = useState("");
     const [fileImg, setFileImg] = useState("");
-    const [Images, setImages] = useState({});
 
     const config = useSelector((state) => state.configSet.config.config);
 
@@ -78,9 +77,7 @@ function ConfigList() {
 
         fileReader.onload = (e) => {
             setFileImg(fileReader.result);
-            setImages(file);
         };
-
     }
 
     return (
