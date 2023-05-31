@@ -4,7 +4,6 @@ import axios from "axios";
 import { SERVER_URL } from "../../Config";
 import { useSelector } from "react-redux";
 import EditIcon from "@mui/icons-material/Edit";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import adminStyle from "../../../Css/admin.module.scss";
 import adminConfigListStyle from "../../../Css/adminConfigList.module.scss";
 
@@ -14,7 +13,7 @@ function ConfigList() {
     const [bizNumber, setBizNumber] = useState("");
     const [address, setAddress] = useState("");
     const [logoImgUrl, setLogoImgUrl] = useState("");
-    const [fileImg, setFileImg] = useState("");
+    const [, setFileImg] = useState("");
 
     const config = useSelector((state) => state.configSet.config.config);
 
