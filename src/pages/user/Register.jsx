@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Head from "../../components/Head";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../../_actions/user_actions";
 import { useNavigate } from "react-router-dom";
 import loginStyle from "../../Css/login.module.css";
+import Footer from "../../components/Footer";
 
 import axios from "axios";
+import { SERVER_URL } from "../Config";
 
 function Register() {
     const [Id, setId] = useState("");
@@ -17,9 +19,16 @@ function Register() {
     const [Check1, setCheck1] = useState(false);
     const [Check2, setCheck2] = useState(false);
     const [IdCheck, setIdCheck] = useState(false);
+    const [logoImage, setLogoImage] = useState("");
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    const config = useSelector((state) => state.configSet.config.config);
+
+    useEffect(() => {
+        setLogoImage(`${SERVER_URL}/${config.logo_image}`);
+    }, [config]);
 
     const onIdHandler = (event) => {
         axios
@@ -161,8 +170,10 @@ function Register() {
                     <form onSubmit={onSubmitHandler}>
                         <input type="hidden" name="idcheck" defaultValue={IdCheck}></input>
                         <div className={loginStyle.login_title}>
-                            <h2 className={`${loginStyle.logo} ${loginStyle.fontf}`}>LinkBoard</h2>
-                            <span>LinkBoard 회원가입</span>
+                            <h2 className={`${loginStyle.logo} ${loginStyle.fontf}`}>
+                                <img src={logoImage} alt="logo" />
+                            </h2>
+                            <span>회원가입</span>
                         </div>
                         <div className={loginStyle.log_section}>
                             <em>아이디</em>
@@ -224,6 +235,7 @@ function Register() {
                     </form>
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 }

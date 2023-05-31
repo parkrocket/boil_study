@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import adminStyle from "../../Css/admin.module.scss";
 import HomeIcon from "@mui/icons-material/Home";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
@@ -11,12 +11,17 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import { NavLink, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { SERVER_URL } from "../Config";
 
 function AdminLnb(props) {
     const adminMenu = useSelector((state) => state);
+    const config = useSelector((state) => state.configSet.config.config);
+
+    const [logoImage, setlogoImage] = useState("");
 
     useEffect(() => {
         props.setAdminMenus(adminMenu.adminMenu.adminMenu);
+        setlogoImage(`${SERVER_URL}/${config.logo_image}`);
 
         const menu = props.adminMenus.menu;
         const subMenu = props.adminMenus.subMenu;
@@ -51,12 +56,14 @@ function AdminLnb(props) {
                 element.parentElement.classList.remove(`${adminStyle.active}`);
             });
         }
-    }, [props, adminMenu.adminMenu.adminMenu]);
+    }, [props, adminMenu.adminMenu.adminMenu, config]);
 
     return (
         <div className={`${adminStyle.admin_lnb}`}>
             <div className={`${adminStyle.container}`}>
-                <h1 className={`${adminStyle.logo}`}>Link<br className={`${adminStyle.mo_br}`}/>Board</h1>
+                <h1 className={`${adminStyle.logo}`}>
+                    <img src={`${logoImage}`} alt="" />
+                </h1>
                 <h1 className={`${adminStyle.tit}`}>
                     <Link to="/admin">
                         <span className={`${adminStyle.pc}`}>admin home</span>
