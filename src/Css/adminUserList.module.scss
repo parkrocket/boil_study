@@ -4,8 +4,8 @@
         
         > li {
             display: grid;
-            grid-template-columns : 1fr 2fr 2fr 2fr 3fr .5fr;
-            gap: 1rem;
+            grid-template-columns : .3fr 2fr 2fr 2fr 3fr .5fr;
+            gap: .5rem;
             padding: .5rem 1rem;       
         }
 
@@ -28,6 +28,7 @@
                 .retouch_btn {
                     color: #bbb;
                     font-size: 0.7rem;
+                    white-space: nowrap;
                 }
                 
                 &:last-child {
@@ -59,6 +60,47 @@
             padding: 0.3rem 0.5rem;
             border-radius: 5px;
             font-size: 0.7rem;
+        }
+    }
+}
+
+@media screen and (max-width : 700px) {
+    .container {
+
+        .user_list {
+
+            > li {
+                padding: 0.5rem .2rem;
+            }
+
+            .list_head {
+
+                p {
+                    font-size: 0.75rem;
+                }
+            }
+
+            li:not(.list_head) {
+                p {
+                    font-size: 0.7rem;
+
+                    .retouch_btn {
+                        font-size: 0.6rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width : 600px) {
+    .container {
+        overflow-x: auto;
+
+        .user_list,
+        .delete_box,
+        .pagination {
+            min-width: 470px;
         }
     }
 }

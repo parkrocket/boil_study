@@ -80,8 +80,10 @@ function ConfigList() {
 
         fileReader.onload = (e) => {
             setFileImg(fileReader.result);
+
             //setImages(file);
             document.getElementById("image_url").src = fileReader.result;
+
         };
     }
 
@@ -128,11 +130,13 @@ function ConfigList() {
                             <h4>로고 이미지</h4>
                             <label>
                                 <div className={`${adminConfigListStyle.img_box}`}>
+
                                     <img
                                         src={`${SERVER_URL}/${logoImgUrl}`}
                                         alt=""
                                         id="image_url"
                                     />
+
                                 </div>
                                 <input
                                     style={{ display: "none" }}
