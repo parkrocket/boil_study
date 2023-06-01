@@ -64,14 +64,16 @@ function AdminLnb(props) {
         <div className={`${adminStyle.admin_lnb}`}>
             <div className={`${adminStyle.container}`}>
                 <h1 className={`${adminStyle.logo}`}>
-                    <img src={`${logoImage}`} alt="" />
+                    <Link to="/" className={`${adminStyle.home_btn}`}>
+                        <img src={`${logoImage}`} alt="" />
+                    </Link>
                 </h1>
                 <h1 className={`${adminStyle.tit}`}>
                     <Link to="/admin">
                         <span className={`${adminStyle.pc}`}>admin home</span>
                         <span className={`${adminStyle.mo}`}>admin</span>
                     </Link>
-                    <Link to="/" className={`${adminStyle.home_btn}`}>
+                    <Link to="/admin" className={`${adminStyle.home_btn}`}>
                         <HomeIcon />
                     </Link>
                 </h1>

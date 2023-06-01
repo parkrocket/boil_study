@@ -11,6 +11,9 @@ import { useSelector } from "react-redux";
 import Confirm from "../../components/Confirm";
 import { useDisclosure } from "@chakra-ui/react";
 import { ViewIcon, TimeIcon } from "@chakra-ui/icons";
+import AttachFileIcon from '@mui/icons-material/AttachFile';
+import { Avatar } from "@chakra-ui/react";
+
 
 function BoardView() {
     const params = useParams();
@@ -122,15 +125,15 @@ function BoardView() {
         return (
             <React.Fragment key={index}>
                 {file.filename && (
-                    <span>
-                        첨부파일 #{index + 1}:{" "}
+                    <div>
+                        <AttachFileIcon/>첨부파일 #{index + 1}:{" "}
                         <button
                             onClick={fileDownloadHandler}
                             data-path={file.filepath}
                             data-filename={file.filename}>
                             {file.filename}
                         </button>
-                    </span>
+                    </div>
                 )}
             </React.Fragment>
         );
@@ -144,28 +147,38 @@ function BoardView() {
                 <div className={`${boardViewStyle.wrapper}`}>
                     <h2 className={`${boardViewStyle.cont_tit}`}>
                         {BoardView.subject}{" "}
-                        <span>
-                            <ViewIcon></ViewIcon>
-                            {BoardView.hit}
-                        </span>
-                        <span>
-                            <TimeIcon></TimeIcon>
-                            {viewDateTime}
-                        </span>
                     </h2>
+                    <div className={`${boardViewStyle.cont_detail}`}>
+                        <Avatar src className={`${boardViewStyle.thumb}`}></Avatar>
+                        <div>
+                            <p className={`${boardViewStyle.nickname}`}>nickName</p>
+                            <span>
+                                <ViewIcon></ViewIcon>
+                                {BoardView.hit}
+                            </span>
+                            <span>
+                                <TimeIcon></TimeIcon>
+                                {viewDateTime}
+                            </span>
+                        </div>
+                    </div>
 
                     <div
                         dangerouslySetInnerHTML={{ __html: BoardView.content }}
-                        className={`${boardViewStyle.cont}`}></div>
-                </div>
-                <div>{fileListComp}</div>
-
-                {(user.user.auth._id === BoardView.user_id || user.user.auth.isAdmin === true) && (
-                    <div>
-                        <Link to={`/board/update/${params.boardId}/${BoardView.wr_no}`}>수정</Link>
-                        <button onClick={confirmOpen}>삭제</button>
+                        className={`${boardViewStyle.cont}`}>
                     </div>
-                )}
+                    <div className={`${boardViewStyle.file_list}`}>
+                        {fileListComp}
+                    </div>
+
+                    {(user.user.auth._id === BoardView.user_id || user.user.auth.isAdmin === true) && (
+                        <div className={`${boardViewStyle.tool}`}>
+                            <Link to={`/board/update/${params.boardId}/${BoardView.wr_no}`}>수정</Link>
+                            <button onClick={confirmOpen}>삭제</button>
+                        </div>
+                    )}
+                </div>
+
 
                 <div>
                     <Comment commentList={CommentList} refreshComment={refreshComment}></Comment>

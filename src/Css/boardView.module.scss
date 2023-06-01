@@ -17,19 +17,102 @@
             font-weight: 600;
             padding: 1rem;
         }
+
+        .cont_detail {
+            display: flex;
+            padding: 0 1rem;
+            margin-bottom: 1rem;
+            align-items: center;
+            column-gap: .5rem;
+
+            .thumb {
+                width: 38px;
+                height: 38px;
+            }
+
+            > div {
+
+                .nickname {
+                    font-size: 0.78rem;
+                    line-height: 1;
+                }
+    
+                span {
+                    font-size: 0.73rem;
+                    color: #777;
+                    margin-right: 0.5rem;
+
+                    svg {
+                        margin-right: 0.3rem;
+                    }
+                }
+            }
+        }
     
         .cont {
             font-size: 1rem;
             min-height: 300px;
             padding: 1rem 2rem;
-            border-top: 1px solid #ddd;
+            border-top: 2px solid #ddd;
             border-bottom: 2px solid #ddd;
+        }
+
+        .file_list {
+            padding: 1rem 1rem 0;
+            font-size: 0.78rem;
+            color: #777;
+
+            > div {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: .15rem;
+
+                svg {
+                    font-size: .9rem;
+                }
+
+                button {
+                    text-align: left;
+                    word-break: keep-all;
+
+                    &:hover {
+                        color: #222;
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+        }
+
+        .tool {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            column-gap: .6rem;
+            margin-top: 1rem;
+    
+            a,
+            button {
+                background: #444;
+                border: 1px solid #444;
+                color: #fff;
+                font-size: 0.8rem;
+                padding: 0.35rem 0.7rem;
+                transition: .3s;
+    
+                &:hover {
+                    background: #fff;
+                    color: #444;
+                }
+            }
         }
     }
 
 }
 
 .btn_box {
+    margin-bottom: 5rem;
 
     .prev_btn {
         display: block;
