@@ -1,0 +1,38 @@
+.list {
+    display: flex;
+    padding: 20px 10px;
+  }
+  
+  .column {
+    padding: 0 10px;
+  }
+  
+  .item {
+    & + & {
+      margin-top: 20px;
+    }
+  }
+  
+  .card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #eee;
+    font-size: 40px;
+    font-weight: 700;
+    color: #fff;
+  }
+  
+  
+  body,
+  ul,
+  li,
+  p {
+    margin: 0;
+    padding: 0;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  

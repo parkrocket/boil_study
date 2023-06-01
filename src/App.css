@@ -287,8 +287,9 @@
 
 #footer .footer-inner .information_list {
   display: flex;
+  flex-wrap: wrap;
   font-size: .8rem;
-  gap: 1rem;
+  column-gap: 1rem;
   color: #aaa;
 } 
 
