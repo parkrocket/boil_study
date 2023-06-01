@@ -6,7 +6,11 @@ const Paging = (props) => {
     const navigate = useNavigate();
 
     function pageChangeHandler(page) {
-        navigate(`${props.path}${page}`);
+        let url = `${props.path}${page}`;
+        if (props.searchText !== undefined) {
+            url += `?category=${props.category}&searchText=${props.searchText}`;
+        }
+        navigate(url);
     }
 
     return (

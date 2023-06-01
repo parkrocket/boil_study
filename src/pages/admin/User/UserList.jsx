@@ -7,9 +7,11 @@ import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import adminUserListStyle from "../../../Css/adminUserList.module.scss";
 import adminStyle from "../../../Css/admin.module.scss";
 import moment from "moment";
+import * as xlsx from "xlsx";
 
 function UserList() {
     const [userList, setUserList] = useState([]);
+    const [userExcelList, setUserExcelList] = useState([]);
     const [count, setCount] = useState(0);
     const [checkItems, setCheckItems] = useState([]);
 
@@ -53,8 +55,8 @@ function UserList() {
 
     const userListArray = userList.map((user, index) => {
         const listDateTime = user.user_datetime
-                ? moment(user.user_datetime).format("YYYY-MM-DD HH:mm:ss")
-                : "";
+            ? moment(user.user_datetime).format("YYYY-MM-DD HH:mm:ss")
+            : "";
         return (
             <li key={user.user_no}>
                 <div className={`${adminUserListStyle.check_box}`}>
@@ -71,7 +73,11 @@ function UserList() {
                 <p className={`${adminUserListStyle.user_nickname}`}>{user.user_nickname}</p>
                 <p className={`${adminUserListStyle.user_datetime}`}>{listDateTime}</p>
                 <p>
-                    <Link to={`/admin/users/update/${user.user_no}`} className={`${adminUserListStyle.retouch_btn}`}>수정</Link>
+                    <Link
+                        to={`/admin/users/update/${user.user_no}`}
+                        className={`${adminUserListStyle.retouch_btn}`}>
+                        수정
+                    </Link>
                 </p>
             </li>
         );
@@ -92,6 +98,28 @@ function UserList() {
                 setUserList(response.data.userList);
 
                 alert("삭제에 성공했습니다.");
+            });
+        }
+    }
+
+    function userExcelHandler(e) {
+        if (checkItems.length === 0) {
+            alert(`다운로드할 데이터가 없습니다.`);
+
+            return;
+        }
+
+        if (window.confirm(`${checkItems.length}개를 엑셀다운로드 하시겠습니까?`)) {
+            const data = { memberList: checkItems, listCount: listCount, page: params.page };
+
+            axios.post(`${SERVER_URL}/api/admin/users/excelDown`, data).then((response) => {
+                const ws = xlsx.utils.json_to_sheet(response.data.list);
+
+                const wb = xlsx.utils.book_new();
+
+                xlsx.utils.book_append_sheet(wb, ws, "Sheet1");
+
+                xlsx.writeFile(wb, "users.xlsx");
             });
         }
     }
@@ -124,7 +152,16 @@ function UserList() {
                     {userListArray}
                 </ul>
                 <div className={`${adminUserListStyle.delete_box}`}>
-                    <button onClick={userCheckHandler} className={`${adminUserListStyle.delete_btn}`}>삭제</button>
+                    <button
+                        onClick={userExcelHandler}
+                        className={`${adminUserListStyle.delete_btn}`}>
+                        엑셀 다운로드
+                    </button>
+                    <button
+                        onClick={userCheckHandler}
+                        className={`${adminUserListStyle.delete_btn}`}>
+                        삭제
+                    </button>
                 </div>
                 <div className={`boardlist_pagination_box ${adminUserListStyle.pagination}`}>
                     <Paging
