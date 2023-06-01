@@ -11,7 +11,7 @@ function ConfigList() {
     const [title, setTitle] = useState("");
     const [bizName, setBizName] = useState("");
     const [bizNumber, setBizNumber] = useState("");
-    const [address, setAddress] = useState("");
+    const [bizAddress, setBizAddress] = useState("");
     const [logoImgUrl, setLogoImgUrl] = useState("");
     const [, setFileImg] = useState("");
 
@@ -23,7 +23,7 @@ function ConfigList() {
         setTitle(config.title);
         setBizName(config.biz_name);
         setLogoImgUrl(config.logo_image);
-        setAddress(config.biz_address);
+        setBizAddress(config.biz_address);
         setBizNumber(config.biz_number);
     }, [config]);
 
@@ -39,7 +39,7 @@ function ConfigList() {
         setBizNumber(e.target.value);
     }
     function addressChangeHandler(e) {
-        setAddress(e.target.value);
+        setBizAddress(e.target.value);
     }
 
     function onSubmitHandler(e) {
@@ -49,7 +49,7 @@ function ConfigList() {
 
         formData.append("title", title);
         formData.append("bizName", bizName);
-        formData.append("bizAddress", address);
+        formData.append("bizAddress", bizAddress);
         formData.append("bizNumber", bizNumber);
 
         formData.append("logo_image", e.target.logo_image.files[0]);
@@ -63,7 +63,7 @@ function ConfigList() {
             setTitle(response.data.config.title);
             setBizName(response.data.config.biz_name);
             setBizNumber(response.data.config.biz_number);
-            setAddress(response.data.config.biz_address);
+            setBizAddress(response.data.config.biz_address);
             setLogoImgUrl(response.data.config.logo_image);
             alert("수정이 완료되었습니다.");
         });
@@ -124,7 +124,7 @@ function ConfigList() {
                             <Input
                                 placeholder="주소"
                                 onChange={addressChangeHandler}
-                                defaultValue={address}></Input>
+                                defaultValue={bizAddress}></Input>
                         </div>
                         <div className={`${adminConfigListStyle.form_box}`}>
                             <h4>로고 이미지</h4>

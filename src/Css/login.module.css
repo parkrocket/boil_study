@@ -5,6 +5,7 @@ input[type="password"]:focus {
 
 .login_wrap {
     max-width: 400px;
+    height: 75vh;
     margin: 120px auto auto;
 }
 .login_wrap .login_title {
