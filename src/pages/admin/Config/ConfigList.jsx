@@ -13,6 +13,7 @@ function ConfigList() {
     const [bizNumber, setBizNumber] = useState("");
     const [bizAddress, setBizAddress] = useState("");
     const [logoImgUrl, setLogoImgUrl] = useState("");
+    const [registerPoint, setRegisterPoint] = useState(0);
     const [, setFileImg] = useState("");
 
     const config = useSelector((state) => state.configSet.config.config);
@@ -25,6 +26,7 @@ function ConfigList() {
         setLogoImgUrl(config.logo_image);
         setBizAddress(config.biz_address);
         setBizNumber(config.biz_number);
+        setRegisterPoint(config.register_point);
     }, [config]);
 
     function titleChangeHandler(e) {
@@ -42,6 +44,10 @@ function ConfigList() {
         setBizAddress(e.target.value);
     }
 
+    function registerPointChangeHandler(e) {
+        setRegisterPoint(e.target.value);
+    }
+
     function onSubmitHandler(e) {
         console.log(e);
 
@@ -51,6 +57,7 @@ function ConfigList() {
         formData.append("bizName", bizName);
         formData.append("bizAddress", bizAddress);
         formData.append("bizNumber", bizNumber);
+        formData.append("registerPoint", registerPoint);
 
         formData.append("logo_image", e.target.logo_image.files[0]);
         console.log(e.target.logo_image.files[0]);
@@ -65,6 +72,7 @@ function ConfigList() {
             setBizNumber(response.data.config.biz_number);
             setBizAddress(response.data.config.biz_address);
             setLogoImgUrl(response.data.config.logo_image);
+            setRegisterPoint(response.data.config.register_point);
             alert("수정이 완료되었습니다.");
         });
 
@@ -83,7 +91,6 @@ function ConfigList() {
 
             //setImages(file);
             document.getElementById("image_url").src = fileReader.result;
-
         };
     }
 
@@ -130,13 +137,11 @@ function ConfigList() {
                             <h4>로고 이미지</h4>
                             <label>
                                 <div className={`${adminConfigListStyle.img_box}`}>
-
                                     <img
                                         src={`${SERVER_URL}/${logoImgUrl}`}
                                         alt=""
                                         id="image_url"
                                     />
-
                                 </div>
                                 <input
                                     style={{ display: "none" }}
@@ -146,6 +151,13 @@ function ConfigList() {
                                     ref={imgRef}
                                 />
                             </label>
+                        </div>
+                        <div className={`${adminConfigListStyle.form_box}`}>
+                            <h4>회원가입시 포인트</h4>
+                            <Input
+                                placeholder="회원가입시 포인트"
+                                onChange={registerPointChangeHandler}
+                                value={registerPoint}></Input>
                         </div>
                         <button>수정</button>
                     </fieldset>

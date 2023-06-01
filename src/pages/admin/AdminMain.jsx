@@ -12,10 +12,16 @@ import { SERVER_URL } from "../Config";
 
 function AdminMain() {
     const [userCount, setUserCount] = useState(0);
+    const [writeCount, setWriteCount] = useState(0);
+    const [commentCount, setCommentCount] = useState(0);
+    const [pointCount, setPointCount] = useState(0);
 
     useEffect(() => {
-        axios.post(`${SERVER_URL}/api/admin/stats/memberCount`).then((res) => {
+        axios.post(`${SERVER_URL}/api/admin/stats/statsCount`).then((res) => {
             setUserCount(res.data.userCount);
+            setWriteCount(res.data.writeCount);
+            setCommentCount(res.data.commentCount);
+            setPointCount(res.data.pointCount);
         });
     }, []);
 
@@ -32,21 +38,21 @@ function AdminMain() {
                                 </p>
                             </li>
                             <li>
-                                <h4>누적리뷰수</h4>
+                                <h4>게시글수</h4>
                                 <p>
-                                    <span>5,595</span>
+                                    <span>{writeCount}</span>
                                 </p>
                             </li>
                             <li>
-                                <h4>누적조회수</h4>
+                                <h4>댓글수</h4>
                                 <p>
-                                    <span>1,373,766</span>
+                                    <span>{commentCount}</span>
                                 </p>
                             </li>
                             <li className={`${adminStyle.point}`}>
-                                <h4>포인트</h4>
+                                <h4>회원포인트</h4>
                                 <p>
-                                    <span>173,105</span>P
+                                    <span>{pointCount}</span>P
                                 </p>
                                 <button className={`${adminStyle.refresh}`}>
                                     <RefreshIcon></RefreshIcon>
