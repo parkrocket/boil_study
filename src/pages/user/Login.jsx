@@ -114,6 +114,13 @@ function Login(props) {
                             ref={naverRef}
                             className={`${loginStyle.naverIdLogin}`}
                         />
+
+                        <div>
+                            <input
+                                type="submit"
+                                defaultValue="로그인하기"
+                                className={loginStyle.login_btn}></input>
+                        </div>
                         <div className={`${loginStyle.login_type_box}`}>
                             <button
                                 className={`${loginStyle.naverIdLogin_btn}`}
@@ -121,12 +128,6 @@ function Login(props) {
                                 <img src={naverLogoImage} alt="" />
                                 <span>네이버 아이디로 로그인</span>
                             </button>
-                        </div>
-                        <div>
-                            <input
-                                type="submit"
-                                defaultValue="로그인하기"
-                                className={loginStyle.login_btn}></input>
                         </div>
                     </form>
                 </div>

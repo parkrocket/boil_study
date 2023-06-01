@@ -8,18 +8,17 @@ import { SERVER_URL } from "../Config";
 import moment from "moment";
 import Paging from "../../components/Pagination";
 
-
 function BoardList() {
     const [List, setList] = useState([]);
     const [count, setCount] = useState(0);
     const [boardSubject, setBoardSubject] = useState("");
-    const [searchParams, setSearchParams] = useSearchParams();
-    const [category, setCategory] = useState("");
+    const [searchParams] = useSearchParams();
+    const [category, setCategory] = useState("subject");
     const [searchText, setSearchText] = useState("");
 
-    console.log(searchParams.get("search"))
     const pageList = 8;
     let params = useParams();
+
     const navigate = useNavigate();
 
     if (params.page === undefined) {
@@ -49,7 +48,8 @@ function BoardList() {
                 list: pageList,
                 page: params.page,
                 boardId: params.boardId,
-                searchText: searchText
+                searchText: searchText,
+                category: category,
             })
             .then((response) => {
                 setList(response.data.list);
@@ -85,7 +85,7 @@ function BoardList() {
     function selectChangeHandler(e) {
         setCategory(e.target.value);
     }
-    
+
     return (
         <div>
             <Head></Head>
@@ -100,33 +100,44 @@ function BoardList() {
                 </div>
                 <div className={boardListStyle.board_wrap}>
                     <ul className={`${boardListStyle.board_list}`}>{boardList}</ul>
-                    <form action="">
+                    <form action={`/board/${params.boardId}/page/1`}>
                         <fieldset>
                             <ul className={`${boardListStyle.search_list}`}>
                                 <li>
-                                    <select name="category" id="" value={category} onChange={selectChangeHandler}>
-                                        <option value="cate1">전체</option>
-                                        <option value="cate2">제목</option>
-                                        <option value="cate3">작성자</option>
-                                        <option value="cate4">댓글</option>
+                                    <select
+                                        name="category"
+                                        id=""
+                                        value={category || ""}
+                                        onChange={selectChangeHandler}>
+                                        <option value="subject">제목</option>
+                                        {/**<option value="cate3">작성자</option>**/}
+                                        <option value="content">본문</option>
                                     </select>
                                 </li>
                                 <li>
-                                    <input type="text" name="searchText" defaultValue={searchText} />
+                                    <input
+                                        type="text"
+                                        name="searchText"
+                                        defaultValue={searchText}
+                                    />
                                 </li>
                                 <li>
-                                    <button >검색</button>
+                                    <button>검색</button>
                                 </li>
                             </ul>
                         </fieldset>
                     </form>
                 </div>
                 <div className="boardlist_pagination_box">
-                    <Paging
-                        count={count}
-                        page={Number(params.page)}
-                        list={pageList}
-                        path="/board/page/"></Paging>
+                    {count && (
+                        <Paging
+                            count={count}
+                            page={Number(params.page)}
+                            list={pageList}
+                            path={`/board/${params.boardId}/page/`}
+                            category={category}
+                            searchText={searchText}></Paging>
+                    )}
                 </div>
             </div>
         </div>
