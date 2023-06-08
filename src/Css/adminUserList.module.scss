@@ -1,12 +1,10 @@
 .container {
-
     .user_list {
-        
         > li {
             display: grid;
-            grid-template-columns : .3fr 2fr 2fr 2fr 3fr .5fr;
-            gap: .5rem;
-            padding: .5rem 1rem;       
+            grid-template-columns: 0.3fr 2fr 2fr 2fr 3fr 0.5fr;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
         }
 
         .list_head {
@@ -14,23 +12,23 @@
 
             p {
                 font-weight: 600;
-                font-size: .8rem;
+                font-size: 0.8rem;
                 text-align: center;
             }
         }
-        
+
         li:not(.list_head) {
             border-bottom: 1px solid #ddd;
 
             p {
                 font-size: 0.78rem;
-                
+
                 .retouch_btn {
                     color: #bbb;
                     font-size: 0.7rem;
                     white-space: nowrap;
                 }
-                
+
                 &:last-child {
                     display: flex;
                     align-items: center;
@@ -39,7 +37,7 @@
             }
 
             &:nth-child(even) {
-                background: #F0F1F9;
+                background: #f0f1f9;
             }
 
             &:hover {
@@ -50,31 +48,45 @@
 
     .delete_box {
         margin-top: 1rem;
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.5rem;
 
-        .delete_btn {
-            margin-left: auto;
+        button {
             margin-right: 0;
             display: block;
-            background: #5D4C91;
-            color: #fff;
             padding: 0.3rem 0.5rem;
             border-radius: 5px;
             font-size: 0.7rem;
+            color: #fff;
+        }
+
+        .down_btn {
+            background: #202a25;
+
+            &:hover {
+                background: #555;
+            }
+        }
+
+        .delete_btn {
+            background: #5d4c91;
+
+            &:hover {
+                background: #7d6cb2;
+            }
         }
     }
 }
 
-@media screen and (max-width : 700px) {
+@media screen and (max-width: 700px) {
     .container {
-
         .user_list {
-
             > li {
-                padding: 0.5rem .2rem;
+                padding: 0.5rem 0.2rem;
             }
 
             .list_head {
-
                 p {
                     font-size: 0.75rem;
                 }
@@ -93,14 +105,20 @@
     }
 }
 
-@media screen and (max-width : 600px) {
+@media screen and (max-width: 600px) {
     .container {
         overflow-x: auto;
+
+        .user_list {
+            > li {
+                grid-template-columns: 0.3fr 2.5fr 1.5fr 1.5fr 2.5fr 0.7fr;
+            }
+        }
 
         .user_list,
         .delete_box,
         .pagination {
-            min-width: 470px;
+            min-width: 425px;
         }
     }
 }
