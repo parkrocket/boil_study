@@ -152,9 +152,7 @@ function UserList() {
                     {userListArray}
                 </ul>
                 <div className={`${adminUserListStyle.delete_box}`}>
-                    <button
-                        onClick={userExcelHandler}
-                        className={`${adminUserListStyle.delete_btn}`}>
+                    <button onClick={userExcelHandler} className={`${adminUserListStyle.down_btn}`}>
                         엑셀 다운로드
                     </button>
                     <button
