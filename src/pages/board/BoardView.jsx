@@ -11,9 +11,8 @@ import { useSelector } from "react-redux";
 import Confirm from "../../components/Confirm";
 import { useDisclosure } from "@chakra-ui/react";
 import { ViewIcon, TimeIcon } from "@chakra-ui/icons";
-import AttachFileIcon from '@mui/icons-material/AttachFile';
+import AttachFileIcon from "@mui/icons-material/AttachFile";
 import { Avatar } from "@chakra-ui/react";
-
 
 function BoardView() {
     const params = useParams();
@@ -39,12 +38,18 @@ function BoardView() {
         const data = { boardId: params.boardId, wrNo: params.wrNo };
 
         axios.post(`${SERVER_URL}/api/board/view`, data).then((response) => {
+            console.log(response);
             if (response.data.viewsuccess === false) {
                 alert("글 불러오기가 실패했습니다.");
                 navigate("/board");
             }
-            console.log("글가져오기");
+
             setBoardView(response.data.view);
+            console.log(BoardView);
+        });
+
+        axios.post(`${SERVER_URL}/api/board/viewt`, data).then((response) => {
+            console.log(response);
         });
 
         axios.post(`${SERVER_URL}/api/comment/list`, data).then((response) => {
@@ -78,6 +83,7 @@ function BoardView() {
         }
 
         axios.post(`${SERVER_URL}/api/board/delete`, data).then((response) => {
+            console.log(response.data);
             if (response.data.boardDeleteSuccess === false) {
                 alert("글 삭제가 실패했습니다.");
                 return;
@@ -86,8 +92,6 @@ function BoardView() {
             alert("글이 삭제되었습니다.");
             navigate(`/board/${params.boardId}`);
         });
-
-        console.log(BoardView);
     }
 
     const okConfirm = () => {
@@ -108,7 +112,6 @@ function BoardView() {
                 responseType: "blob",
                 data: data,
             }).then((response) => {
-                console.log(response.data);
                 const url = window.URL.createObjectURL(new Blob([response.data]));
                 const link = document.createElement("a");
                 link.href = url;
@@ -116,7 +119,6 @@ function BoardView() {
                 document.body.appendChild(link);
                 link.click();
                 link.parentNode.removeChild(link);
-                console.log(url);
             });
         }
     }
@@ -126,7 +128,8 @@ function BoardView() {
             <React.Fragment key={index}>
                 {file.filename && (
                     <div>
-                        <AttachFileIcon/>첨부파일 #{index + 1}:{" "}
+                        <AttachFileIcon />
+                        첨부파일 #{index + 1}:{" "}
                         <button
                             onClick={fileDownloadHandler}
                             data-path={file.filepath}
@@ -145,13 +148,15 @@ function BoardView() {
             <div className={`${boardViewStyle.container}`}>
                 <h2 className={`${boardViewStyle.tit} fontf`}>자유게시판</h2>
                 <div className={`${boardViewStyle.wrapper}`}>
-                    <h2 className={`${boardViewStyle.cont_tit}`}>
-                        {BoardView.subject}{" "}
-                    </h2>
+                    <h2 className={`${boardViewStyle.cont_tit}`}>{BoardView.subject} </h2>
                     <div className={`${boardViewStyle.cont_detail}`}>
-                        <Avatar src className={`${boardViewStyle.thumb}`}></Avatar>
+                        <Avatar
+                            src={BoardView.user_image}
+                            className={`${boardViewStyle.thumb}`}></Avatar>
                         <div>
-                            <p className={`${boardViewStyle.nickname}`}>nickName</p>
+                            <p className={`${boardViewStyle.nickname}`}>
+                                {BoardView.user_nickname}
+                            </p>
                             <span>
                                 <ViewIcon></ViewIcon>
                                 {BoardView.hit}
@@ -165,20 +170,19 @@ function BoardView() {
 
                     <div
                         dangerouslySetInnerHTML={{ __html: BoardView.content }}
-                        className={`${boardViewStyle.cont}`}>
-                    </div>
-                    <div className={`${boardViewStyle.file_list}`}>
-                        {fileListComp}
-                    </div>
+                        className={`${boardViewStyle.cont}`}></div>
+                    <div className={`${boardViewStyle.file_list}`}>{fileListComp}</div>
 
-                    {(user.user.auth._id === BoardView.user_id || user.user.auth.isAdmin === true) && (
+                    {(user.user.auth._id === BoardView.user_id ||
+                        user.user.auth.isAdmin === true) && (
                         <div className={`${boardViewStyle.tool}`}>
-                            <Link to={`/board/update/${params.boardId}/${BoardView.wr_no}`}>수정</Link>
+                            <Link to={`/board/update/${params.boardId}/${BoardView.wr_no}`}>
+                                수정
+                            </Link>
                             <button onClick={confirmOpen}>삭제</button>
                         </div>
                     )}
                 </div>
-
 
                 <div>
                     <Comment commentList={CommentList} refreshComment={refreshComment}></Comment>

@@ -65,8 +65,6 @@ function SingleComment(props) {
         onOpen();
     }
 
-    console.log(props);
-
     function deleteCommentHandler() {
         const data = {
             commentNo: props.comment.comment_no,

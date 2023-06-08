@@ -52,6 +52,7 @@ function BoardList() {
                 category: category,
             })
             .then((response) => {
+                console.log(response);
                 setList(response.data.list);
                 setCount(response.data.count);
             });

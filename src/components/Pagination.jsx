@@ -7,7 +7,8 @@ const Paging = (props) => {
 
     function pageChangeHandler(page) {
         let url = `${props.path}${page}`;
-        if (props.searchText !== undefined) {
+
+        if (props.searchText !== null) {
             url += `?category=${props.category}&searchText=${props.searchText}`;
         }
         navigate(url);

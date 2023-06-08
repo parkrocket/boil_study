@@ -12,6 +12,7 @@ function BoardComment(props) {
     const params = useParams();
 
     const [Text, setText] = useState("");
+    const [secret, setSecret] = useState(false);
 
     //const [depth,setDepth] = useState(0);
 
@@ -23,8 +24,18 @@ function BoardComment(props) {
         setText(e.currentTarget.value);
     };
 
+    const onCheckHandler = (e) => {
+        setSecret(e.target.checked);
+    };
+
     const onSubmit = (e) => {
         e.preventDefault();
+        let option = "";
+        if (secret) {
+            option = "secret";
+        } else {
+            option = "";
+        }
 
         const data = {
             content: Text,
@@ -32,6 +43,7 @@ function BoardComment(props) {
             boardId: params.boardId,
             wrNo: params.wrNo,
             commentId: 0,
+            secret: option,
         };
 
         axios.post(`${SERVER_URL}/api/comment/write`, data).then((response) => {
@@ -78,6 +90,8 @@ function BoardComment(props) {
 
             <div className={`${boardCommentStyle.form_box}`}>
                 <form style={{ display: "flex" }} onSubmit={onSubmit}>
+                    <input type="checkbox" value="secret" onClick={onCheckHandler} />
+                    비밀글
                     <textarea
                         // style={{ width: "100%", borderRadius: "5px" }}
                         onChange={textHandler}

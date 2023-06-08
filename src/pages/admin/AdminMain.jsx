@@ -32,11 +32,14 @@ function AdminMain() {
                     <div className={`${adminStyle.left}`}>
                         <ul className={`${adminStyle.count_list}`}>
                             <li>
-                                <h4>전체회원수</h4>
-                                <p>
-                                    <span>{userCount}</span>
-                                </p>
+                                <Link to="/admin/users">
+                                    <h4>전체회원수</h4>
+                                    <p>
+                                        <span>{userCount}</span>
+                                    </p>
+                                </Link>
                             </li>
+
                             <li>
                                 <h4>게시글수</h4>
                                 <p>
