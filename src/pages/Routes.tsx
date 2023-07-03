@@ -22,13 +22,17 @@ import ConfigList from './admin/Config/ConfigList';
 import MenuEdit from './admin/Config/MenuEdit'
 import UserUpdate from './admin/User/UserUpdate';
 import NaverLogin from '../pages/user/Social/NaverLogin'
+import Calendar from '../pages/calendar/Calendar'
+import Calendar2 from '../pages/calendar/Calendar2'
+import LawTest from './law/lawTest';
 
 export const Routes = () => {
     return (
       <ReactRouterRoutes>
         
         <Route path="/" element={Auth(Main,null)} />
-        <Route path="/introduce" element={Auth(Introduce,true)} />
+        <Route path="/introduce" element={Auth(Introduce, true)} />
+        <Route path="/law" element={Auth(LawTest,true)} />
         <Route path="/login" element={Auth(Login, false)} />
         <Route path="/naver" element={Auth(NaverLogin, false)} />
         <Route path="/register" element={Auth(Register,false)} />
@@ -38,7 +42,9 @@ export const Routes = () => {
         <Route path="/board/:boardId/:wrNo" element={Auth(BoardView,true)} />
         <Route path="/board/:boardId/write" element={Auth(BoardWrite,true)} />
         <Route path="/board/:boardId/page/:page" element={Auth(BoardList,true)} />
-        <Route path="/board/update/:boardId/:wrNo" element={Auth(BoardWrite,true)} />
+        <Route path="/board/update/:boardId/:wrNo" element={Auth(BoardWrite, true)} />
+        <Route path="/calendar" element={Auth(Calendar, false)} />
+        <Route path="/calendar2" element={Auth(Calendar2,false)} />
         <Route path="/dblook" element={<DbLook />} />
         <Route path="/passwordcheck" element={Auth(PasswordCheck,true)} />
         <Route path="/test" element={<Test value={'테스트 컴포넌트 :)😁'} />} />

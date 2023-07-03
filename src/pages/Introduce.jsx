@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Center, Badge, Image } from "@chakra-ui/react";
 
 import Gora from "../img/gora.jpg";
 import Lija from "../img/lija.jpg";
 import Dos from "../img/dos.png";
 import Head from "../components/Head";
+import { SERVER_URL } from "./Config";
+import axios from "axios";
 
 function Introduce(props) {
     /*
@@ -14,6 +16,8 @@ function Introduce(props) {
         }
     }
     */
+
+    useEffect(() => {}, []);
     const img = { Gora, Lija, Dos };
 
     const property = {
@@ -41,7 +45,7 @@ function Introduce(props) {
     const property_dy = {
         imageUrl: img.Lija,
         imageAlt: "매직샵",
-        name: "최다연",
+        name: "다연",
         age: 28,
         sex: "여자",
         title: "우앙",
@@ -49,10 +53,17 @@ function Introduce(props) {
         rating: 4,
     };
 
+    function Handler() {
+        axios.post(`${SERVER_URL}/api/test/law`).then((response) => {
+            console.log(response);
+        });
+    }
+
     return (
         <>
             <Head></Head>
             <Center mt={100}>
+                <button onClick={Handler}>버튼</button>
                 {[property, property_ino, property_dy].map((el, index) => (
                     <Box
                         maxW="sm"
@@ -81,7 +92,7 @@ function Introduce(props) {
                                     fontSize="xs"
                                     textTransform="uppercase"
                                     ml="2">
-                                    {el.age} 살 &bull; {el.sex}
+                                    {el.age} age &bull; {el.sex}
                                 </Box>
                             </Box>
                             <Box

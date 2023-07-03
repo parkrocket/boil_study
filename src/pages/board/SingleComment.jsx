@@ -96,13 +96,17 @@ function SingleComment(props) {
             <ul style={{ paddingLeft: props.depth }} className={`${boardCommentStyle.list}`}>
                 <li className={`${boardCommentStyle.nickname}`}>{props.comment.user_nickname}</li>
                 <li className={`${boardCommentStyle.cont}`}>
-                    {props.comment.content.split("\n").map((line, index) => {
-                        return (
-                            <React.Fragment key={index}>
-                                {line} <br />
-                            </React.Fragment>
-                        );
-                    })}
+                    {props.comment.option === "secret" &&
+                    user.user.auth.isAdmin === false &&
+                    props.comment.user_id !== user.user.auth._id
+                        ? "비밀댓글입니다."
+                        : props.comment.content.split("\n").map((line, index) => {
+                              return (
+                                  <React.Fragment key={index}>
+                                      {line} <br />
+                                  </React.Fragment>
+                              );
+                          })}
                 </li>
                 <li className={`${boardCommentStyle.time}`}>{listDateTime}</li>
                 <li className={`${boardCommentStyle.action}`}>

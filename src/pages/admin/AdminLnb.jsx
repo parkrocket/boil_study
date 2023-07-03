@@ -123,6 +123,7 @@ function AdminLnb(props) {
                                 </li>
                             </ul>
                         </li>
+                        {/** 
                         <li>
                             <NavLink to="/admin" className="menu1">
                                 <ContentCopyIcon className={`${adminStyle.cate_ico}`} />
@@ -135,10 +136,11 @@ function AdminLnb(props) {
                                 <span>브랜드 비교분석</span>
                             </NavLink>
                         </li>
+                        **/}
                         <li>
                             <NavLink to="/admin" className="menu1">
                                 <ControlPointDuplicateIcon className={`${adminStyle.cate_ico}`} />
-                                <span>포인트 충전</span>
+                                <span>포인트</span>
                             </NavLink>
                         </li>
                         <li>
@@ -148,9 +150,11 @@ function AdminLnb(props) {
                                 <ExpandMoreIcon className={`${adminStyle.arrow_ico}`} />
                             </NavLink>
                             <ul className={`${adminStyle.gnb_sub}`}>
+                                {/** 
                                 <li>
                                     <NavLink to="">구매내역(견적서)</NavLink>
                                 </li>
+                                **/}
                                 <li>
                                     <NavLink to="">공지사항</NavLink>
                                 </li>
