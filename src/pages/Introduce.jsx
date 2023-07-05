@@ -26,7 +26,7 @@ function Introduce(props) {
         name: "박성현",
         age: 36,
         sex: "남자",
-        title: "다들 중도포기하지 말고 최선을 다해서 끝까지 완주했으면 합니다. 다들 화이팅!",
+        title: "다들 다들 화이팅!",
         reviewCount: 34,
         rating: 4,
     };
